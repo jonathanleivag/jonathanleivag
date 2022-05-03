@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dsznajder.es7-react-js-snippets",
+    "burkeholland.simple-react-snippets",
+    "xabikos.JavaScriptSnippets",
+    "numso.prettier-standard-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "aaron-bond.better-comments",
+    "IronGeek.vscode-env",
+    "usernamehw.errorlens",
+    "bradlc.vscode-tailwindcss",
+    "Gruntfuggly.todo-tree",
+    "willstakayama.vscode-nextjs-snippets",
+    "pmneo.tsimporter",
+    "blanu.vscode-styled-jsx",
+    "quicktype.quicktype"
+  ]
+}
