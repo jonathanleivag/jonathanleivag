@@ -36,7 +36,10 @@ export const UiThemeComponent: FC<IUiThemeComponent> = ({ className }) => {
   }
 
   return (
-    <div onClick={setTheme} className={`navbar_button ${className}`}>
+    <div
+      onClick={setTheme}
+      className={`navbar_button cursor-pointer ${className}`}
+    >
       {theme === 'dark' && <FaMoon />}
       {theme === 'light' && <BsFillSunFill />}
       {theme === 'system' && <MdBrightnessAuto />}
