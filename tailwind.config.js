@@ -5,7 +5,11 @@ module.exports = {
     './layouts/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        'light-botton': '#E2E8F0'
+      }
+    }
   },
   plugins: []
 }
