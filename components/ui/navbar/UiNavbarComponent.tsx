@@ -16,7 +16,7 @@ export const UiNavbarComponent: FC = () => {
         </div>
         <div className='w-[50%] h-full flex flex-row justify-center items-center'>
           <UiNavbarLogoComponent className='md:hidden' />
-          <UiNavbarMenuOptionComponent className='hidden md:flex flex-row' />
+          <UiNavbarMenuOptionComponent className='hidden md:flex flex-row gap-3' />
         </div>
         <div className='w-[30%] md:w-[10%] h-full flex flex-row justify-center items-center'>
           <UiThemeComponent />

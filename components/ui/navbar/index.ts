@@ -1,5 +1,4 @@
 export * from './UiNavbarComponent'
 export * from './UiNavbarLogoComponent'
 export * from './UiNavbarMenuComponent'
-export * from './UiNavbarMenuOptionComponent'
 export * from './UiThemeComponent'
