@@ -1,8 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { IinitialState } from '.'
+import { IinitialStateMenu } from '.'
 
 const changeIsOpen = (
-  state: IinitialState,
+  state: IinitialStateMenu,
   acation: PayloadAction<boolean>
 ) => {
   state.isOpen = acation.payload

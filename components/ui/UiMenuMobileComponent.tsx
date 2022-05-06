@@ -8,7 +8,7 @@ import { changeIsOpen } from '../../features/menu'
 export const UiMenuMobileComponent: FC = () => {
   const dispatch = useDispatch()
   const isOpen = useSelector((state: RootState) => state.menu.isOpen)
-  const [className, setClassName] = useState<string>('right-0')
+  const [className, setClassName] = useState<string>('right-full')
 
   useEffect(() => {
     setClassName(isOpen ? 'right-0' : 'right-full')

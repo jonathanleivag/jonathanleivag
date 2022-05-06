@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import reducers from './reducers'
 
-export interface IinitialState {
+export interface IinitialStateMenu {
   isOpen: boolean
 }
 
-const initialState: IinitialState = {
+const initialState: IinitialStateMenu = {
   isOpen: false
 }
 
