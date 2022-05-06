@@ -9,7 +9,7 @@ import {
 export const UiNavbarComponent: FC = () => {
   return (
     <nav className='w-full h-[110px] md:h-[150px] flex flex-row justify-center items-center'>
-      <div className='w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] h-full flex flex-row justify-center items-center'>
+      <div className='w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] h-full flex flex-row justify-center items-center'>
         <div className='w-[30%] md:w-[15%] h-full flex flex-row justify-center items-center'>
           <UiNavbarMenuComponent className='md:hidden' />
           <UiNavbarLogoComponent className='hidden md:flex' />
