@@ -8,6 +8,7 @@ export const useTheme = () => {
   const [bg, setBg] = useState<string>('')
   const [text, setText] = useState<string>('')
   const [bgButton, setBgButton] = useState<string>('')
+  const [hoverBgLi, setHoverBgLi] = useState<string>('')
 
   useEffect(() => {
     switch (theme) {
@@ -15,16 +16,19 @@ export const useTheme = () => {
         setBg('bg-dark')
         setText('text-dark-text')
         setBgButton('bg-dark-button')
+        setHoverBgLi('hover:bg-dark-button')
         break
       case 'light':
         setBg('bg-white')
         setText('text-light-text')
         setBgButton('bg-light-button')
+        setHoverBgLi('hover:bg-light-button')
         break
       case 'system':
         setBg('bg-white dark:bg-dark')
         setText('text-light-text dark:text-dark-text')
         setBgButton('bg-light-button dark:bg-dark-button')
+        setHoverBgLi('hover:bg-light-button dark:hover:bg-dark-button')
         break
       default:
         setBg('bg-white')
@@ -34,5 +38,5 @@ export const useTheme = () => {
     return () => {}
   }, [theme])
 
-  return { bg, text, bgButton }
+  return { bg, text, bgButton, hoverBgLi }
 }

@@ -15,7 +15,7 @@
 }
 
 .navbar_menu_li {
-  @apply px-2 py-1 border border-transparent overflow-hidden hover:border-light-button hover:bg-light-button rounded-xl;
+  @apply px-2 py-1 border border-transparent overflow-hidden rounded-xl;
 }
 
 /* -------------------------------------------------------------------------- */
