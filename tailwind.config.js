@@ -16,6 +16,12 @@ module.exports = {
         /* ---------------------------------- light --------------------------------- */
         'light-text': '#1a202c',
         'light-button': '#E2E8F0'
+      },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif']
+      },
+      screens: {
+        '3xl': '2560px'
       }
     }
   },

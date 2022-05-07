@@ -35,7 +35,7 @@ export const MainLayouts: FC<IMainLayoutProps> = ({ children }) => {
     <section className={`min-w-full min-h-screen ${bg} ${text}`}>
       <UiMenuMobileComponent />
       <UiNavbarComponent />
-      <main>{children}</main>
+      <main className='px-5 md:px-20'>{children}</main>
     </section>
   )
 }

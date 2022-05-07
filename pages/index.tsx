@@ -1,12 +1,19 @@
 import { NextPage } from 'next'
+import {
+  PageHomeSubTitleComponent,
+  PageHomeTitleComponent
+} from '../components'
 import { MainLayouts } from '../layouts'
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
+  // Todo: agregar link en mi nombre de sobre mi
+
   return (
     <MainLayouts>
-      <h1>Hola mundo</h1>
+      <PageHomeTitleComponent />
+      <PageHomeSubTitleComponent />
     </MainLayouts>
   )
 }
 
-export default Home
+export default HomePage
