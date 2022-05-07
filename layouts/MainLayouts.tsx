@@ -8,6 +8,7 @@ import {
   UiNavbarComponent
 } from '../components'
 import { changeTheme } from '../features/theme'
+import { useTheme } from '../hooks'
 import { themeValidUtil } from '../utils'
 
 export interface IMainLayoutProps {
@@ -17,6 +18,7 @@ export interface IMainLayoutProps {
 export const MainLayouts: FC<IMainLayoutProps> = ({ children }) => {
   const theme = useSelector((state: RootState) => state.theme.selected)
   const dispatch = useDispatch()
+  const { bg, text } = useTheme()
 
   useEffect(() => {
     if (!Cookies.get('theme')) {
@@ -30,10 +32,10 @@ export const MainLayouts: FC<IMainLayoutProps> = ({ children }) => {
   if (!theme) return <UiFullScreenLoadingUiComponent />
 
   return (
-    <>
+    <section className={`min-w-full min-h-screen ${bg} ${text}`}>
       <UiMenuMobileComponent />
       <UiNavbarComponent />
       <main>{children}</main>
-    </>
+    </section>
   )
 }

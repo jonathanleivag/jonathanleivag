@@ -2,12 +2,20 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './layouts/**/*.{js,ts,jsx,tsx}'
+    './layouts/**/*.{js,ts,jsx,tsx}',
+    './hooks/useTheme.ts'
   ],
   theme: {
     extend: {
       colors: {
-        'light-botton': '#E2E8F0'
+        /* ---------------------------------- dark ---------------------------------- */
+        dark: '#1a202c',
+        'dark-text': '#ffffffeb',
+        'dark-button': '#ffffff14',
+
+        /* ---------------------------------- light --------------------------------- */
+        'light-text': '#1a202c',
+        'light-button': '#E2E8F0'
       }
     }
   },

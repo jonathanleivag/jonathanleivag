@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IUiNavbarMenuComponentProps } from '../..'
 import { RootState } from '../../../app/store'
 import { changeTheme } from '../../../features/theme'
+import { useTheme } from '../../../hooks'
 
 export interface IUiThemeComponent extends IUiNavbarMenuComponentProps {}
 
 export const UiThemeComponent: FC<IUiThemeComponent> = ({ className }) => {
   const theme = useSelector((state: RootState) => state.theme.selected)
   const dispatch = useDispatch()
+  const { bgButton } = useTheme()
 
   const setTheme = () => {
     switch (theme) {
@@ -38,7 +40,7 @@ export const UiThemeComponent: FC<IUiThemeComponent> = ({ className }) => {
   return (
     <div
       onClick={setTheme}
-      className={`navbar_button cursor-pointer ${className}`}
+      className={`navbar_button cursor-pointer ${bgButton} ${className}`}
     >
       {theme === 'dark' && <FaMoon />}
       {theme === 'light' && <BsFillSunFill />}
