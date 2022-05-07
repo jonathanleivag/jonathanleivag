@@ -19,7 +19,7 @@ export const UiMenuMobileComponent: FC = () => {
 
   return (
     <section
-      className={`fixed flex flex-col justify-center w-screen h-screen z-50 transform ease-in-out duration-1000 ${className} ${bg} bg-opacity-90 dark:bg-opacity-90 md:hidden`}
+      className={`fixed flex flex-col justify-center w-screen h-screen z-50 transform ease-in-out duration-1000 ${className} ${bg} bg-opacity-95 dark:bg-opacity-95 md:hidden`}
     >
       <div className='fixed top-0 w-full flex flex-row justify-center items-center'>
         <div className='w-[90%] h-[100px] flex flex-row justify-start items-center'>
