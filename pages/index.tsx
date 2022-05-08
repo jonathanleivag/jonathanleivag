@@ -3,16 +3,16 @@ import {
   PageHomeSubTitleComponent,
   PageHomeTitleComponent
 } from '../components'
-import { MainLayouts } from '../layouts'
+import { MainLayout } from '../layouts'
 
 const HomePage: NextPage = () => {
   // Todo: agregar link en mi nombre de sobre mi
 
   return (
-    <MainLayouts>
+    <MainLayout>
       <PageHomeTitleComponent />
       <PageHomeSubTitleComponent />
-    </MainLayouts>
+    </MainLayout>
   )
 }
 

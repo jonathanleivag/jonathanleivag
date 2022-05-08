@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UiNavbarMenuOptionComponent } from '..'
 import { RootState } from '../../app/store'
 import { changeIsOpen } from '../../features/menu'
-import { useTheme } from '../../hooks'
 
 export const UiMenuMobileComponent: FC = () => {
   const dispatch = useDispatch()
   const isOpen = useSelector((state: RootState) => state.menu.isOpen)
   const [className, setClassName] = useState<string>('right-full')
-  const { bg, bgButton } = useTheme()
+  const { bg, bgButton } = useSelector((state: RootState) => state.theme)
 
   useEffect(() => {
     setClassName(isOpen ? 'right-0' : 'right-full')

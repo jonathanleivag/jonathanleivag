@@ -7,14 +7,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IUiNavbarMenuComponentProps } from '../..'
 import { RootState } from '../../../app/store'
 import { changeTheme } from '../../../features/theme'
-import { useTheme } from '../../../hooks'
 
 export interface IUiThemeComponent extends IUiNavbarMenuComponentProps {}
 
 export const UiThemeComponent: FC<IUiThemeComponent> = ({ className }) => {
   const theme = useSelector((state: RootState) => state.theme.selected)
   const dispatch = useDispatch()
-  const { bgButton } = useTheme()
+  const { bgButton } = useSelector((state: RootState) => state.theme)
 
   const setTheme = () => {
     switch (theme) {

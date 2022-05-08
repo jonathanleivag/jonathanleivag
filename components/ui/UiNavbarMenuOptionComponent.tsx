@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { IUiNavbarMenuComponentProps } from '..'
-import { useTheme } from '../../hooks'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../app/store'
 
 export interface IUiNavbarMenuOptionComponentProps
   extends IUiNavbarMenuComponentProps {}
@@ -8,7 +9,7 @@ export interface IUiNavbarMenuOptionComponentProps
 export const UiNavbarMenuOptionComponent: FC<IUiNavbarMenuOptionComponentProps> = ({
   className
 }) => {
-  const { hoverBgLi } = useTheme()
+  const { hoverBgLi } = useSelector((state: RootState) => state.theme)
 
   return (
     <ul className={`${className}`}>

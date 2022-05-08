@@ -1,8 +1,9 @@
 import { FC } from 'react'
-import { useTheme } from '../../../hooks'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../app/store'
 
 export const PageHomeTitleComponent: FC = () => {
-  const { title, titleSpan } = useTheme()
+  const { title, titleSpan } = useSelector((state: RootState) => state.theme)
   return (
     <h1 className={`title ${title}`}>
       Hola, soy <span className={`title ${titleSpan}`}>JonathanLeivaG</span>.

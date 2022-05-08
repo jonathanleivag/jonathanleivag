@@ -8,6 +8,19 @@ const changeTheme = (
   state.selected = action.payload
 }
 
-const reducers = { changeTheme }
+const changeColorsTheme = (
+  state: IinitialStateTheme,
+  action: PayloadAction<IinitialStateTheme>
+) => {
+  state.bg = action.payload.bg
+  state.text = action.payload.text
+  state.bgButton = action.payload.bgButton
+  state.hoverBgLi = action.payload.hoverBgLi
+  state.title = action.payload.title
+  state.titleSpan = action.payload.titleSpan
+  state.gradient = action.payload.gradient
+}
+
+const reducers = { changeTheme, changeColorsTheme }
 
 export default reducers

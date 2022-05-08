@@ -5,10 +5,24 @@ export type TTheme = 'light' | 'dark' | 'system' | false
 
 export interface IinitialStateTheme {
   selected: TTheme
+  bg: string
+  text: string
+  bgButton: string
+  hoverBgLi: string
+  title: string
+  titleSpan: string
+  gradient: string
 }
 
 const initialState: IinitialStateTheme = {
-  selected: false
+  selected: false,
+  bg: '',
+  text: '',
+  bgButton: '',
+  hoverBgLi: '',
+  title: '',
+  titleSpan: '',
+  gradient: ''
 }
 
 const themeSlice = createSlice({
@@ -17,6 +31,6 @@ const themeSlice = createSlice({
   reducers
 })
 
-export const { changeTheme } = themeSlice.actions
+export const { changeTheme, changeColorsTheme } = themeSlice.actions
 
 export default themeSlice.reducer
