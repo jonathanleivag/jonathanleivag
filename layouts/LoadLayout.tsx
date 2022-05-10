@@ -31,6 +31,7 @@ export const LoadLayout: FC<ILoadLayoutProps> = ({ children }) => {
             bg: 'bg-dark',
             text: 'text-dark-text',
             bgButton: 'bg-dark-button',
+            bgLi: 'bg-dark-button',
             hoverBgLi: 'hover:bg-dark-button',
             title: 'bg-gradient-to-l from-[#00F260] to-[#0575E6]',
             titleSpan: 'bg-gradient-to-l from-[#00F260] to-[#0575E6]',
@@ -49,6 +50,7 @@ export const LoadLayout: FC<ILoadLayoutProps> = ({ children }) => {
             bg: 'bg-white',
             text: 'text-light-text',
             bgButton: 'bg-light-button',
+            bgLi: 'bg-light-button',
             hoverBgLi: 'hover:bg-light-button',
             gradient:
               'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
@@ -66,6 +68,7 @@ export const LoadLayout: FC<ILoadLayoutProps> = ({ children }) => {
             text: 'text-light-text dark:text-dark-text',
             bgButton: 'bg-light-button dark:bg-dark-button',
             hoverBgLi: 'hover:bg-light-button dark:hover:bg-dark-button',
+            bgLi: 'bg-light-button dark:bg-dark-button',
             gradient:
               'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
           })
@@ -83,6 +86,7 @@ export const LoadLayout: FC<ILoadLayoutProps> = ({ children }) => {
             text: 'text-light-text dark:text-dark-text',
             bgButton: 'bg-light-button dark:bg-dark-button',
             hoverBgLi: 'hover:bg-light-button dark:hover:bg-dark-button',
+            bgLi: 'bg-light-button dark:bg-dark-button',
             gradient:
               'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
           })

@@ -16,6 +16,7 @@ const changeColorsTheme = (
   state.text = action.payload.text
   state.bgButton = action.payload.bgButton
   state.hoverBgLi = action.payload.hoverBgLi
+  state.bgLi = action.payload.bgLi
   state.title = action.payload.title
   state.titleSpan = action.payload.titleSpan
   state.gradient = action.payload.gradient

@@ -8,6 +8,7 @@ export interface IinitialStateTheme {
   bg: string
   text: string
   bgButton: string
+  bgLi: string
   hoverBgLi: string
   title: string
   titleSpan: string
@@ -19,6 +20,7 @@ const initialState: IinitialStateTheme = {
   bg: '',
   text: '',
   bgButton: '',
+  bgLi: '',
   hoverBgLi: '',
   title: '',
   titleSpan: '',

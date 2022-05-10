@@ -30,7 +30,10 @@ export const UiMenuMobileComponent: FC = () => {
           </div>
         </div>
       </div>
-      <UiNavbarMenuOptionComponent className='flex flex-col gap-5 px-20 text-center text-4xl' />
+      <UiNavbarMenuOptionComponent
+        isMobile
+        className='flex flex-col gap-5 px-20 text-center text-2xl'
+      />
     </section>
   )
 }
