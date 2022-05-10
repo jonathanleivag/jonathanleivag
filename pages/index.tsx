@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
 import { MdOutlineCategory } from 'react-icons/md'
 import {
-  PageHomeProjectsComponent,
+  UiProjectsComponent,
   PageHomeSubTitleComponent,
   PageHomeTitleComponent,
   UiTitleComponent
@@ -29,7 +29,7 @@ const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
         Icon={MdOutlineCategory}
         title='Proyectos principales '
       />
-      <PageHomeProjectsComponent projects={projects} />
+      <UiProjectsComponent projects={projects} />
     </MainLayout>
   )
 }

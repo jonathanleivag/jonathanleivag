@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { UiArticleComponent } from '../..'
-import { IHomePageProps } from '../../../pages'
+import { UiArticleComponent } from '..'
+import { IHomePageProps } from '../../pages'
 
 export interface IPageHomeProjectsComponentProps extends IHomePageProps {}
 
-export const PageHomeProjectsComponent: FC<IPageHomeProjectsComponentProps> = ({
+export const UiProjectsComponent: FC<IPageHomeProjectsComponentProps> = ({
   projects
 }) => {
   return (
