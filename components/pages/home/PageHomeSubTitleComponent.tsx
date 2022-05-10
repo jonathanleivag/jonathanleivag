@@ -4,8 +4,10 @@ import { RootState } from '../../../app/store'
 
 export const PageHomeSubTitleComponent: FC = () => {
   const { gradient } = useSelector((state: RootState) => state.theme)
+  // Todo: agregar link en mi nombre de sobre mi
+
   return (
-    <p className='text-xl md:px-14 2xl:px-40 3xl:px-96 font-light'>
+    <p className='text-sm md:text-base xl:text-lg 2xl:text-xl xl:px-14 2xl:px-40 3xl:px-96 font-light'>
       Bienvenido a mi web, mi nombre es{' '}
       <a className={`${gradient}`}>Jonathan Leiva</a>, soy egresado del
       instituto profesional{' '}

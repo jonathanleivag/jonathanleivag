@@ -1,4 +1,6 @@
 export * from './navbar'
+export * from './UiArticleComponent'
 export * from './UiFullScreenLoadingUiComponent'
 export * from './UiMenuMobileComponent'
 export * from './UiNavbarMenuOptionComponent'
+export * from './UiTitleComponent'

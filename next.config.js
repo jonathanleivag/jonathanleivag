@@ -4,6 +4,9 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['raw.githubusercontent.com', 'github.com']
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (dev) {
       config.plugins.push(

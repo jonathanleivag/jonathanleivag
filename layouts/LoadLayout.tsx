@@ -61,8 +61,7 @@ export const LoadLayout: FC<ILoadLayoutProps> = ({ children }) => {
             selected: theme,
             title:
               'bg-gradient-to-l from-[#213547] to-[#213547] dark:from-[#00F260] dark:to-[#0575E6]',
-            titleSpan:
-              'bg-gradient-to-l from-[#00F260] to-[#0575E6]  dark:from-transparent dark:to-transparent',
+            titleSpan: 'bg-gradient-to-l from-[#00F260] to-[#0575E6]',
             bg: 'bg-white dark:bg-dark',
             text: 'text-light-text dark:text-dark-text',
             bgButton: 'bg-light-button dark:bg-dark-button',
