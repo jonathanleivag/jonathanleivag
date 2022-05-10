@@ -2,10 +2,10 @@ import Image from 'next/image'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
-import { IProject } from '../../pages'
+import { IProjectHomePage } from '../../pages'
 
 export interface IUiArticleComponentProps {
-  project: IProject
+  project: IProjectHomePage
 }
 
 export const UiArticleComponent: FC<IUiArticleComponentProps> = ({

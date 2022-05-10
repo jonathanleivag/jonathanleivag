@@ -8,7 +8,7 @@ import {
 } from '../components'
 import { MainLayout } from '../layouts'
 
-export interface IProject {
+export interface IProjectHomePage {
   id: string
   image: string
   title: string
@@ -17,7 +17,7 @@ export interface IProject {
   urlGitHub: string
 }
 export interface IHomePageProps {
-  projects: IProject[]
+  projects: IProjectHomePage[]
 }
 
 const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
