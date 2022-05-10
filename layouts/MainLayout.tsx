@@ -2,7 +2,11 @@ import { FC, ReactNode } from 'react'
 import { useSelector } from 'react-redux'
 import { LoadLayout } from '.'
 import { RootState } from '../app/store'
-import { UiMenuMobileComponent, UiNavbarComponent } from '../components'
+import {
+  UIFooterComponent,
+  UiMenuMobileComponent,
+  UiNavbarComponent
+} from '../components'
 
 export interface IMainLayoutProps {
   children: ReactNode
@@ -17,6 +21,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
         <UiMenuMobileComponent />
         <UiNavbarComponent />
         <main className='px-5 md:px-20'>{children}</main>
+        <UIFooterComponent />
       </section>
     </LoadLayout>
   )
