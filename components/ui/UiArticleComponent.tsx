@@ -14,7 +14,7 @@ export const UiArticleComponent: FC<IUiArticleComponentProps> = ({
   const bgButton = useSelector((state: RootState) => state.theme.bgButton)
   return (
     <article
-      className={`w-full h-80 ${bgButton} rounded-md px-2 flex flex-col shadow-md transform ease-in-out duration-500 hover:scale-105`}
+      className={`w-full h-80 ${bgButton} rounded-md px-2 flex flex-col shadow-md hover:transform hover:ease-in-out hover:duration-500 hover:scale-105`}
       key={project.id}
     >
       <div className='w-full h-[20%] flex flex-row justify-start items-center'>

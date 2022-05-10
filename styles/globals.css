@@ -61,3 +61,7 @@ body {
 .title {
   @apply text-center text-transparent bg-clip-text text-[2rem] md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold my-10;
 }
+
+.paragraph {
+  @apply text-sm md:text-base xl:text-lg 2xl:text-xl font-light;
+}

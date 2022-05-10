@@ -107,7 +107,7 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
 
   /* Adding the class names to the body tag. */
   useEffect(() => {
-    document.body.className = `${bg} ${text}`
+    document.body.className = `${bg} ${text} transform ease-in-out duration-500`
     return () => {}
   }, [bg, text])
 

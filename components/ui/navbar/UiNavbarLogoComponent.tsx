@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 import { IUiNavbarMenuComponentProps } from '../..'
+import { useRouter } from 'next/router'
 
 export interface IUiNavbarLogoComponentProps
   extends IUiNavbarMenuComponentProps {}
@@ -8,8 +9,9 @@ export interface IUiNavbarLogoComponentProps
 export const UiNavbarLogoComponent: FC<IUiNavbarLogoComponentProps> = ({
   className
 }) => {
+  const { push } = useRouter()
   return (
-    <div className={`${className}`}>
+    <div onClick={() => push('/')} className={`${className} cursor-pointer`}>
       <Image
         src='/logo/logoColor.png'
         height={70}

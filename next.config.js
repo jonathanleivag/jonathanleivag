@@ -5,7 +5,11 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['raw.githubusercontent.com', 'github.com']
+    domains: [
+      'raw.githubusercontent.com',
+      'github.com',
+      'avatars.githubusercontent.com'
+    ]
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (dev) {

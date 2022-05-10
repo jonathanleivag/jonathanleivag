@@ -1,16 +1,18 @@
+import Link from 'next/link'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../app/store'
 
 export const PageHomeSubTitleComponent: FC = () => {
   const { gradient } = useSelector((state: RootState) => state.theme)
-  // Todo: agregar link en mi nombre de sobre mi
 
   return (
-    <p className='text-sm md:text-base xl:text-lg 2xl:text-xl xl:px-14 2xl:px-40 3xl:px-96 font-light'>
+    <p className='paragraph xl:px-14 2xl:px-40 3xl:px-96'>
       Bienvenido a mi web, mi nombre es{' '}
-      <a className={`${gradient}`}>Jonathan Leiva</a>, soy egresado del
-      instituto profesional{' '}
+      <Link href={'/sobre-mi'} passHref>
+        <a className={`${gradient}`}>Jonathan Leiva</a>
+      </Link>
+      , soy egresado del instituto profesional{' '}
       <a
         href='https://ciisa.cl/'
         target='_blank'
