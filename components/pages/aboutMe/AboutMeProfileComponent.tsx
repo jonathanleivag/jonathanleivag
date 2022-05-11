@@ -4,6 +4,7 @@ import { FaUserAstronaut } from 'react-icons/fa'
 import { UiTitleComponent } from '../..'
 
 export const AboutMeProfileComponent: FC = () => {
+  // TODO: agregar carga de imagen de perfil
   return (
     <>
       <UiTitleComponent

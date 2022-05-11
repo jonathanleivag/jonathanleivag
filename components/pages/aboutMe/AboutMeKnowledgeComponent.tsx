@@ -7,16 +7,19 @@ import {
   SiExpress,
   SiNextdotjs,
   SiPostman,
+  SiTailwindcss,
   SiTypescript,
   SiVisualstudiocode
 } from 'react-icons/si'
 import { IoLogoJavascript } from 'react-icons/io'
+import { BiCodeAlt } from 'react-icons/bi'
 import { RiVuejsFill } from 'react-icons/ri'
 import { ImHtmlFive } from 'react-icons/im'
 import { DiMongodb, DiMysql } from 'react-icons/di'
 import { AboutMeUiCardComponent } from './ui'
 import { FaNodeJs } from 'react-icons/fa'
 import { AiFillGithub } from 'react-icons/ai'
+import { BsFillBootstrapFill } from 'react-icons/bs'
 
 export const AboutMeKnowledgeComponent: FC = () => {
   return (
@@ -188,6 +191,41 @@ export const AboutMeKnowledgeComponent: FC = () => {
           >
             <AiFillGithub className='w-[40px] h-[40px]' />
             <p>GIT</p>
+          </a>
+        </AboutMeUiCardComponent>
+
+        <AboutMeUiCardComponent
+          className='lg:col-span-2'
+          title='Framework/Librerias de diseño'
+        >
+          <a
+            href='https://getbootstrap.com/'
+            target='_blank'
+            rel='noreferrer'
+            className='w-full flex flex-col justify-center items-center hover:text-bootstrap'
+          >
+            <BsFillBootstrapFill className='w-[40px] h-[40px]' />
+            <p>Bootstrap</p>
+          </a>
+
+          <a
+            href='https://tailwindcss.com/'
+            target='_blank'
+            rel='noreferrer'
+            className='w-full flex flex-col justify-center items-center hover:text-taildwind'
+          >
+            <SiTailwindcss className='w-[40px] h-[40px]' />
+            <p>Bootstrap</p>
+          </a>
+
+          <a
+            href='https://nativebase.io/'
+            target='_blank'
+            rel='noreferrer'
+            className='w-full flex flex-col justify-center items-center hover:text-nativeBase'
+          >
+            <BiCodeAlt className='w-[40px] h-[40px]' />
+            <p>Native base</p>
           </a>
         </AboutMeUiCardComponent>
       </section>

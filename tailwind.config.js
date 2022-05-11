@@ -37,7 +37,10 @@ module.exports = {
         mysql: '#105E87',
         vscode: '#1676C6',
         postman: '#E66637',
-        git: '#E44D2F'
+        git: '#E44D2F',
+        bootstrap: '#563D7C',
+        taildwind: '#38BDF8',
+        nativeBase: '#50BFC3'
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif']
