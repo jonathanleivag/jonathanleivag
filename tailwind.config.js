@@ -20,7 +20,22 @@ module.exports = {
 
         /* ---------------------------------- light --------------------------------- */
         'light-text': '#1a202c',
-        'light-button': '#E2E8F0'
+        'light-button': '#E2E8F0',
+        /* -------------------------------- Knowledge ------------------------------- */
+        react: '#61dafb',
+        javascript: '#f8de7e',
+        typescript: '#2b7489',
+        vue: '#3EAF7C',
+        next: '#1c1c1c',
+        html: '#e34f26',
+        node: '#72A962',
+        graphql: '#DE33A6',
+        express: '#1c1c1c',
+        mongo: '#1E8D4D',
+        mysql: '#105E87',
+        vscode: '#1676C6',
+        postman: '#E66637',
+        git: '#E44D2F'
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif']

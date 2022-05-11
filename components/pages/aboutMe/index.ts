@@ -1,0 +1,6 @@
+export * from './AboutMeEducationComponent'
+export * from './AboutMeInterestsComponent'
+export * from './AboutMeKnowledgeComponent'
+export * from './AboutMeOtherEducationComponent'
+export * from './AboutMeProfileComponent'
+export * from './AboutMeSkillsComponent'
