@@ -50,13 +50,13 @@ export const UiNavbarMenuOptionComponent: FC<IUiNavbarMenuOptionComponentProps> 
       >
         Sobre mí
       </li>
-      <li
+      {/* <li
         onClick={() => changePage('/contactame')}
         className={`navbar_menu_li ${pathname === '/contactame' &&
           bgLi} ${hoverBgLi}`}
       >
         Contactame
-      </li>
+      </li> */}
     </ul>
   )
 }
