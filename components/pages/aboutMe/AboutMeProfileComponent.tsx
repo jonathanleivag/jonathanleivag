@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { FC } from 'react'
 import { FaUserAstronaut } from 'react-icons/fa'
 import { UiTitleComponent } from '../..'
+import profile from '../../../public/images/profile.jpg'
 
 export const AboutMeProfileComponent: FC = () => {
-  // TODO: agregar carga de imagen de perfil
   return (
     <>
       <UiTitleComponent
@@ -18,9 +18,10 @@ export const AboutMeProfileComponent: FC = () => {
             <div className='relative w-[200px] h-[200px] rounded-full'>
               <Image
                 className='rounded-full'
-                src='/images/profile.jpg'
+                src={profile}
                 alt='Imagen de Jonathan Leiva Gómez'
                 layout='fill'
+                placeholder='blur'
                 objectFit='cover'
               />
             </div>
