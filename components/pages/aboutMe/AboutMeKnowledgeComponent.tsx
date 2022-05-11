@@ -78,7 +78,7 @@ export const AboutMeKnowledgeComponent: FC = () => {
             href='https://expo.dev/'
             target='_blank'
             rel='noreferrer'
-            className='w-full flex flex-col justify-center items-center hover:text-react'
+            className='w-full flex flex-col justify-center items-center hover:text-expo'
           >
             <SiExpo className='w-[40px] h-[40px]' />
             <p>Expo RN</p>
@@ -120,7 +120,7 @@ export const AboutMeKnowledgeComponent: FC = () => {
             href='https://www.apollographql.com/'
             target='_blank'
             rel='noreferrer'
-            className='w-full flex flex-col justify-center items-center hover:text-graphql'
+            className='w-full flex flex-col justify-center items-center hover:text-apollo'
           >
             <SiApollographql className='w-[40px] h-[40px]' />
             <p>Apollo server</p>
