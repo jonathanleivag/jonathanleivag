@@ -10,23 +10,42 @@ export const PagePortafolioGithubComponent: FC<IPagePortafolioGithubComponentPro
   github
 }) => {
   return (
-    <div className='w-full flex flex-col md:flex-row justify-center items-center gap-4 my-10'>
-      <div className='w-full md:w-[30%] xl:w-[15%] 2xl:w-[40%] flex flex-row justify-center 2xl:justify-end 2xl:pr-5 items-center'>
-        <div className='w-[150px] h-[150px] shadow-md rounded-full relative'>
-          <Image
-            className='rounded-full'
-            src={github.avatar_url}
-            alt={github.bio}
-            layout='fill'
-            objectFit='cover'
-          />
+    <div className='w-full flex flex-row justify-center items-center my-10'>
+      <div className='w-full flex flex-col gap-3 md:w-[80%]'>
+        <div className='flex flex-row justify-end items-center'>
+          <a
+            className='flex flex-row gap-2'
+            href='https://github.com/jonathanleivag'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <Image
+              className='rounded-full'
+              src={github.avatar_url}
+              height={30}
+              width={30}
+              alt={github.bio}
+            />
+            <h2 className='paragraph'> {github.name} (GitHub) </h2>
+          </a>
         </div>
-      </div>
-      <div className='w-full md:w-[70%] xl:w-[85%] 2xl:w-[60%] felx flex-col justify-center items-center md:items-start'>
-        <h2 className='text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl border-b mb-2'>
-          Github
-        </h2>
-        <p className='paragraph 2xl:pr-[30%]'>{github.bio}</p>
+        <p className='paragraph'> {github.bio} </p>
+        <div className='w-full flex flex-row justify-center items-center'>
+          <div className='w-[80%] flex flex-row'>
+            <div className='w-[33%] flex flex-col justify-center items-center'>
+              <p>{github.followers}</p>
+              <p className='paragraph'>Followers</p>
+            </div>
+            <div className='w-[33%] flex flex-col justify-center items-center'>
+              <p>{github.public_repos}</p>
+              <p className='paragraph'>Repos</p>
+            </div>
+            <div className='w-[33%] flex flex-col justify-center items-center'>
+              <p>{github.following}</p>
+              <p className='paragraph'>Following</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -27,7 +27,7 @@ export const UiTitleComponent: FC<IUiTitleComponentProps> = ({
           </h1>
         )}
       </div>
-      <div className='w-full border' />
+      {tag === 'h2' && <div className='w-full border' />}
     </div>
   )
 }

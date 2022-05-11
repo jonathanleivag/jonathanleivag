@@ -20,9 +20,19 @@ const PortafolioPage: NextPage<IPortafolioPageProps> = ({
 }) => {
   return (
     <MainLayout>
-      <PagePortafolioGithubComponent github={github} />
       <UiTitleComponent tag='h1' Icon={MdOutlineCategory} title='Proyectos' />
+      <PagePortafolioGithubComponent github={github} />
       <UiProjectsComponent projects={projects} />
+      <div className='w-full flex flex-row justify-center'>
+        <a
+          href='https://github.com/jonathanleivag?tab=repositories'
+          target='_blank'
+          rel='noreferrer'
+          className='px-5 py-1 border border-green-600 text-green-600 rounded-full'
+        >
+          Ver mas
+        </a>
+      </div>
     </MainLayout>
   )
 }
