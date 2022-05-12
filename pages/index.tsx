@@ -1,10 +1,12 @@
 import { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
+import { TiContacts } from 'react-icons/ti'
 import { MdOutlineCategory } from 'react-icons/md'
 import {
   UiProjectsComponent,
   PageHomeSubTitleComponent,
   PageHomeTitleComponent,
-  UiTitleComponent
+  UiTitleComponent,
+  UiFormContactComponent
 } from '../components'
 import { projects } from '../database'
 import { MainLayout } from '../layouts'
@@ -31,6 +33,8 @@ const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
         title='Proyectos principales '
       />
       <UiProjectsComponent projects={projects} />
+      <UiTitleComponent tag='h2' Icon={TiContacts} title='Contáctame' />
+      <UiFormContactComponent />
     </MainLayout>
   )
 }
