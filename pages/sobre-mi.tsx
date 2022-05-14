@@ -1,6 +1,4 @@
-import React from 'react'
 import { NextPage } from 'next'
-import { MainLayout } from '../layouts'
 import {
   AboutMeEducationComponent,
   AboutMeInterestsComponent,
@@ -10,6 +8,7 @@ import {
   AboutMeSkillsComponent,
   UiTitleComponent
 } from '../components'
+import { MainLayout } from '../layouts'
 
 const AboutMePage: NextPage = () => {
   return (
