@@ -65,3 +65,11 @@ body {
 .paragraph {
   @apply text-sm md:text-base xl:text-lg 2xl:text-xl font-light;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                               react-toastify'                              */
+/* -------------------------------------------------------------------------- */
+
+.Toastify__toast-container {
+  @apply absolute -top-10 !important;
+}

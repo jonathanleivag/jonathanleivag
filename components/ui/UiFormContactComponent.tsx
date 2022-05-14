@@ -1,11 +1,63 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import Image from 'next/image'
-import { FC } from 'react'
-import { UiSocialComponent } from '..'
+import { FC, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { UiFullScreenLoadingUiComponent, UiSocialComponent } from '..'
+import { contactGql } from '../../gql'
 import profile from '../../public/images/profile0.jpg'
+import { axiosGraphqlUtils, toastUtil } from '../../utils'
+import { contactValidation } from '../../validations'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+export interface IUiFormContact {
+  name: string
+  email: string
+  message: string
+}
 
 export const UiFormContactComponent: FC = () => {
+  const {
+    register,
+    handleSubmit,
+    reset
+    // formState: { errors }
+  } = useForm<IUiFormContact>({
+    defaultValues: {
+      name: '',
+      email: '',
+      message: ''
+    },
+    resolver: yupResolver(contactValidation)
+  })
+
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const onSubmit = handleSubmit(async data => {
+    setLoading(true)
+    try {
+      const axios = await axiosGraphqlUtils({
+        query: contactGql,
+        variables: { input: data }
+      })
+      if (!axios.errors) {
+        toastUtil({ message: axios.data.contact, type: 'success' })
+        reset()
+        setLoading(false)
+      } else {
+        toastUtil({ message: axios.errors.message[0], type: 'error' })
+        setLoading(false)
+      }
+    } catch (error) {
+      console.error(error)
+      toastUtil({ message: 'Error al enviar el mensaje', type: 'error' })
+      setLoading(false)
+    }
+  })
+
   return (
-    <section className='flex flex-col lg:flex-row'>
+    <section className='flex flex-col lg:flex-row relative'>
+      <ToastContainer />
       <div className='w-full hidden lg:flex flex-row justify-center items-center md:w-[40%] relative'>
         <Image
           src={profile}
@@ -19,43 +71,51 @@ export const UiFormContactComponent: FC = () => {
           <UiSocialComponent className='text-2xl' />
         </div>
       </div>
-      <form className='w-full lg:w-[60%] flex flex-row justify-center items-center'>
-        <div className='w-full sm:w-[60%] flex flex-col gap-4 py-5'>
-          <div className='w-full flex flex-col'>
-            <label htmlFor='name'>Nombre:</label>
-            <input
-              type='text'
-              name='name'
-              id='name'
-              className='h-10 focus:outline-none bg-transparent border px-2 py-1'
-              placeholder='Ingrese su nombre'
-            />
+      {loading && (
+        <UiFullScreenLoadingUiComponent className='w-full lg:w-[60%] h-96' />
+      )}
+      {!loading && (
+        <form
+          className='w-full lg:w-[60%] flex flex-row justify-center items-center'
+          onSubmit={onSubmit}
+        >
+          <div className='w-full sm:w-[60%] flex flex-col gap-4 py-5'>
+            <div className='w-full flex flex-col'>
+              <label htmlFor='name'>Nombre:</label>
+              <input
+                type='text'
+                id='name'
+                className='h-10 focus:outline-none bg-transparent border px-2 py-1'
+                placeholder='Ingrese su nombre'
+                {...register('name')}
+              />
+            </div>
+            <div className='w-full flex flex-col'>
+              <label htmlFor='email'>Correo:</label>
+              <input
+                className='h-10 focus:outline-none bg-transparent border px-2 py-1'
+                type='email'
+                placeholder='Ingrese su correo'
+                id='email'
+                {...register('email')}
+              />
+            </div>
+            <div className='w-full flex flex-col'>
+              <label htmlFor='message'>Mensaje:</label>
+              <textarea
+                className='focus:outline-none bg-transparent border resize-none px-2 py-1'
+                placeholder='Ingrese su mensaje'
+                rows={5}
+                id='message'
+                {...register('message')}
+              />
+            </div>
+            <button type='submit' className='w-full h-12 border'>
+              Enviar mensaje
+            </button>
           </div>
-          <div className='w-full flex flex-col'>
-            <label htmlFor='email'>Correo:</label>
-            <input
-              className='h-10 focus:outline-none bg-transparent border px-2 py-1'
-              type='email'
-              placeholder='Ingrese su correo'
-              name='email'
-              id='email'
-            />
-          </div>
-          <div className='w-full flex flex-col'>
-            <label htmlFor='message'>Mensaje:</label>
-            <textarea
-              className='focus:outline-none bg-transparent border resize-none px-2 py-1'
-              name='message'
-              placeholder='Ingrese su mensaje'
-              rows={5}
-              id='message'
-            />
-          </div>
-          <button type='submit' className='w-full h-12 border'>
-            Enviar mensaje
-          </button>
-        </div>
-      </form>
+        </form>
+      )}
     </section>
   )
 }
