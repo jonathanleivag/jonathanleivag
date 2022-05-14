@@ -1,5 +1,6 @@
 export * from './navbar'
 export * from './UiArticleComponent'
+export * from './UiErrorComponent'
 export * from './UIFooterComponent'
 export * from './UiFormContactComponent'
 export * from './UiFullScreenLoadingUiComponent'

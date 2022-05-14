@@ -2,7 +2,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Image from 'next/image'
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { UiFullScreenLoadingUiComponent, UiSocialComponent } from '..'
+import {
+  UiErrorComponent,
+  UiFullScreenLoadingUiComponent,
+  UiSocialComponent
+} from '..'
 import { contactGql } from '../../gql'
 import profile from '../../public/images/profile0.jpg'
 import { axiosGraphqlUtils, toastUtil } from '../../utils'
@@ -20,15 +24,16 @@ export const UiFormContactComponent: FC = () => {
   const {
     register,
     handleSubmit,
-    reset
-    // formState: { errors }
+    reset,
+    formState: { errors }
   } = useForm<IUiFormContact>({
     defaultValues: {
       name: '',
       email: '',
       message: ''
     },
-    resolver: yupResolver(contactValidation)
+    resolver: yupResolver(contactValidation),
+    mode: 'onChange'
   })
 
   const [loading, setLoading] = useState<boolean>(false)
@@ -89,6 +94,10 @@ export const UiFormContactComponent: FC = () => {
                 placeholder='Ingrese su nombre'
                 {...register('name')}
               />
+              <UiErrorComponent
+                isError={errors.name !== undefined}
+                message={errors.name?.message || ''}
+              />
             </div>
             <div className='w-full flex flex-col'>
               <label htmlFor='email'>Correo:</label>
@@ -99,6 +108,10 @@ export const UiFormContactComponent: FC = () => {
                 id='email'
                 {...register('email')}
               />
+              <UiErrorComponent
+                isError={errors.email !== undefined}
+                message={errors.email?.message || ''}
+              />
             </div>
             <div className='w-full flex flex-col'>
               <label htmlFor='message'>Mensaje:</label>
@@ -108,6 +121,10 @@ export const UiFormContactComponent: FC = () => {
                 rows={5}
                 id='message'
                 {...register('message')}
+              />
+              <UiErrorComponent
+                isError={errors.message !== undefined}
+                message={errors.message?.message || ''}
               />
             </div>
             <button type='submit' className='w-full h-12 border'>

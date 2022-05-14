@@ -4,7 +4,10 @@ import { IUiFormContact } from '../components'
 export const contactValidation: yup.SchemaOf<IUiFormContact> = yup
   .object()
   .shape({
-    name: yup.string().required('El nombre es obligatorio'),
+    name: yup
+      .string()
+      .min(3, 'Su nombre al menos tiene que tener 3 caracteres')
+      .required('El nombre es obligatorio'),
     email: yup
       .string()
       .email('El email no es válido')
