@@ -20,7 +20,12 @@ export const axiosGraphqlUtils = async ({
       variables
     },
     {
-      withCredentials: true
+      withCredentials: true,
+      headers: {
+        'x-ip':
+          (await (await axios.get('https://api.ipify.org?format=json')).data
+            .ip) || 'no-ip'
+      }
     }
   )
 
