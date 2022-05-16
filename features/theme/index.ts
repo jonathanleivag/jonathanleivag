@@ -13,6 +13,7 @@ export interface IinitialStateTheme {
   title: string
   titleSpan: string
   gradient: string
+  border: string
 }
 
 const initialState: IinitialStateTheme = {
@@ -24,7 +25,8 @@ const initialState: IinitialStateTheme = {
   hoverBgLi: '',
   title: '',
   titleSpan: '',
-  gradient: ''
+  gradient: '',
+  border: ''
 }
 
 const themeSlice = createSlice({

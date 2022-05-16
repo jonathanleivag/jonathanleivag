@@ -45,7 +45,8 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
             title: 'bg-gradient-to-l from-[#00F260] to-[#0575E6]',
             titleSpan: 'bg-gradient-to-l from-[#00F260] to-[#0575E6]',
             gradient:
-              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
+              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]',
+            border: 'border border-dark-text'
           })
         )
         break
@@ -61,7 +62,8 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
             bgLi: 'bg-light-button',
             hoverBgLi: 'hover:bg-light-button',
             gradient:
-              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
+              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]',
+            border: 'border border-light-text'
           })
         )
         break
@@ -78,7 +80,8 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
             hoverBgLi: 'hover:bg-light-button dark:hover:bg-dark-button',
             bgLi: 'bg-light-button dark:bg-dark-button',
             gradient:
-              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
+              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]',
+            border: 'border border-light-text dark:border-dark-text'
           })
         )
         break
@@ -96,7 +99,8 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
             hoverBgLi: 'hover:bg-light-button dark:hover:bg-dark-button',
             bgLi: 'bg-light-button dark:bg-dark-button',
             gradient:
-              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]'
+              'text-transparent bg-clip-text bg-gradient-to-l from-[#00F260] to-[#0575E6]',
+            border: 'border border-light-text dark:border-dark-text'
           })
         )
         break

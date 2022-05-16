@@ -72,3 +72,17 @@ body {
 .Toastify__toast-container {
   @apply absolute -top-10 !important;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                menu article                                */
+/* -------------------------------------------------------------------------- */
+
+.li_menu_article {
+  @apply cursor-pointer flex flex-row justify-center items-center gap-2;
+}
+
+/* button modal */
+
+.button_modal {
+  @apply w-full md:w-[30%] px-2 py-1 flex flex-row justify-center items-center gap-2 rounded-full md:transform md:ease-in-out md:duration-500 md:hover:scale-105;
+}

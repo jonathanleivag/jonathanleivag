@@ -20,6 +20,7 @@ const changeColorsTheme = (
   state.title = action.payload.title
   state.titleSpan = action.payload.titleSpan
   state.gradient = action.payload.gradient
+  state.border = action.payload.border
 }
 
 const reducers = { changeTheme, changeColorsTheme }
