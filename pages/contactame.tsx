@@ -5,9 +5,18 @@ import { UiFormContactComponent, UiTitleComponent } from '../components'
 
 const ContactMePage: NextPage = () => {
   return (
-    <MainLayout>
-      <UiTitleComponent tag='h1' title='Contáctame' />
-      <UiFormContactComponent />
+    <MainLayout
+      title='Cantactame'
+      tags={['contactame', 'jonathanleivag', 'portafolio', 'contacto']}
+      pathname={'contactame'}
+      description={'Contactame'}
+    >
+      <div className='w-full min-h-[65vh] flex flex-row justify-center items-center'>
+        <div className='w-full h-full'>
+          <UiTitleComponent tag='h1' title='Contáctame' />
+          <UiFormContactComponent />
+        </div>
+      </div>
     </MainLayout>
   )
 }

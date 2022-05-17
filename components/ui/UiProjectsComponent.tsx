@@ -6,6 +6,7 @@ import { RootState } from '../../app/store'
 import { changeMenu } from '../../features/article'
 
 export interface IPageHomeProjectsComponentProps extends IHomePageProps {}
+export type TProjectSelected = IProjectHomePage | undefined
 
 export const UiProjectsComponent: FC<IPageHomeProjectsComponentProps> = ({
   projects
@@ -13,7 +14,7 @@ export const UiProjectsComponent: FC<IPageHomeProjectsComponentProps> = ({
   const menu = useSelector((state: RootState) => state.article.menu)
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
   const dispatch = useDispatch()
-  const [projectSelected, setProjectSelected] = useState<IProjectHomePage | undefined>()
+  const [projectSelected, setProjectSelected] = useState<TProjectSelected>()
 
   const handleIsOpenModal = (project: IProjectHomePage) => {
     setIsOpenModal(true)
@@ -37,14 +38,16 @@ export const UiProjectsComponent: FC<IPageHomeProjectsComponentProps> = ({
         scrollY0={window.scrollY}
       />
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 pt-3 pb-5'>
-        {projects.map(project => (
-          <UiArticleComponent
-            onClick={handleIsOpenModal}
-            key={project.id}
-            project={project}
-          />
-        ))}
+      <div className='w-full flex flex-row justify-center items-center'>
+        <div className='w-full md:w-[90%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 pt-3 pb-5'>
+          {projects.map(project => (
+            <UiArticleComponent
+              onClick={handleIsOpenModal}
+              key={project.id}
+              project={project}
+            />
+          ))}
+        </div>
       </div>
     </>
   )

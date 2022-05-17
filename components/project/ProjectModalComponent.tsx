@@ -26,7 +26,7 @@ export const ProjectModalComponent: FC<IProjectModalComponentProps> = ({
 
   return (
     <UiModalComponent
-      className='w-screen h-screen md:w-[90vw] md:h-[60vh] text-black'
+      className='w-screen h-screen md:w-[70vw] md:h-[60vh] text-black'
       isOpen={isOpenModal}
       setIsOpen={setIsOpenModal}
       scrollX0={scrollX0}
@@ -42,8 +42,8 @@ export const ProjectModalComponent: FC<IProjectModalComponentProps> = ({
               layout='fill'
             />
           </div>
-          <div className='h-[70%] md:w-1/2 md:h-[50vh] w-full flex flex-col md:justify-center md:items-center overflow-y-auto'>
-            <UiTitleComponent tag='h1' title={project!.title} />
+          <div className='h-[70%] md:w-1/2 md:h-[50vh] w-full flex flex-col overflow-y-auto'>
+            <UiTitleComponent tag='h2' title={project!.title} />
             <p className='paragraph'> {project!.description} </p>
             <div className='w-full flex flex-col md:flex-row gap-4 justify-center items-center my-5'>
               <a

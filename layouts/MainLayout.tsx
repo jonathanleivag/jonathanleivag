@@ -3,6 +3,7 @@ import { FC, ReactNode, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../app/store'
 import {
+  MetaMainLayoutComponent,
   UIFooterComponent,
   UiFullScreenLoadingUiComponent,
   UiMenuMobileComponent,
@@ -12,9 +13,19 @@ import { changeColorsTheme, changeTheme, TTheme } from '../features/theme'
 
 export interface IMainLayoutProps {
   children: ReactNode
+  title: string
+  tags: string[]
+  pathname: string
+  description: string
 }
 
-export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
+export const MainLayout: FC<IMainLayoutProps> = ({
+  children,
+  title,
+  tags,
+  pathname,
+  description
+}) => {
   const dispatch = useDispatch()
   const theme = useSelector((state: RootState) => state.theme.selected)
   const { bg, text } = useSelector((state: RootState) => state.theme)
@@ -119,9 +130,15 @@ export const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
 
   return (
     <>
+      <MetaMainLayoutComponent
+        title={title}
+        tags={tags}
+        pathname={pathname}
+        description={description}
+      />
       <UiMenuMobileComponent />
       <UiNavbarComponent />
-      <main className='px-5 md:px-20'>{children}</main>
+      <main className='px-5 md:px-20 2xl:px-24 3xl:px-32'>{children}</main>
       <UIFooterComponent />
     </>
   )

@@ -1,8 +1,16 @@
-import { Dispatch, FC, SetStateAction, ReactNode, useEffect } from 'react'
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  ReactNode,
+  useEffect,
+  useState
+} from 'react'
 import { IoMdClose } from 'react-icons/io'
 import Modal from 'react-modal'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
+import 'animate.css'
 
 export interface IUiModalComponentProps {
   isOpen: boolean
@@ -38,6 +46,9 @@ export const UiModalComponent: FC<IUiModalComponentProps> = ({
   scrollX0
 }) => {
   const { bg, text } = useSelector((state: RootState) => state.theme)
+  const [classAnimation, setClassAnimation] = useState<string>(
+    'animate__zoomIn'
+  )
 
   useEffect(() => {
     if (isOpen) {
@@ -53,20 +64,27 @@ export const UiModalComponent: FC<IUiModalComponentProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
 
+  const handleCloseModal = () => {
+    setClassAnimation('animate__zoomOut')
+    setTimeout(() => {
+      setIsOpen(false)
+      setClassAnimation('animate__zoomIn')
+    }, 100)
+  }
+
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => setIsOpen(false)}
+      onRequestClose={handleCloseModal}
       ariaHideApp={false}
       style={customStyles}
       contentLabel='Modal de proyectos'
     >
-      <section className={`${className} md:rounded-lg relative ${bg} ${text}`}>
-        <div className='absolute z-50 w-full p-2 text-red-600 text-2xl top-0 flex flex-row justify-end items-center'>
-          <IoMdClose
-            onClick={() => setIsOpen(false)}
-            className='cursor-pointer'
-          />
+      <section
+        className={`${className} animate__animated ${classAnimation} animate__faster md:rounded-lg relative ${bg} ${text}`}
+      >
+        <div className='absolute w-full p-2 text-red-600 text-2xl top-0 flex flex-row justify-end items-center'>
+          <IoMdClose onClick={handleCloseModal} className='cursor-pointer' />
         </div>
         <div className='p-3'>{children}</div>
       </section>

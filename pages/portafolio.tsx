@@ -20,7 +20,12 @@ const PortafolioPage: NextPage<IPortafolioPageProps> = ({
   github
 }) => {
   return (
-    <MainLayout>
+    <MainLayout
+      title={'Portafolio'}
+      tags={['projectos']}
+      pathname={'portafolio'}
+      description={'Projectos de jonathanleivag'}
+    >
       <UiTitleComponent tag='h1' Icon={MdOutlineCategory} title='Proyectos' />
       <PagePortafolioGithubComponent github={github} />
       <UiProjectsComponent projects={projects} />

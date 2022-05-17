@@ -25,7 +25,12 @@ export interface IHomePageProps {
 
 const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
   return (
-    <MainLayout>
+    <MainLayout
+      title='Inicio'
+      tags={['inicio', 'portafolio', 'jonathanleivag', 'home']}
+      pathname={''}
+      description={'Inicio en el portafolio de jonathanleivag'}
+    >
       <PageHomeTitleComponent />
       <PageHomeSubTitleComponent />
       <UiTitleComponent

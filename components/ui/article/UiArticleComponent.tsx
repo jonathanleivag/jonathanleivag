@@ -33,8 +33,8 @@ export const UiArticleComponent: FC<IUiArticleComponentProps> = ({
 
   return (
     <article
-      className={`w-full h-80 ${bgButton} rounded-md px-2 flex flex-col shadow-md ${!menu &&
-        'transform ease-in-out duration-500 hover:scale-105'}`}
+      className={`w-full h-80 ${bgButton} rounded-md p-2 flex flex-col shadow-md ${!menu &&
+        'transform ease-in-out duration-500 hover:scale-[1.01]'}`}
       key={project.id}
     >
       <div className='w-full h-[20%] flex flex-row justify-start items-center gap-2 relative'>
