@@ -18,11 +18,11 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
     <Head>
       {/* SEO */}
       <title>{title} | jonathanleivag</title>
-      {/* <meta name='viewport' content='initial-scale=1.0, width=device-width' /> */}
-      <meta
+      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      {/* <meta
         name='viewport'
         content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
-      />
+      /> */}
 
       <meta
         name='description'
@@ -48,6 +48,7 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
       <meta name='jonathanleivag' content='Propietario de jonathanleivag' />
       <meta name='robots' content='index' />
       <meta name='robots' content='follow' />
+
       <link rel='canonical' href={`https://jonathanleivag.cl/${pathname}`} />
 
       <meta name='apple-mobile-web-app-capable' content='yes' />
@@ -129,6 +130,7 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
         href='/icons/favicon-16x16.png'
       />
       <link rel='manifest' href='/manifest.json' />
+
       <meta name='msapplication-TileColor' content='#ffffff' />
       <meta
         name='msapplication-TileImage'
