@@ -18,7 +18,12 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
     <Head>
       {/* SEO */}
       <title>{title} | jonathanleivag</title>
-      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      {/* <meta name='viewport' content='initial-scale=1.0, width=device-width' /> */}
+      <meta
+        name='viewport'
+        content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
+      />
+
       <meta
         name='description'
         content={`Portafolio de jonathanleivag - ${description}`}
@@ -44,6 +49,14 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
       <meta name='robots' content='index' />
       <meta name='robots' content='follow' />
       <link rel='canonical' href={`https://jonathanleivag.cl/${pathname}`} />
+
+      <meta name='apple-mobile-web-app-capable' content='yes' />
+      <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+      <meta name='apple-mobile-web-app-title' content='jonathanleivag' />
+      <meta name='format-detection' content='telephone=no' />
+      <meta name='mobile-web-app-capable' content='yes' />
+      <meta name='msapplication-config' content='/icons/browserconfig.xml' />
+      <meta name='msapplication-tap-highlight' content='no' />
 
       {/* favicon */}
       <link
@@ -122,6 +135,25 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
         content='/icons/ms-icon-144x144.png'
       />
       <meta name='theme-color' content='#ffffff' />
+
+      <meta name='twitter:card' content={description} />
+      <meta name='twitter:url' content='https://www.jonathanleivag.cl' />
+      <meta name='twitter:title' content={title} />
+      <meta name='twitter:description' content={description} />
+      <meta
+        name='twitter:image'
+        content='https://www.jonathanleivag.cl/icons/android-icon-192x192.png'
+      />
+      <meta name='twitter:creator' content='@jonathanleivag' />
+      <meta property='og:type' content='website' />
+      <meta property='og:title' content={title} />
+      <meta property='og:description' content={description} />
+      <meta property='og:site_name' content='jonathanleivag' />
+      <meta property='og:url' content='https://www.jonathanleivag.cl' />
+      <meta
+        property='og:image'
+        content='https://www.jonathanleivag.cl/icons/apple-icon.png'
+      />
     </Head>
   )
 }

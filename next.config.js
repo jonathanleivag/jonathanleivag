@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 
 const ESLintPlugin = require('eslint-webpack-plugin')
+const withPWA = require('next-pwa')
 
 const nextConfig = {
   reactStrictMode: true,
+  pwa: {
+    dest: 'public'
+  },
   images: {
     domains: [
       'raw.githubusercontent.com',
@@ -25,4 +29,4 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)
