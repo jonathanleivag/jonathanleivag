@@ -1,16 +1,27 @@
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=jonathanleivag&theme=dracula)
+
+<div align="end">
+  <img width="200" src="https://www.jonathanleivag.cl/images/profile1.PNG" />
+</div>
 
 # Hola 👋 ¡Bienvenido a mi GitHub! Soy Jonathan Leiva Gómez, desarrollador web
 
-![](https://www.jonathanleivag.cl/images/profile1.PNG)
+<div align="center">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=jonathanleivag&theme=dracula" />
+</div>
+
 
 ## aboutMe.js
+
+##### Aquí sabrán un poco más de mí y mis conocimientos
+
 [![code](https://www.jonathanleivag.cl/code.png "code")](https://www.jonathanleivag.cl/code.png "code")
 #### Ingresa a mi [portafolio](https://www.jonathanleivag.cl/) para saber más.
 
 
 
-## Contáctame
+## ContactMe.js
+
+##### Aquí encontraran mis redes sociales
 
 
 [![facebook](https://img.shields.io/badge/facebook-%233b5998)](https://www.facebook.com/Jonathanleivag)
