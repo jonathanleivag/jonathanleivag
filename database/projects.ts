@@ -15,7 +15,7 @@ export const projects = [
     title: 'Nintendo',
     url: 'https://nintendo.jonathanleivag.cl/',
     description:
-      'Imitación e inspiración de la web de Nintendo (https://www.nintendo.com/es-es/games/switch), Imitación e inspiración de la web de Nintendo (https://www.nintendo.com/es-es/games/switch), Imitación e inspiración de la web de Nintendo (https://www.nintendo.com/es-es/games/switch),Imitación e inspiración de la web de Nintendo (https://www.nintendo.com/es-es/games/switch)',
+      'Imitación e inspiración de la web de Nintendo (https://www.nintendo.com/es-es/games/switch).',
     urlGitHub: 'https://github.com/jonathanleivag/nintendo'
   },
   {
