@@ -15,7 +15,7 @@
 ##### Aquí sabrán un poco más de mí y mis conocimientos
 
 [![code](https://www.jonathanleivag.cl/code.png "code")](https://www.jonathanleivag.cl/code.png "code")
-#### Ingresa a mi [portafolio](https://www.jonathanleivag.cl/) para saber más.
+#### Ingresa a mi website [jonathanleivag.cl](https://www.jonathanleivag.cl/) para saber más.
 
 
 
