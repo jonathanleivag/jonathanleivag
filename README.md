@@ -59,6 +59,8 @@ Primero, ejecute el servidor de desarrollo:
 
 Abra [http://localhost:3000](http://localhost:3000) con su navegador para ver el resultado.
 
+### Rutas
+
     home -> http://localhost:3000/
     portafolio -> http://localhost:3000/portafolio
     sobre mi -> http://localhost:3000/sobre-mi
