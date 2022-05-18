@@ -32,6 +32,7 @@
 
 ## Inicializar proyecto jonathanleivag
 
+<img src="https://www.jonathanleivag.cl/img.PNG" />
 ### Empezando
 
 El archivo .env.example renombrar a .env
