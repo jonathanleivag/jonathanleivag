@@ -30,8 +30,50 @@
 [![twitter](https://img.shields.io/badge/twitter-%231da1f2)](https://twitter.com/jonathanleivag)
 [![youtebe](https://img.shields.io/badge/youtebe-%23ff0000)](https://www.youtube.com/channel/UCnY9VF84hPwL2AerTB_zaYQ)
 
+## Inicializar proyecto jonathanleivag
+
+### Empezando
+
+El archivo .env.example renombrar a .env
+
+    NEXT_PUBLIC_URL_API=
+
+    # URL DE REDES SOCIALES
+    NEXT_PUBLIC_INSTAGRAM=
+    NEXT_PUBLIC_FACEBOOK=
+    NEXT_PUBLIC_LINKEDIN=
+    NEXT_PUBLIC_TWITTER=
+    NEXT_PUBLIC_YOUTUBE=
+
+* Backend api: [jonathanleivag-api](https://github.com/jonathanleivag/jonathanleivag-api)
+
+Primero, ejecute el servidor de desarrollo:
+
+    npm install
+    npm run dev
+    # or
+    yarn
+    yarn dev
+
+Abra [http://localhost:3000](http://localhost:3000) con su navegador para ver el resultado.
+
+    home -> http://localhost:3000/
+    portafolio -> http://localhost:3000/portafolio
+    sobre mi -> http://localhost:3000/sobre-mi
+    contactame -> http://localhost:3000/contactame
+
+## Producción
+    npm install
+    npm run build
+    # or
+    yarn
+    yarn build
+
 
 ## Authors
 
 - [@jonathanleivag](https://www.github.com/jonathanleivag)
+
+## License
+ Free Software, Hell Yeah!
 
