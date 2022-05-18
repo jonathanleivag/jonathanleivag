@@ -11,7 +11,7 @@ export const AboutMeSkillsComponent: FC = () => {
           <span className='font-black block'>
             AUTOADIDACTA - AUTOAPRENDIZAJE:
           </span>
-          tecnologías de mi agrado, lo cual me ha ayudado desarrollar la
+          Tecnologías de mi agrado, lo cual me ha ayudado desarrollar la
           habilidad de aprender rápidamente las tecnologias de desarrollo web.
         </p>
 
