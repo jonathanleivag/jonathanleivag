@@ -130,7 +130,6 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
         href='/icons/favicon-16x16.png'
       />
       <link rel='manifest' href='/manifest.json' />
-
       <meta name='msapplication-TileColor' content='#ffffff' />
       <meta
         name='msapplication-TileImage'
@@ -138,15 +137,23 @@ export const MetaMainLayoutComponent: FC<IMetaMainLayoutComponentProps> = ({
       />
       <meta name='theme-color' content='#ffffff' />
 
+      {/* twitter */}
       <meta name='twitter:card' content={description} />
+      <meta name='twitter:site' content='@jonathanleivag' />
       <meta name='twitter:url' content='https://www.jonathanleivag.cl' />
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
       <meta
         name='twitter:image'
-        content='https://www.jonathanleivag.cl/icons/android-icon-192x192.png'
+        content='https://www.jonathanleivag.cl/images/profile.jpg'
       />
+      <meta name='twitter:image:alt' content='Jonathan Leiva Gómez' />
+      <meta name='twitter:image:width' content='1200' />
+      <meta name='twitter:image:height' content='1600' />
       <meta name='twitter:creator' content='@jonathanleivag' />
+      <meta name='twitter:domain' content='https://www.jonathanleivag.cl' />
+
+      {/* og */}
       <meta property='og:type' content='website' />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
