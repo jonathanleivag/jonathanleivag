@@ -11,7 +11,7 @@ import {
   SiTypescript,
   SiVisualstudiocode
 } from 'react-icons/si'
-import { IoLogoJavascript } from 'react-icons/io'
+import { IoLogoCss3, IoLogoJavascript } from 'react-icons/io'
 import { BiCodeAlt } from 'react-icons/bi'
 import { RiVuejsFill } from 'react-icons/ri'
 import { ImHtmlFive } from 'react-icons/im'
@@ -95,6 +95,16 @@ export const AboutMeKnowledgeComponent: FC = () => {
           >
             <ImHtmlFive className='w-[40px] h-[40px]' />
             <p>HTML</p>
+          </a>
+
+          <a
+            href='https://developer.mozilla.org/es/docs/Web/CSS'
+            target='_blank'
+            rel='noreferrer'
+            className='w-full flex flex-col justify-center items-center hover:text-css3'
+          >
+            <IoLogoCss3 className='w-[40px] h-[40px]' />
+            <p>CSS3</p>
           </a>
         </AboutMeUiCardComponent>
 

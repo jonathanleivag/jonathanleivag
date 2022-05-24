@@ -13,6 +13,7 @@ module.exports = {
         instagram: '#e1306c',
         twitter: '#1da1f2',
         youtube: '#ff0000',
+        css3: '#23A3D8',
         /* ---------------------------------- dark ---------------------------------- */
         dark: '#1a202c',
         'dark-text': '#ffffffeb',
