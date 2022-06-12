@@ -26,5 +26,14 @@ export const projects = [
     url: 'https://favoritepokemon.jonathanleivag.cl/',
     description: 'Guarda tus Pokémon favoritos en una web personalizada',
     urlGitHub: 'https://github.com/jonathanleivag/favorite-pokemon'
+  },
+  {
+    id: '4',
+    image:
+      'https://raw.githubusercontent.com/jonathanleivag/website/master/img.png',
+    title: 'Website',
+    url: 'https://website.jonathanleivag.cl/',
+    description: 'Website html y css',
+    urlGitHub: 'https://github.com/jonathanleivag/website'
   }
 ]
