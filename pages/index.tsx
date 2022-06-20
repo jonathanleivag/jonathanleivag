@@ -39,8 +39,10 @@ const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
         title='Proyectos principales '
       />
       <UiProjectsComponent projects={projects.reverse().slice(0, 3)} />
+
       <UiTitleComponent Icon={SiFrontendmentor} title='Frontend Mentor' />
       <UiProjectsComponent projects={mentor.reverse().slice(0, 3)} />
+
       <UiTitleComponent tag='h2' Icon={TiContacts} title='Contáctame' />
       <UiFormContactComponent />
     </MainLayout>
