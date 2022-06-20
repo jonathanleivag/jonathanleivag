@@ -49,5 +49,15 @@ export const mentor = [
     description: 'front-end coding challenge.',
     urlGitHub:
       'https://github.com/jonathanleivag/huddle-landing-page-with-curved-sections-master'
+  },
+  {
+    id: '2',
+    image:
+      'https://raw.githubusercontent.com/jonathanleivag/fylo-dark-theme-landing-page-master/master/design/desktop-preview.jpg',
+    title: 'Fylo dark theme landing page',
+    url: 'https://fylo-dark-theme-landing-page-master-ten-rho.vercel.app',
+    description: 'front-end coding challenge.',
+    urlGitHub:
+      'https://github.com/jonathanleivag/fylo-dark-theme-landing-page-master'
   }
 ]
