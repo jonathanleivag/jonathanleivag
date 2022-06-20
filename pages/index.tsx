@@ -38,7 +38,7 @@ const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
         Icon={MdOutlineCategory}
         title='Proyectos principales '
       />
-      <UiProjectsComponent projects={projects.reverse().slice(0, 3)} />
+      <UiProjectsComponent projects={projects} />
 
       <UiTitleComponent Icon={SiFrontendmentor} title='Frontend Mentor' />
       <UiProjectsComponent projects={mentor.reverse().slice(0, 3)} />
@@ -52,9 +52,10 @@ const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
 export const getStaticProps: GetStaticProps = async ctx => {
   const resp: GetStaticPropsResult<IHomePageProps> = {
     props: {
-      projects
+      projects: projects.reverse().slice(0, 3)
     }
   }
+
   return resp
 }
 
