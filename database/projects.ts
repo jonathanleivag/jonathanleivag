@@ -45,7 +45,7 @@ export const mentor = [
       'https://raw.githubusercontent.com/jonathanleivag/huddle-landing-page-with-curved-sections-master/master/design/desktop-preview.jpg',
     title: 'Huddle landing page with curved sections',
     url: 'https://teslo-shop.jonathanleivag.cl/',
-    description: 'front-end coding challenge',
+    description: 'front-end coding challenge.',
     urlGitHub:
       'https://github.com/jonathanleivag/huddle-landing-page-with-curved-sections-master'
   }
