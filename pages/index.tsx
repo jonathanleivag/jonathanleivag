@@ -8,8 +8,9 @@ import {
   UiTitleComponent,
   UiFormContactComponent
 } from '../components'
-import { projects } from '../database'
+import { projects, mentor } from '../database'
 import { MainLayout } from '../layouts'
+import { SiFrontendmentor } from 'react-icons/si'
 
 export interface IProjectHomePage {
   id: string
@@ -37,7 +38,9 @@ const HomePage: NextPage<IHomePageProps> = ({ projects }) => {
         Icon={MdOutlineCategory}
         title='Proyectos principales '
       />
-      <UiProjectsComponent projects={projects} />
+      <UiProjectsComponent projects={projects.reverse().slice(0, 3)} />
+      <UiTitleComponent Icon={SiFrontendmentor} title='Frontend Mentor' />
+      <UiProjectsComponent projects={mentor.reverse().slice(0, 3)} />
       <UiTitleComponent tag='h2' Icon={TiContacts} title='Contáctame' />
       <UiFormContactComponent />
     </MainLayout>

@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { GetStaticProps, GetStaticPropsResult, NextPage } from 'next'
 import { MdOutlineCategory } from 'react-icons/md'
+import { SiFrontendmentor } from 'react-icons/si'
 import { IHomePageProps } from '.'
 import {
   PagePortafolioGithubComponent,
   UiProjectsComponent,
   UiTitleComponent
 } from '../components'
-import { projects } from '../database'
+import { projects, mentor } from '../database'
 import { IGithub } from '../interfaces'
 import { MainLayout } from '../layouts'
 
@@ -29,14 +30,17 @@ const PortafolioPage: NextPage<IPortafolioPageProps> = ({
       <UiTitleComponent tag='h1' Icon={MdOutlineCategory} title='Proyectos' />
       <PagePortafolioGithubComponent github={github} />
       <UiProjectsComponent projects={projects} />
-      <div className='w-full flex flex-row justify-center'>
+      <UiTitleComponent Icon={SiFrontendmentor} title='Frontend Mentor' />
+      <UiProjectsComponent projects={mentor} />
+
+      <div className='w-full flex flex-row justify-center mt-5'>
         <a
           href='https://github.com/jonathanleivag?tab=repositories'
           target='_blank'
           rel='noreferrer'
           className='px-5 py-1 border border-green-600 text-green-600 rounded-full'
         >
-          Ver mas
+          Ver más proyecto
         </a>
       </div>
     </MainLayout>
