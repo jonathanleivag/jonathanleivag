@@ -59,5 +59,14 @@ export const mentor = [
     description: 'front-end coding challenge.',
     urlGitHub:
       'https://github.com/jonathanleivag/fylo-dark-theme-landing-page-master'
+  },
+  {
+    id: '3',
+    image:
+      'https://raw.githubusercontent.com/jonathanleivag/easybank-landing-page-master/master/design/desktop-preview.jpg',
+    title: 'Easybank landing page',
+    url: 'https://easybank-landing-page-master-vert.vercel.app/',
+    description: 'front-end coding challenge.',
+    urlGitHub: 'https://github.com/jonathanleivag/easybank-landing-page-master'
   }
 ]
