@@ -1,4 +1,4 @@
-<div  style="text-align: end;">
+<div  align="end">
     <img width="200" src="https://www.jonathanleivag.cl/images/profile1.PNG" />
 </div>
 
