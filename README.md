@@ -1,4 +1,4 @@
-<div  align="end" id="img">
+<div  align="center" id="img">
     <img width="200" src="https://www.jonathanleivag.cl/images/profile1.PNG" />
 </div>
 
