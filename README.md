@@ -21,43 +21,11 @@
 ## ContactMe.js
 
 ##### Aquí encontraran mis redes sociales
-<ul style="list-style-type: none;">
-<li>
-  <a href="https://www.facebook.com/Jonathanleivag"
-    ><img
-      src="https://img.shields.io/badge/facebook-%233b5998"
-      alt="facebook"
-    /></a>
-</li>
-<li>
-  <a href="https://www.linkedin.com/in/jonathanleivag"
-    ><img
-      src="https://img.shields.io/badge/linkedin-%230077B5"
-      alt="linkedin"
-    /></a>
-</li>
-<li>
-  <a href="https://www.instagram.com/jonathanleivag"
-    ><img
-      src="https://img.shields.io/badge/instagram-%23e1306c"
-      alt="instagram"
-    /></a>
-</li>
-<li>
-  <a href="https://twitter.com/jonathanleivag"
-    ><img
-      src="https://img.shields.io/badge/twitter-%231da1f2"
-      alt="twitter"
-    /></a>
-</li>
-<li>
-  <a href="https://www.youtube.com/channel/UCnY9VF84hPwL2AerTB_zaYQ"
-    ><img
-      src="https://img.shields.io/badge/youtebe-%23ff0000"
-      alt="youtebe"
-    /></a>
-</li>
-</ul>
+[![facebook](https://img.shields.io/badge/facebook-%233b5998)](https://www.facebook.com/Jonathanleivag)
+[![linkedin](https://img.shields.io/badge/linkedin-%230077B5)](https://www.linkedin.com/in/jonathanleivag)
+[![instagram](https://img.shields.io/badge/instagram-%23e1306c)](https://www.instagram.com/jonathanleivag)
+[![twitter](https://img.shields.io/badge/twitter-%231da1f2)](https://twitter.com/jonathanleivag)
+[![youtebe](https://img.shields.io/badge/youtebe-%23ff0000)](https://www.youtube.com/channel/UCnY9VF84hPwL2AerTB_zaYQ)
 ## Inicializar proyecto jonathanleivag
 
 <img src="https://www.jonathanleivag.cl/img.png" />
