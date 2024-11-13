@@ -1,10 +1,10 @@
-<div  align="center" id="img">
+<div  align="end">
     <img width="200" src="https://www.jonathanleivag.cl/images/profile1.PNG" />
 </div>
 
 # Hola 👋 ¡Bienvenido a mi GitHub! Soy Jonathan Leiva Gómez, desarrollador web
 
-<div align="center" id="img1">
+<div align="center">
   <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=jonathanleivag&theme=dracula" />
 </div>
 
