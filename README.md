@@ -4,7 +4,7 @@
 
 # Hola 👋 ¡Bienvenido a mi GitHub! Soy Jonathan Leiva Gómez, desarrollador web
 
-<div align="center" style="display: flex; justify-content: flex-center; margin-left: auto; text-align: center;">
+<div align="center" style="display: flex;   justify-content: center; margin-left: auto; text-align: center;">
   <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=jonathanleivag&theme=dracula" />
 </div>
 
