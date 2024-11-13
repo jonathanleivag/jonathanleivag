@@ -21,7 +21,7 @@
 ## ContactMe.js
 
 ##### Aquí encontraran mis redes sociales
-
+<ul style="list-style-type: none;">
 <li>
   <a href="https://www.facebook.com/Jonathanleivag"
     ><img
@@ -57,6 +57,7 @@
       alt="youtebe"
     /></a>
 </li>
+</ul>
 ## Inicializar proyecto jonathanleivag
 
 <img src="https://www.jonathanleivag.cl/img.png" />
