@@ -8,7 +8,9 @@ import { profile } from '@/content/profile'
 const NAV_LINKS = [
   { label: 'Inicio', href: '#hero' },
   { label: 'Proyectos', href: '#projects' },
+  { label: 'Casos', href: '#case-studies' },
   { label: 'Stack', href: '#skills' },
+  { label: 'Sobre mí', href: '#about' },
   { label: 'Contacto', href: '#contact' },
 ]
 
