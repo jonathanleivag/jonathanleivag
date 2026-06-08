@@ -38,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </p>
         <a
           href={`/projects/${project.slug}`}
-          className="flex items-center gap-1 text-xs text-zinc-500 hover:text-emerald-400 transition-colors group-hover:text-zinc-300 min-h-[44px] min-w-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+          className="flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors group-hover:text-zinc-300 min-h-[44px] min-w-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
           aria-label={`Ver caso de ${project.title}`}
         >
           Ver caso

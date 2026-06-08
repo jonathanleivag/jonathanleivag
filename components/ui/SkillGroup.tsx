@@ -12,7 +12,7 @@ export function SkillGroup({ category }: SkillGroupProps) {
           {category.title}
         </h3>
         {category.description && (
-          <p className="mt-1 text-xs text-zinc-500 leading-relaxed">{category.description}</p>
+          <p className="mt-1 text-xs text-zinc-400 leading-relaxed">{category.description}</p>
         )}
       </div>
       <div className="flex flex-wrap gap-2">
