@@ -24,6 +24,7 @@ export default async function OGImage() {
         {/* Logo */}
         <img
           src="https://res.cloudinary.com/dq8fpb695/image/upload/f_png,w_64,h_64/jonathanleivag/logo/ohbxjqje4kelihconfov"
+          alt="Jonathan Leiva Gómez logo"
           width={64}
           height={64}
           style={{ marginBottom: '32px', borderRadius: '8px' }}
