@@ -8,105 +8,96 @@ export type CaseStudy = {
   approach: string[];
   technicalDecisions: string[];
   result: string;
-  learnings: string[];
   stack: string[];
+  source: string;
 };
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'caso-dashboard-operativo',
-    title: 'Caso de estudio: dashboard operativo para gestión de negocio',
+    slug: 'vue-2-to-vue-3-migration',
+    title: 'Caso de estudio: modernización frontend de Vue 2 a Vue 3',
     intro:
-      'Un producto interno diseñado para convertir información dispersa en una experiencia operativa centralizada, clara y accionable.',
+      'Una migración frontend enfocada en modernizar la base tecnológica sin perder mantenibilidad, consistencia visual ni capacidad de evolución del producto.',
     context:
-      'El equipo trabajaba con información distribuida entre planillas, herramientas externas y reportes manuales. Esto hacía difícil tener una visión confiable del estado del negocio y aumentaba el costo operativo de tareas recurrentes.',
+      'En MOVATEC SPA, Jonathan trabaja con Vue.js 2 y Vuetify en interfaces modernas y responsivas, liderando la migración de proyectos desde Vue 2 hacia Vue 3.',
     role:
-      'Participé como Full Stack Senior, cubriendo definición técnica, arquitectura, modelado de datos, implementación frontend/backend y criterios de escalabilidad del producto.',
+      'Desarrollador Full Stack Senior con foco en frontend, migración de framework, adopción de TypeScript, CSS modular y arquitectura de componentes.',
     challenge:
-      'El principal desafío fue diseñar una solución suficientemente simple para entregar valor rápido, pero con una base técnica sólida para incorporar nuevos módulos, roles y reportes sin generar deuda innecesaria.',
+      'Actualizar proyectos existentes a Vue 3 requiere equilibrar continuidad del producto, compatibilidad de componentes, orden técnico y mejora progresiva del código sin introducir complejidad innecesaria.',
     approach: [
-      'Identifiqué los flujos operativos más críticos antes de definir pantallas o modelos de datos.',
-      'Separé la lógica de negocio de la presentación para facilitar cambios futuros.',
-      'Organicé la interfaz alrededor de decisiones que el usuario necesitaba tomar, no alrededor de la estructura interna de la base de datos.',
-      'Priorizé componentes reutilizables para tablas, filtros, estados vacíos y visualización de indicadores.',
+      'Revisar la base Vue 2 existente para identificar componentes, patrones y dependencias críticas.',
+      'Definir una estrategia de migración progresiva hacia Vue 3.',
+      'Incorporar TypeScript para mejorar tipado, legibilidad y seguridad en cambios futuros.',
+      'Aplicar CSS modular para reducir acoplamiento visual y facilitar mantenimiento.',
+      'Mantener foco en componentes reutilizables, rendimiento y buenas prácticas frontend.',
     ],
     technicalDecisions: [
-      'Uso de TypeScript para reducir errores entre frontend y backend.',
-      'Modelo relacional para mantener consistencia en entidades operativas.',
-      'Componentes desacoplados para facilitar evolución visual y funcional.',
-      'Estructura preparada para permisos, auditoría y crecimiento modular.',
+      'Migración gradual en lugar de reescritura completa.',
+      'Uso de TypeScript como base para mayor escalabilidad del código.',
+      'Componentes reutilizables como unidad principal de evolución de UI.',
+      'CSS modular para mejorar separación de responsabilidades visuales.',
+      'Arquitectura frontend orientada a mantenibilidad y rendimiento.',
     ],
     result:
-      'La solución permitió reducir dependencia de procesos manuales, mejorar visibilidad operativa y entregar una base técnica más fácil de mantener y extender.',
-    learnings: [
-      'Un dashboard útil no es una acumulación de gráficos: es una herramienta para tomar mejores decisiones.',
-      'La simplicidad en la interfaz requiere claridad previa en el modelo de información.',
-      'Diseñar para mantenimiento desde el inicio evita reescrituras costosas cuando el producto crece.',
-    ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+      'El trabajo fortalece la base frontend del producto, mejora la mantenibilidad, habilita una evolución más segura hacia Vue 3 y reduce fricción para futuros desarrollos.',
+    stack: ['Vue.js 2', 'Vue.js 3', 'Vuetify', 'TypeScript', 'CSS modular', 'JavaScript'],
+    source: 'LinkedIn Profile PDF - MOVATEC SPA',
   },
   {
-    slug: 'caso-plataforma-integraciones',
-    title: 'Caso de estudio: plataforma de integraciones y APIs',
+    slug: 'reusable-responsive-interfaces',
+    title: 'Caso de estudio: interfaces responsivas y componentes reutilizables',
     intro:
-      'Una capa backend diseñada para conectar servicios externos con mayor estabilidad, trazabilidad y claridad técnica.',
+      'Un enfoque de desarrollo frontend orientado a crear interfaces modernas, responsivas y preparadas para crecer con el producto.',
     context:
-      'La operación dependía de servicios externos con distintos formatos, reglas y comportamientos ante errores. La lógica de integración estaba distribuida, lo que dificultaba diagnosticar fallas y evolucionar flujos.',
+      'La experiencia reciente de Jonathan destaca creación de interfaces con Vue.js y Vuetify, optimización de rendimiento y adopción de buenas prácticas de arquitectura frontend.',
     role:
-      'Lideré el diseño e implementación backend, definiendo contratos, estructura de servicios, manejo de errores, normalización de datos y criterios de mantenibilidad.',
+      'Responsable de implementar interfaces, componentes reutilizables y mejoras técnicas en frontend dentro de un contexto profesional de desarrollo de software.',
     challenge:
-      'El reto fue absorber la complejidad de proveedores externos sin trasladarla al resto del sistema, manteniendo una API interna clara y confiable.',
+      'Construir interfaces que sean visualmente consistentes, funcionen bien en distintos tamaños de pantalla y sigan siendo fáciles de mantener a medida que el producto evoluciona.',
     approach: [
-      'Mapeé los puntos de integración y sus modos de falla más frecuentes.',
-      'Definí servicios por responsabilidad para evitar lógica duplicada.',
-      'Normalicé respuestas externas en contratos internos consistentes.',
-      'Incorporé logs y mensajes de error orientados a diagnóstico real.',
+      'Diseñar componentes reutilizables para evitar duplicación de lógica y estilos.',
+      'Priorizar responsive design en flujos y pantallas principales.',
+      'Optimizar rendimiento percibido mediante estructuras de UI más claras.',
+      'Aplicar patrones consistentes para estados, layout y componentes compartidos.',
     ],
     technicalDecisions: [
-      'Separación entre capa de proveedor, capa de dominio y capa de API.',
-      'Contratos internos estables para proteger al frontend de cambios externos.',
-      'Manejo explícito de timeouts, errores recuperables y errores definitivos.',
-      'Estructura preparada para colas, reintentos y observabilidad.',
+      'Uso de Vuetify para acelerar consistencia visual y estructura UI.',
+      'Separación entre componentes de presentación y lógica cuando aplica.',
+      'CSS modular para mejorar mantenibilidad del diseño.',
+      'Buenas prácticas frontend para facilitar lectura y evolución del código.',
     ],
     result:
-      'La plataforma redujo fragilidad operativa, simplificó mantenimiento y permitió evolucionar integraciones sin afectar directamente la experiencia de usuario.',
-    learnings: [
-      'Una buena integración debe diseñarse asumiendo que los servicios externos fallarán.',
-      'Los contratos internos son clave para proteger el producto de cambios de terceros.',
-      'La observabilidad no es un extra: es parte del diseño de sistemas confiables.',
-    ],
-    stack: ['Node.js', 'TypeScript', 'REST APIs', 'PostgreSQL', 'Redis', 'Docker'],
+      'La interfaz gana consistencia, reutilización y una base más sólida para seguir construyendo nuevas funcionalidades sin degradar la experiencia.',
+    stack: ['Vue.js', 'Vuetify', 'JavaScript', 'TypeScript', 'CSS modular'],
+    source: 'LinkedIn Profile PDF - MOVATEC SPA',
   },
   {
-    slug: 'caso-web-clientes',
-    title: 'Caso de estudio: aplicación web orientada a clientes',
+    slug: 'full-stack-javascript-freelance',
+    title: 'Caso de estudio: desarrollo full stack JavaScript freelance',
     intro:
-      'Una experiencia frontend enfocada en claridad, velocidad y facilidad de uso para usuarios finales en dispositivos móviles y desktop.',
+      'Experiencia construyendo soluciones digitales con tecnologías JavaScript, desde creación de sitios web hasta integración entre frontend, backend y datos.',
     context:
-      'El producto necesitaba mejorar la experiencia de usuario en flujos clave, especialmente en mobile, donde la fricción visual y tiempos de carga afectaban la percepción de calidad.',
+      'Entre octubre de 2020 y mayo de 2022, Jonathan trabajó como Full Stack Developer JavaScript freelance, aplicando tecnologías como JavaScript, Vue.js, React.js, React Native, Express.js, GraphQL y Apollo.',
     role:
-      'Trabajé en arquitectura frontend, componentes reutilizables, responsive design, integración con APIs y mejoras de performance y accesibilidad.',
+      'Desarrollador full stack responsable de transformar requerimientos en soluciones digitales funcionales, combinando frontend, backend y consumo de APIs.',
     challenge:
-      'El desafío fue elevar la calidad de la experiencia sin sobrediseñar la solución ni introducir complejidad innecesaria en el sistema de componentes.',
+      'Resolver necesidades variadas con una base técnica flexible, manteniendo claridad en la implementación y capacidad de adaptación a distintos requerimientos.',
     approach: [
-      'Reorganicé la interfaz priorizando las acciones principales del usuario.',
-      'Definí componentes reutilizables con variantes claras y estados consistentes.',
-      'Apliqué diseño mobile-first para evitar adaptar tardíamente la experiencia.',
-      'Optimicé carga inicial, jerarquía visual y feedback en interacciones clave.',
+      'Entender el requerimiento y traducirlo en una solución web funcional.',
+      'Seleccionar tecnologías JavaScript adecuadas según el tipo de producto.',
+      'Construir frontend con Vue.js, React.js o React Native según el caso.',
+      'Implementar backend con Express.js y APIs cuando el proyecto lo requiere.',
+      'Usar GraphQL y Apollo para comunicación eficiente entre cliente y servidor.',
     ],
     technicalDecisions: [
-      'Uso de componentes tipados para mejorar mantenibilidad.',
-      'Separación entre componentes de layout, UI y lógica de datos.',
-      'Estados visuales explícitos para loading, empty, error y success.',
-      'Criterios de accesibilidad integrados en navegación y componentes interactivos.',
+      'Ecosistema JavaScript como base común para frontend y backend.',
+      'GraphQL/Apollo para estructurar consultas y comunicación de datos.',
+      'React Native para escenarios mobile.',
+      'Express.js para servicios backend ligeros y flexibles.',
     ],
     result:
-      'La aplicación ganó claridad, mejor comportamiento responsive y una base visual más consistente para seguir incorporando funcionalidades.',
-    learnings: [
-      'La calidad percibida depende tanto de performance como de claridad visual.',
-      'Mobile-first obliga a priorizar lo esencial desde el inicio.',
-      'Los estados de interfaz bien diseñados reducen incertidumbre y soporte innecesario.',
-    ],
-    stack: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Design Systems', 'Vercel'],
+      'La experiencia freelance consolidó una visión full stack práctica, orientada a construir soluciones digitales completas y resolver desafíos técnicos con autonomía.',
+    stack: ['JavaScript', 'Vue.js', 'React.js', 'React Native', 'Express.js', 'GraphQL', 'Apollo Server', 'Apollo Client'],
+    source: 'LinkedIn Profile PDF - Extracto y experiencia freelance',
   },
 ];

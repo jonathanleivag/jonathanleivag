@@ -1,73 +1,98 @@
 export const profile = {
-  name: 'Jonathan Leiva',
-  role: 'Senior Full Stack Developer',
-  metaTitle: 'Jonathan Leiva | Senior Full Stack Developer',
+  name: 'Jonathan Leiva Gómez',
+  role: 'Desarrollador Full Stack Senior',
+  location: 'Paine, Región Metropolitana de Santiago, Chile',
+  email: 'email@jonathanleivag.cl',
+  linkedin: 'https://www.linkedin.com/in/jonathanleivag',
+  metaTitle: 'Jonathan Leiva Gómez | Desarrollador Full Stack Senior',
   metaDescription:
-    'Portafolio de Jonathan Leiva, Senior Full Stack Developer especializado en crear productos digitales escalables, APIs robustas, interfaces modernas y soluciones end-to-end con foco en negocio.',
-  availability: 'Disponible para nuevos proyectos',
-  social: {
-    github: 'https://github.com/jonathanleivag',
-    linkedin: 'https://linkedin.com/in/jonathanleivag',
-    email: 'jonathan.leiva@movatec.cl',
-    cv: '/cv.pdf',
-  },
+    'Portafolio de Jonathan Leiva Gómez, Desarrollador Full Stack Senior con experiencia en JavaScript, Vue.js, React, React Native, Express.js, GraphQL, Apollo y migraciones frontend con TypeScript.',
   hero: {
-    headline: 'Construyo productos digitales robustos, escalables y orientados a negocio.',
+    headline: 'Desarrollo productos web con foco en escalabilidad, rendimiento y mantenibilidad.',
     subtitle:
-      'Soy Full Stack Senior. Diseño e implemento soluciones end-to-end combinando arquitectura, frontend, backend, automatización y criterio de producto para resolver problemas reales con tecnología mantenible.',
-    primaryCta: 'Ver proyectos',
-    secondaryCta: 'Hablemos',
+      'Soy Desarrollador Full Stack Senior especializado en JavaScript, Vue.js, React, React Native, Express.js y GraphQL. Trabajo en interfaces modernas, componentes reutilizables, migraciones frontend y soluciones digitales orientadas a resultados.',
+    primaryCta: 'Ver experiencia',
+    secondaryCta: 'Contactar',
   },
   about: {
     title: 'Sobre mí',
     summary:
-      'Soy desarrollador Full Stack Senior con experiencia construyendo aplicaciones web, APIs, integraciones y plataformas digitales desde la definición técnica hasta el despliegue. Me enfoco en crear soluciones claras, sostenibles y alineadas con objetivos de producto y negocio.',
-    sectionTitle: 'Construyo productos, no solo código',
+      'Soy desarrollador Full Stack Senior con experiencia construyendo soluciones digitales, interfaces responsivas y aplicaciones web con tecnologías JavaScript. Mi trabajo combina frontend moderno, backend con Express.js, GraphQL/Apollo y una mirada práctica para resolver desafíos técnicos con foco en resultados.',
     body: [
-      'Trabajo bien en contextos donde hay que transformar problemas ambiguos en sistemas funcionales. Me involucro desde el entendimiento del usuario y las restricciones del negocio hasta la arquitectura, implementación, performance y mejora continua.',
-      'Mi fortaleza está en conectar visión técnica con ejecución práctica: elegir buenas abstracciones, reducir complejidad innecesaria, documentar decisiones importantes y construir software que otros equipos puedan mantener y escalar.',
-      'Valoro la comunicación clara, el ownership técnico y la colaboración cercana con producto, diseño y stakeholders. Para mí, seniority no es solo escribir código: es tomar mejores decisiones bajo restricciones reales.',
-    ],
-    highlights: [
-      {
-        title: 'Arquitectura',
-        description: 'Decisiones técnicas balanceadas entre calidad, velocidad y mantenibilidad.',
-      },
-      {
-        title: 'Producto',
-        description: 'Entiendo el problema antes de implementar. Conecto tecnología con negocio.',
-      },
-      {
-        title: 'Ejecución end-to-end',
-        description: 'Frontend, backend, infraestructura y despliegue. Sin zonas grises.',
-      },
+      'He trabajado con JavaScript, Vue.js, Express.js, Apollo Server/Client, GraphQL, React.js y React Native, participando en desarrollo web, creación de sitios y soluciones full stack para distintos contextos profesionales.',
+      'Actualmente mi foco está en desarrollo frontend con Vue.js, Vuetify y migraciones de framework, liderando procesos de actualización desde Vue 2 hacia Vue 3 e incorporando TypeScript para mejorar escalabilidad, tipado estricto y mantenibilidad del código.',
+      'Me considero un profesional proactivo, orientado a encontrar soluciones digitales y afrontar desafíos técnicos de la mejor manera posible. Me enfoco en resultados, buenas prácticas, componentes reutilizables, rendimiento y arquitectura frontend sostenible.',
     ],
   },
+  experience: [
+    {
+      company: 'MOVATEC SPA',
+      role: 'Desarrollador Full Stack Senior',
+      period: 'julio de 2025 - Presente',
+      location: 'Paine, Región Metropolitana de Santiago, Chile',
+      highlights: [
+        'Desarrollo frontend con Vue.js 2 y Vuetify.',
+        'Liderazgo en migraciones desde Vue 2 hacia Vue 3.',
+        'Incorporación de TypeScript para mejorar escalabilidad y tipado del código.',
+        'Uso de CSS modular para optimizar diseño y mantenibilidad.',
+        'Implementación de componentes reutilizables y buenas prácticas de arquitectura frontend.',
+      ],
+    },
+    {
+      company: 'ValpoSystems',
+      role: 'Analista de programación',
+      period: 'junio de 2024 - marzo de 2025',
+      location: 'Gran Santiago, Región Metropolitana de Santiago, Chile',
+      highlights: [
+        'Participación en análisis y desarrollo de soluciones de programación.',
+        'Trabajo en contexto profesional de desarrollo de software.',
+      ],
+    },
+    {
+      company: 'Gatblac',
+      role: 'Software Developer',
+      period: 'mayo de 2022 - junio de 2024',
+      location: 'Santa Beatriz 111, Of. 1002, Providencia',
+      highlights: [
+        'Desarrollo de software en entorno profesional.',
+        'Aplicación de conocimientos full stack con tecnologías JavaScript.',
+      ],
+    },
+    {
+      company: 'Profesional independiente',
+      role: 'Full stack developer JavaScript Freelance',
+      period: 'octubre de 2020 - mayo de 2022',
+      highlights: [
+        'Desarrollo full stack JavaScript para proyectos freelance.',
+        'Creación de sitios web y soluciones digitales para distintos requerimientos.',
+      ],
+    },
+  ],
+  education: [
+    {
+      institution: 'CIISA',
+      title: 'Ingeniería en Computación e Informática',
+      focus: 'Desarrollo de aplicaciones web',
+      period: '2014 - 2020',
+    },
+    {
+      institution: 'CIISA',
+      title: 'Técnico Profesional en Programación Computacional',
+      focus: 'Programación informática',
+      period: '2014 - 2018',
+    },
+  ],
+  certifications: [
+    'Scrum Foundation Professional Certificate (SFPC)',
+    'CertiProf Scrum Developer Professional Certificate (SDPC)',
+  ],
   contact: {
-    title: '¿Tienes un producto, equipo o desafío técnico donde pueda aportar?',
+    title: '¿Necesitas un desarrollador senior para construir, modernizar o escalar tu producto?',
     description:
-      'Estoy abierto a conversar sobre roles senior, liderazgo técnico, desarrollo de producto, arquitectura full stack y proyectos donde la tecnología tenga impacto real.',
-    primaryCta: 'Contactar',
+      'Puedo aportar en desarrollo full stack, migraciones frontend, arquitectura de componentes, Vue.js, React, TypeScript, Express.js, GraphQL y soluciones JavaScript orientadas a resultados.',
+    primaryCta: 'Hablemos',
     secondaryCta: 'Ver LinkedIn',
-    emailLabel: 'Escríbeme por email',
+    emailLabel: 'Enviar email',
     copiedLabel: 'Email copiado',
   },
-  sections: {
-    projects: {
-      label: 'Proyectos',
-      title: 'Proyectos destacados',
-      subtitle: 'Soluciones construidas end-to-end con foco en impacto medible.',
-    },
-    caseStudies: {
-      label: 'Casos de estudio',
-      title: 'Decisiones técnicas en contexto',
-      subtitle:
-        'No solo qué se construyó, sino por qué y cómo. Problemas reales, trade-offs reales.',
-    },
-    skills: {
-      label: 'Stack técnico',
-      title: 'Tecnologías que domino',
-      subtitle: 'Herramientas que he usado en proyectos reales, no en tutoriales.',
-    },
-  },
-} as const
+} as const;

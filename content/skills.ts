@@ -8,37 +8,43 @@ export const skills: SkillCategory[] = [
   {
     title: 'Frontend',
     description:
-      'Construcción de interfaces modernas, accesibles y mantenibles con foco en experiencia de usuario, performance y sistemas de componentes.',
-    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS', 'Responsive Design', 'Accessibility', 'UI Architecture'],
+      'Desarrollo de interfaces modernas, responsivas y reutilizables con foco en mantenibilidad, rendimiento y arquitectura frontend.',
+    skills: ['Vue.js 2', 'Vue.js 3', 'Vuetify', 'React.js', 'TypeScript', 'JavaScript', 'CSS modular', 'Responsive Design', 'Component Architecture'],
+  },
+  {
+    title: 'Mobile',
+    description:
+      'Experiencia en desarrollo mobile con tecnologías JavaScript para construir soluciones multiplataforma.',
+    skills: ['React Native', 'JavaScript', 'UI Components', 'Mobile Interfaces'],
   },
   {
     title: 'Backend',
     description:
-      'Diseño de APIs, servicios y lógica de negocio con estructuras claras, manejo de errores, seguridad y capacidad de evolución.',
-    skills: ['Node.js', 'REST APIs', 'GraphQL', 'Authentication', 'Authorization', 'Background Jobs', 'API Design', 'Error Handling', 'Service Architecture'],
+      'Construcción de servicios y lógica backend con el ecosistema JavaScript, orientado a soluciones full stack.',
+    skills: ['Express.js', 'Node.js', 'JavaScript', 'API Development', 'Backend Services'],
   },
   {
-    title: 'Bases de datos',
+    title: 'GraphQL & APIs',
     description:
-      'Modelado de datos orientado a consistencia, consultas eficientes, trazabilidad y soporte para productos que crecen.',
-    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Relational Modeling', 'Query Optimization', 'Migrations', 'Data Integrity'],
+      'Uso de GraphQL y Apollo para conectar cliente y servidor con consultas estructuradas y comunicación eficiente de datos.',
+    skills: ['GraphQL', 'Apollo Server', 'Apollo Client', 'API Integration', 'Client-Server Communication'],
   },
   {
-    title: 'Cloud & DevOps',
+    title: 'Arquitectura frontend',
     description:
-      'Despliegue, automatización y operación de aplicaciones con foco en confiabilidad, velocidad de entrega y mantenibilidad.',
-    skills: ['Vercel', 'AWS', 'Docker', 'CI/CD', 'Environment Management', 'Monitoring', 'Logging', 'Deployment Strategy'],
+      'Buenas prácticas para escalar proyectos frontend: migraciones de framework, tipado, componentes reutilizables y optimización de rendimiento.',
+    skills: ['Vue 2 to Vue 3 Migration', 'TypeScript Adoption', 'Reusable Components', 'Performance Optimization', 'Frontend Best Practices', 'Maintainable UI'],
   },
   {
-    title: 'Arquitectura y calidad',
+    title: 'Producto y forma de trabajo',
     description:
-      'Decisiones técnicas que equilibran velocidad, escalabilidad, legibilidad, testing, documentación y costo de mantenimiento.',
-    skills: ['System Design', 'Clean Architecture', 'Testing Strategy', 'Code Review', 'Technical Documentation', 'Performance', 'Security Basics', 'Scalability'],
+      'Enfoque proactivo para resolver desafíos técnicos, buscar soluciones digitales y trabajar orientado a resultados.',
+    skills: ['Desarrollo Web', 'Creación de sitios web', 'Solución de problemas', 'Orientación a resultados', 'Proactividad', 'Scrum Foundation', 'Scrum Developer'],
   },
   {
-    title: 'Producto y colaboración',
+    title: 'Formación',
     description:
-      'Trabajo cercano con producto, diseño y stakeholders para traducir problemas de negocio en soluciones técnicas claras y accionables.',
-    skills: ['Product Thinking', 'Technical Discovery', 'Trade-off Analysis', 'Agile Delivery', 'Stakeholder Communication', 'Mentoring', 'Ownership'],
+      'Base académica en computación, informática y programación computacional.',
+    skills: ['Ingeniería en Computación e Informática', 'Desarrollo de aplicaciones web', 'Técnico en Programación Computacional', 'Programación informática'],
   },
 ];

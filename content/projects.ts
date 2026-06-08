@@ -3,86 +3,77 @@ export type Project = {
   title: string;
   category: string;
   summary: string;
-  problem: string;
-  solution: string;
-  impact: string;
+  context: string;
+  contribution: string;
+  value: string;
   stack: string[];
   highlights: string[];
-  links?: {
-    demo?: string;
-    repository?: string;
-    caseStudy?: string;
-  };
+  source: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: 'saas-operational-dashboard',
-    title: 'Dashboard operativo para gestión de negocio',
-    category: 'SaaS / Business Operations',
+    slug: 'vue-framework-migration',
+    title: 'Migración frontend de Vue 2 a Vue 3',
+    category: 'Frontend Architecture / Framework Migration',
     summary:
-      'Plataforma web para centralizar indicadores, operaciones internas y flujos críticos de negocio en una interfaz rápida, clara y mantenible.',
-    problem:
-      'El equipo necesitaba visibilidad operativa sin depender de hojas de cálculo, reportes manuales o información distribuida en múltiples herramientas.',
-    solution:
-      'Diseñé una arquitectura full stack con módulos reutilizables, API estructurada, vistas orientadas a decisiones y una base preparada para crecer sin reescribir funcionalidades clave.',
-    impact:
-      'Mejoró la trazabilidad de la operación, redujo tareas manuales y permitió tomar decisiones con información más confiable y accesible.',
-    stack: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+      'Migración progresiva de proyectos Vue 2 hacia Vue 3, incorporando TypeScript, CSS modular y mejores prácticas para elevar escalabilidad y mantenibilidad.',
+    context:
+      'En MOVATEC SPA, el foco técnico incluye modernizar proyectos frontend construidos con Vue.js 2 y Vuetify, manteniendo continuidad operativa mientras se actualiza la base tecnológica.',
+    contribution:
+      'Liderazgo técnico en la migración de framework, definición de criterios de componentes, adopción de TypeScript y mejoras en arquitectura frontend.',
+    value:
+      'Una base frontend más preparada para crecer, con tipado estricto, mejor mantenibilidad, componentes reutilizables y una experiencia más moderna y responsiva.',
+    stack: ['Vue.js 2', 'Vue.js 3', 'Vuetify', 'TypeScript', 'CSS modular', 'JavaScript'],
     highlights: [
-      'Arquitectura modular orientada a evolución del producto.',
-      'Componentes reutilizables para visualización de datos.',
-      'Modelo de datos preparado para reportes y auditoría.',
-      'Experiencia responsive para uso operativo diario.',
+      'Migración desde Vue 2 a Vue 3.',
+      'Incorporación de TypeScript para mejorar escalabilidad.',
+      'Optimización de diseño y mantenibilidad con CSS modular.',
+      'Implementación de componentes reutilizables.',
+      'Aplicación de buenas prácticas en arquitectura frontend.',
     ],
-    links: {
-      caseStudy: '#caso-dashboard-operativo',
-    },
+    source: 'LinkedIn Profile PDF - MOVATEC SPA',
   },
   {
-    slug: 'api-integration-platform',
-    title: 'Plataforma de integraciones y APIs',
-    category: 'Backend / Integrations',
+    slug: 'responsive-vue-interfaces',
+    title: 'Interfaces modernas y responsivas con Vue.js y Vuetify',
+    category: 'Frontend Development / UI Engineering',
     summary:
-      'Sistema backend para conectar servicios externos, normalizar datos y exponer endpoints confiables para aplicaciones internas y externas.',
-    problem:
-      'Los procesos dependían de integraciones frágiles, lógica duplicada y flujos difíciles de monitorear cuando un proveedor externo fallaba.',
-    solution:
-      'Construí una capa de integración con separación de responsabilidades, manejo consistente de errores, contratos claros y logs útiles para diagnóstico.',
-    impact:
-      'Aumentó la estabilidad de los flujos críticos, simplificó el mantenimiento y redujo el tiempo necesario para detectar y resolver incidentes.',
-    stack: ['Node.js', 'TypeScript', 'REST APIs', 'PostgreSQL', 'Redis', 'Docker'],
+      'Desarrollo de interfaces modernas, responsivas y mantenibles utilizando Vue.js, Vuetify y una estructura de componentes orientada a reutilización.',
+    context:
+      'La experiencia profesional reciente destaca trabajo sólido con Vue.js 2 y Vuetify, enfocado en la creación de interfaces modernas y responsivas.',
+    contribution:
+      'Construcción de componentes reutilizables, mejora de rendimiento frontend y adopción de buenas prácticas para mantener una interfaz consistente y escalable.',
+    value:
+      'Interfaces más claras, reutilizables y fáciles de evolucionar, con mejor comportamiento responsive y una base técnica más ordenada.',
+    stack: ['Vue.js', 'Vuetify', 'JavaScript', 'TypeScript', 'CSS modular'],
     highlights: [
-      'Diseño de contratos de API claros y versionables.',
-      'Manejo de errores y reintentos para servicios externos.',
-      'Normalización de datos entre sistemas heterogéneos.',
-      'Base preparada para observabilidad y monitoreo.',
+      'Creación de interfaces modernas y responsivas.',
+      'Componentización para reutilización y consistencia.',
+      'Optimización de rendimiento frontend.',
+      'Buenas prácticas en arquitectura de UI.',
     ],
-    links: {
-      caseStudy: '#caso-plataforma-integraciones',
-    },
+    source: 'LinkedIn Profile PDF - MOVATEC SPA',
   },
   {
-    slug: 'customer-facing-web-app',
-    title: 'Aplicación web orientada a clientes',
-    category: 'Product Engineering / Frontend',
+    slug: 'full-stack-javascript-solutions',
+    title: 'Soluciones full stack JavaScript',
+    category: 'Full Stack Development / Freelance',
     summary:
-      'Experiencia web responsive para usuarios finales, enfocada en claridad, performance, conversión y consistencia visual.',
-    problem:
-      'El producto necesitaba una interfaz más rápida, clara y fácil de usar para reducir fricción en flujos clave y mejorar percepción de calidad.',
-    solution:
-      'Implementé una interfaz basada en componentes, optimicé flujos principales y cuidé performance, accesibilidad y consistencia responsive.',
-    impact:
-      'La experiencia resultó más simple de navegar, más rápida en dispositivos móviles y más fácil de extender con nuevas funcionalidades.',
-    stack: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Design Systems', 'Vercel'],
+      'Desarrollo de sitios web y soluciones digitales con tecnologías JavaScript, combinando frontend, backend e integración de APIs.',
+    context:
+      'Como Full Stack Developer JavaScript freelance, Jonathan trabajó en la creación de sitios web y soluciones digitales para distintos requerimientos.',
+    contribution:
+      'Aplicación de conocimientos en JavaScript, Vue.js, React.js, React Native, Express.js, Apollo Server/Client y GraphQL para construir soluciones funcionales.',
+    value:
+      'Capacidad de llevar requerimientos a productos digitales, integrando frontend, backend y comunicación con servicios de datos.',
+    stack: ['JavaScript', 'React.js', 'React Native', 'Vue.js', 'Express.js', 'GraphQL', 'Apollo Server', 'Apollo Client'],
     highlights: [
-      'Diseño mobile-first con componentes consistentes.',
-      'Optimización de performance percibida y carga inicial.',
-      'Mejoras de accesibilidad en navegación y estados de UI.',
-      'Estructura escalable para nuevas secciones del producto.',
+      'Desarrollo full stack con ecosistema JavaScript.',
+      'Creación de sitios web y soluciones digitales.',
+      'Uso de GraphQL y Apollo en cliente/servidor.',
+      'Experiencia en frontend web y mobile con React Native.',
     ],
-    links: {
-      caseStudy: '#caso-web-clientes',
-    },
+    source: 'LinkedIn Profile PDF - Extracto y experiencia freelance',
   },
 ];
