@@ -1,5 +1,6 @@
 export const profile = {
   name: 'Jonathan Leiva Gómez',
+  handle: 'jonathanleivag',
   role: 'Desarrollador Full Stack Senior',
   location: 'Paine, Región Metropolitana de Santiago, Chile',
   email: 'email@jonathanleivag.cl',
