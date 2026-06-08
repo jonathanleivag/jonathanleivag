@@ -36,7 +36,6 @@ export function Contact() {
           className="text-center [&_p]:mx-auto"
         />
 
-        {/* Email copy */}
         <div className="flex items-center justify-center gap-3 mb-10">
           <span className="text-zinc-300 text-base font-mono">{profile.social.email}</span>
           <button
@@ -61,7 +60,6 @@ export function Contact() {
           {copied ? 'Email copiado al portapapeles' : ''}
         </span>
 
-        {/* Social links */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href={profile.social.linkedin}

@@ -66,7 +66,6 @@ export function Navbar() {
           {profile.name}
         </a>
 
-        {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
@@ -80,7 +79,6 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
         <a
           href={profile.social.cv}
           target="_blank"
@@ -91,7 +89,6 @@ export function Navbar() {
           CV
         </a>
 
-        {/* Mobile toggle */}
         <button
           ref={toggleRef}
           className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
@@ -104,7 +101,6 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile drawer */}
       {open && (
         <div id="mobile-nav" className="lg:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-md z-40 flex flex-col p-8">
           <ul className="flex flex-col gap-8 mt-4">

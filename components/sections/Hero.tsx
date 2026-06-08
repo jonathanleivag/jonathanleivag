@@ -10,7 +10,6 @@ export function Hero() {
       className="scroll-mt-20 min-h-[auto] md:min-h-screen flex items-center pt-16 pb-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Left column */}
         <div className="space-y-8">
           <div className="space-y-4">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-emerald-400">
@@ -27,7 +26,6 @@ export function Hero() {
             </p>
           </div>
 
-          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="#projects"
@@ -44,7 +42,6 @@ export function Hero() {
             </a>
           </div>
 
-          {/* Quick links */}
           <div className="flex items-center gap-5">
             <a
               href={profile.social.github}
@@ -74,7 +71,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right column — Terminal with 3D tilt */}
         <div className="w-full max-w-lg mx-auto lg:mx-0 [perspective:1200px]">
           <div
             className="[transform:rotateY(-12deg)_rotateX(5deg)] [filter:drop-shadow(0_25px_40px_rgba(0,0,0,0.55))]"
