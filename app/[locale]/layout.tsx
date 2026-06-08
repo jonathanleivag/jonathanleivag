@@ -53,18 +53,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: profile.name,
       title: t('title'),
       description: t('description'),
+      images: [
+        {
+          url: 'https://jonathanleivag.cl/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: `${profile.name} — ${profile.role}`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
       creator: '@jonathanleivag',
+      images: ['https://jonathanleivag.cl/opengraph-image'],
     },
     alternates: {
       canonical: `https://jonathanleivag.cl/${locale}`,
       languages: {
         es: 'https://jonathanleivag.cl/es',
         en: 'https://jonathanleivag.cl/en',
+        'x-default': 'https://jonathanleivag.cl/es',
       },
     },
     icons: {
