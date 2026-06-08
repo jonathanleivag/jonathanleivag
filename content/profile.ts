@@ -4,6 +4,13 @@ export const profile = {
   metaTitle: 'Jonathan Leiva | Senior Full Stack Developer',
   metaDescription:
     'Portafolio de Jonathan Leiva, Senior Full Stack Developer especializado en crear productos digitales escalables, APIs robustas, interfaces modernas y soluciones end-to-end con foco en negocio.',
+  availability: 'Disponible para nuevos proyectos',
+  social: {
+    github: 'https://github.com/jonathanleivag',
+    linkedin: 'https://linkedin.com/in/jonathanleivag',
+    email: 'jonathan.leiva@movatec.cl',
+    cv: '/cv.pdf',
+  },
   hero: {
     headline: 'Construyo productos digitales robustos, escalables y orientados a negocio.',
     subtitle:
@@ -20,6 +27,20 @@ export const profile = {
       'Mi fortaleza está en conectar visión técnica con ejecución práctica: elegir buenas abstracciones, reducir complejidad innecesaria, documentar decisiones importantes y construir software que otros equipos puedan mantener y escalar.',
       'Valoro la comunicación clara, el ownership técnico y la colaboración cercana con producto, diseño y stakeholders. Para mí, seniority no es solo escribir código: es tomar mejores decisiones bajo restricciones reales.',
     ],
+    highlights: [
+      {
+        title: 'Arquitectura',
+        description: 'Decisiones técnicas balanceadas entre calidad, velocidad y mantenibilidad.',
+      },
+      {
+        title: 'Producto',
+        description: 'Entiendo el problema antes de implementar. Conecto tecnología con negocio.',
+      },
+      {
+        title: 'Ejecución end-to-end',
+        description: 'Frontend, backend, infraestructura y despliegue. Sin zonas grises.',
+      },
+    ],
   },
   contact: {
     title: '¿Tienes un producto, equipo o desafío técnico donde pueda aportar?',
@@ -30,4 +51,22 @@ export const profile = {
     emailLabel: 'Escríbeme por email',
     copiedLabel: 'Email copiado',
   },
-} as const;
+  sections: {
+    projects: {
+      label: 'Proyectos',
+      title: 'Proyectos destacados',
+      subtitle: 'Soluciones construidas end-to-end con foco en impacto medible.',
+    },
+    caseStudies: {
+      label: 'Casos de estudio',
+      title: 'Decisiones técnicas en contexto',
+      subtitle:
+        'No solo qué se construyó, sino por qué y cómo. Problemas reales, trade-offs reales.',
+    },
+    skills: {
+      label: 'Stack técnico',
+      title: 'Tecnologías que domino',
+      subtitle: 'Herramientas que he usado en proyectos reales, no en tutoriales.',
+    },
+  },
+} as const
