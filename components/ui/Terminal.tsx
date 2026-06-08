@@ -55,7 +55,7 @@ export function Terminal() {
       </div>
 
       {/* Lines */}
-      <div className="p-5 space-y-1 min-h-[220px]">
+      <div className="p-5 space-y-1 min-h-[220px] overflow-x-auto">
         {LINES.slice(0, visibleCount).map((line, i) => (
           <div key={i} className="flex gap-3">
             <span className={line.isOutput ? 'text-emerald-400' : 'text-zinc-500'}>
@@ -68,7 +68,7 @@ export function Terminal() {
         ))}
         <div className="flex gap-3">
           <span className="text-zinc-500">$</span>
-          <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />
+          <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse motion-reduce:animate-none" />
         </div>
       </div>
     </div>
