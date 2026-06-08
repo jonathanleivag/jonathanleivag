@@ -17,9 +17,9 @@ const LINES: TerminalLine[] = [
   { prefix: '$', text: 'cat role.txt' },
   { prefix: ' ', text: profile.role, isOutput: true },
   { prefix: '$', text: 'skills --list' },
-  { prefix: '→', text: 'React · Next.js · TypeScript', isOutput: true },
-  { prefix: '→', text: 'Node.js · NestJS · PostgreSQL', isOutput: true },
-  { prefix: '→', text: 'Docker · AWS · CI/CD', isOutput: true },
+  { prefix: '→', text: 'Vue.js · React · TypeScript', isOutput: true },
+  { prefix: '→', text: 'Express.js · GraphQL · Apollo', isOutput: true },
+  { prefix: '→', text: 'React Native · Node.js · REST', isOutput: true },
 ]
 
 export function Terminal() {
