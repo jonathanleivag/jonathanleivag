@@ -72,5 +72,21 @@
   "meta": {
     "title": "Jonathan Leiva Gómez | Desarrollador Full Stack Senior",
     "description": "Portafolio de Jonathan Leiva Gómez, Desarrollador Full Stack Senior con experiencia en JavaScript, Vue.js, React, React Native, Express.js, GraphQL, Apollo y migraciones frontend con TypeScript."
+  },
+  "personalProjects": {
+    "label": "Proyectos personales",
+    "title": "Experimentos y productos propios",
+    "subtitle": "Proyectos donde practico arquitectura, UI, APIs y experiencias completas.",
+    "viewProject": "Ver proyecto",
+    "backToPortfolio": "← Volver al portafolio",
+    "objective": "Objetivo",
+    "stack": "Stack",
+    "features": "Funcionalidades",
+    "technicalHighlights": "Decisiones técnicas",
+    "learning": "Aprendizaje",
+    "visitProject": "Visitar proyecto",
+    "liveStatus": "Live",
+    "inProgressStatus": "En progreso",
+    "archivedStatus": "Archivado"
   }
 }
