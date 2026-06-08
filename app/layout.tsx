@@ -17,6 +17,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-zinc-100">
