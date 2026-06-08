@@ -3,7 +3,11 @@ import { projects } from '@/content/projects'
 import { ProjectCard } from '@/components/ui/ProjectCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
-export async function Projects() {
+interface Props {
+  locale: string
+}
+
+export async function Projects({ locale }: Props) {
   const t = await getTranslations('projects')
 
   return (
@@ -12,7 +16,12 @@ export async function Projects() {
         <SectionHeader label={t('label')} title={t('title')} subtitle={t('subtitle')} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} viewCaseLabel={t('viewCase')} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              locale={locale}
+              viewCaseLabel={t('viewCase')}
+            />
           ))}
         </div>
       </div>

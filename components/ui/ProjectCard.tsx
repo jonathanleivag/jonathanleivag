@@ -3,10 +3,11 @@ import type { Project } from '@/content/projects'
 
 interface ProjectCardProps {
   project: Project
+  locale: string
   viewCaseLabel: string
 }
 
-export function ProjectCard({ project, viewCaseLabel }: ProjectCardProps) {
+export function ProjectCard({ project, locale, viewCaseLabel }: ProjectCardProps) {
   return (
     <article className="group flex flex-col h-full border border-white/5 bg-zinc-900/40 rounded-xl p-6 hover:-translate-y-0.5 hover:border-emerald-500/20 transition-all duration-200">
       <div className="flex items-start justify-between gap-3 mb-4">
@@ -23,7 +24,11 @@ export function ProjectCard({ project, viewCaseLabel }: ProjectCardProps) {
       </div>
       <div className="border-t border-white/5 pt-4 flex items-center justify-between">
         <p className="text-xs text-emerald-400 font-medium leading-snug max-w-[70%]">{project.value}</p>
-        <a href={`/projects/${project.slug}`} className="flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors group-hover:text-zinc-300 min-h-[44px] min-w-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black" aria-label={`${viewCaseLabel}: ${project.title}`}>
+        <a
+          href={`/${locale}/projects/${project.slug}`}
+          className="flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors group-hover:text-zinc-300 min-h-[44px] min-w-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+          aria-label={`${viewCaseLabel}: ${project.title}`}
+        >
           {viewCaseLabel}
           <ArrowUpRight size={13} />
         </a>

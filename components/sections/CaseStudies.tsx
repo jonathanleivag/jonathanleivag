@@ -2,7 +2,11 @@ import { getTranslations } from 'next-intl/server'
 import { caseStudies } from '@/content/case-studies'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
-export async function CaseStudies() {
+interface Props {
+  locale: string
+}
+
+export async function CaseStudies({ locale }: Props) {
   const t = await getTranslations('caseStudies')
 
   return (
@@ -43,7 +47,11 @@ export async function CaseStudies() {
                 ))}
               </div>
               <div className="pt-2">
-                <a href={`/projects/${cs.slug}`} className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-emerald-400 transition-colors" aria-label={`${t('viewFull')}: ${cs.title}`}>
+                <a
+                  href={`/${locale}/projects/${cs.slug}`}
+                  className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-emerald-400 transition-colors"
+                  aria-label={`${t('viewFull')}: ${cs.title}`}
+                >
                   {t('viewFull')}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
                 </a>
