@@ -16,6 +16,7 @@ export interface CaseStudy {
   context: string
   decisions: string[]
   result: string
+  slug: string
   stack: string[]
   links?: { demo?: string; repo?: string }
 }

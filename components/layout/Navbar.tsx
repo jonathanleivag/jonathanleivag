@@ -30,9 +30,12 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
+    const mainEl = document.querySelector('main')
     document.body.style.overflow = open ? 'hidden' : ''
+    if (mainEl) mainEl.toggleAttribute('inert', open)
     return () => {
       document.body.style.overflow = ''
+      if (mainEl) mainEl.removeAttribute('inert')
     }
   }, [open])
 
@@ -45,7 +48,7 @@ export function Navbar() {
           : 'bg-transparent'
       )}
     >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors">
           Jonathan Leiva
         </a>
