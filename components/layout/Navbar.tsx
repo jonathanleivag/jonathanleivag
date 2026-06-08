@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { FileText, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { profile } from '@/content/profile'
 
 const NAV_LINKS = [
   { label: 'Inicio', href: '#hero' },
@@ -50,7 +51,7 @@ export function Navbar() {
     >
       <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors">
-          Jonathan Leiva
+          {profile.name}
         </a>
 
         {/* Desktop links */}
