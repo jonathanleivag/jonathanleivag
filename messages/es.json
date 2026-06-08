@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "caseStudies": "Casos",
+    "skills": "Stack",
+    "contact": "Contacto",
+    "cv": "CV"
+  },
+  "hero": {
+    "eyebrow": "Disponible para nuevos proyectos",
+    "headline": "Desarrollo productos web con foco en escalabilidad, rendimiento y mantenibilidad.",
+    "subtitle": "Soy Desarrollador Full Stack Senior especializado en JavaScript, Vue.js, React, React Native, Express.js y GraphQL. Trabajo en interfaces modernas, componentes reutilizables, migraciones frontend y soluciones digitales orientadas a resultados.",
+    "primaryCta": "Ver proyectos",
+    "secondaryCta": "Contactar"
+  },
+  "about": {
+    "label": "Sobre mí",
+    "sectionTitle": "Desarrollo interfaces y soluciones orientadas a resultados",
+    "summary": "Soy desarrollador Full Stack Senior con experiencia construyendo soluciones digitales, interfaces responsivas y aplicaciones web con tecnologías JavaScript. Mi trabajo combina frontend moderno, backend con Express.js, GraphQL/Apollo y una mirada práctica para resolver desafíos técnicos con foco en resultados.",
+    "highlights": {
+      "frontend": { "title": "Frontend moderno", "description": "Vue.js, React, TypeScript y migraciones de framework con foco en escalabilidad." },
+      "fullstack": { "title": "Full Stack JavaScript", "description": "Frontend, backend con Express.js, GraphQL/Apollo y mobile con React Native." },
+      "architecture": { "title": "Arquitectura de componentes", "description": "Componentes reutilizables, CSS modular y buenas prácticas para bases mantenibles." }
+    }
+  },
+  "projects": {
+    "label": "Proyectos",
+    "title": "Proyectos destacados",
+    "subtitle": "Trabajo real con tecnologías JavaScript, Vue.js, React y Node.js.",
+    "viewCase": "Ver caso"
+  },
+  "caseStudies": {
+    "label": "Casos de estudio",
+    "title": "Decisiones técnicas en contexto",
+    "subtitle": "Problemas reales, decisiones concretas y resultados medibles.",
+    "context": "Contexto",
+    "role": "Rol",
+    "challenge": "Desafío",
+    "technicalDecisions": "Decisiones técnicas",
+    "result": "Resultado",
+    "viewFull": "Ver caso completo"
+  },
+  "skills": {
+    "label": "Stack técnico",
+    "title": "Tecnologías que domino",
+    "subtitle": "El ecosistema JavaScript y las herramientas con las que construyo soluciones."
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "¿Necesitas un desarrollador senior para construir, modernizar o escalar tu producto?",
+    "description": "Puedo aportar en desarrollo full stack, migraciones frontend, arquitectura de componentes, Vue.js, React, TypeScript, Express.js, GraphQL y soluciones JavaScript orientadas a resultados.",
+    "emailLabel": "Enviar email",
+    "copiedLabel": "Email copiado",
+    "downloadCv": "Descargar CV"
+  },
+  "footer": {
+    "handle": "jonathanleivag"
+  },
+  "a11y": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "copyEmail": "Copiar email",
+    "emailCopied": "Email copiado al portapapeles",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "langSwitcher": "Cambiar idioma",
+    "logoAlt": "Logo de jonathanleivag"
+  },
+  "meta": {
+    "title": "Jonathan Leiva Gómez | Desarrollador Full Stack Senior",
+    "description": "Portafolio de Jonathan Leiva Gómez, Desarrollador Full Stack Senior con experiencia en JavaScript, Vue.js, React, React Native, Express.js, GraphQL, Apollo y migraciones frontend con TypeScript."
+  }
+}
