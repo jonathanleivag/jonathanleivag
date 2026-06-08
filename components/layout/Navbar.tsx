@@ -53,56 +53,61 @@ export function Navbar() {
   }, [open])
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 z-50 w-full transition-all duration-300',
-        scrolled
-          ? 'bg-black/80 backdrop-blur-md border-b border-white/5'
-          : 'bg-transparent'
-      )}
-    >
-      <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
-          {profile.name}
-        </a>
+    <>
+      <header
+        className={cn(
+          'fixed top-0 z-50 w-full transition-all duration-300',
+          scrolled
+            ? 'bg-black/80 backdrop-blur-md border-b border-white/5'
+            : 'bg-transparent'
+        )}
+      >
+        <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
+            {profile.name}
+          </a>
 
-        <ul className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="hidden lg:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <a
-          href={profile.social.cv}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
-        >
-          <FileText size={14} />
-          CV
-        </a>
+          <a
+            href={profile.social.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+          >
+            <FileText size={14} />
+            CV
+          </a>
 
-        <button
-          ref={toggleRef}
-          className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </nav>
+          <button
+            ref={toggleRef}
+            className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </nav>
+      </header>
 
       {open && (
-        <div id="mobile-nav" className="lg:hidden fixed inset-0 top-16 bg-[#0a0a0a] z-40 flex flex-col p-8">
+        <div
+          id="mobile-nav"
+          className="lg:hidden fixed inset-0 top-16 bg-[#0a0a0a] z-[60] flex flex-col p-8"
+        >
           <ul className="flex flex-col gap-8 mt-4">
             {NAV_LINKS.map((link, index) => (
               <li key={link.href}>
@@ -128,6 +133,6 @@ export function Navbar() {
           </a>
         </div>
       )}
-    </header>
+    </>
   )
 }
