@@ -1,9 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { FileText, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { profile } from '@/content/profile'
+import { assets } from '@/content/assets'
 
 const NAV_LINKS = [
   { label: 'Inicio', href: '#hero' },
@@ -63,8 +65,16 @@ export function Navbar() {
         )}
       >
         <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
-            {profile.name}
+          <a href="#hero" className="flex items-center gap-2 hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded">
+            <Image
+              src={assets.logo.src}
+              alt={assets.logo.alt}
+              width={assets.logo.width}
+              height={assets.logo.height}
+              priority
+              className="rounded-sm"
+            />
+            <span className="text-sm font-semibold text-zinc-100 tracking-wide">{profile.name}</span>
           </a>
 
           <ul className="hidden lg:flex items-center gap-8">
