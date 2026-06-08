@@ -14,8 +14,13 @@ export async function CaseStudies({ locale }: Props) {
       <div className="max-w-6xl mx-auto">
         <SectionHeader label={t('label')} title={t('title')} subtitle={t('subtitle')} />
         <div className="grid lg:grid-cols-2 gap-8">
-          {caseStudies.map((cs) => (
-            <article key={cs.slug} className="border border-white/5 bg-zinc-900/40 rounded-xl p-7 space-y-6 hover:border-emerald-500/20 transition-colors">
+          {caseStudies.map((cs, index) => {
+            const isLastOdd = index === caseStudies.length - 1 && caseStudies.length % 2 !== 0
+            return (
+            <article
+              key={cs.slug}
+              className={`border border-white/5 bg-zinc-900/40 rounded-xl p-7 space-y-6 hover:border-emerald-500/20 transition-colors${isLastOdd ? ' lg:col-span-2 lg:max-w-[calc(50%-1rem)] lg:mx-auto w-full' : ''}`}
+            >
               <div>
                 <h3 className="text-xl font-semibold text-zinc-100">{cs.title}</h3>
                 <p className="mt-1 text-sm text-zinc-400 leading-relaxed">{cs.intro}</p>
@@ -57,7 +62,8 @@ export async function CaseStudies({ locale }: Props) {
                 </a>
               </div>
             </article>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
