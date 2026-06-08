@@ -39,7 +39,7 @@ export function Footer() {
           </a>
         </div>
 
-        <p className="text-xs text-zinc-600">© {new Date().getFullYear()}</p>
+        <p className="text-xs text-zinc-600">© {new Date().getFullYear()} {profile.handle}</p>
       </div>
     </footer>
   )
