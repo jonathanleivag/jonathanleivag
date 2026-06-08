@@ -81,6 +81,7 @@ export function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
+          aria-controls="mobile-nav"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -88,7 +89,7 @@ export function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="lg:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-md z-40 flex flex-col p-8">
+        <div id="mobile-nav" className="lg:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-md z-40 flex flex-col p-8">
           <ul className="flex flex-col gap-8 mt-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

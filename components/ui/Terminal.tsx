@@ -63,18 +63,10 @@ export function Terminal() {
             </span>
           </div>
         ))}
-        {visibleCount < LINES.length && (
-          <div className="flex gap-3">
-            <span className="text-zinc-500">$</span>
-            <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />
-          </div>
-        )}
-        {visibleCount >= LINES.length && (
-          <div className="flex gap-3">
-            <span className="text-zinc-500">$</span>
-            <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />
-          </div>
-        )}
+        <div className="flex gap-3">
+          <span className="text-zinc-500">$</span>
+          <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />
+        </div>
       </div>
     </div>
   )
