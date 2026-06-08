@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Check, Copy, ExternalLink } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/icons'
-
-const EMAIL = 'jonathan.leiva@movatec.cl'
+import { profile } from '@/content/profile'
 
 export function Contact() {
   const [copied, setCopied] = useState(false)
@@ -19,11 +18,11 @@ export function Contact() {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(EMAIL)
+      await navigator.clipboard.writeText(profile.social.email)
       setCopied(true)
       timerRef.current = setTimeout(() => setCopied(false), 2000)
     } catch {
-      // clipboard unavailable (HTTP, denied permission) — fail silently
+      // clipboard unavailable — fail silently
     }
   }
 
@@ -32,14 +31,14 @@ export function Contact() {
       <div className="max-w-3xl mx-auto text-center">
         <SectionHeader
           label="Contacto"
-          title="¿Hablamos?"
-          subtitle="Estoy abierto a nuevos proyectos, posiciones senior y conversaciones técnicas interesantes."
+          title={profile.contact.title}
+          subtitle={profile.contact.description}
           className="text-center [&_p]:mx-auto"
         />
 
         {/* Email copy */}
         <div className="flex items-center justify-center gap-3 mb-10">
-          <span className="text-zinc-300 text-base font-mono">{EMAIL}</span>
+          <span className="text-zinc-300 text-base font-mono">{profile.social.email}</span>
           <button
             onClick={handleCopy}
             className="flex items-center gap-1.5 text-xs border border-white/10 text-zinc-400 hover:border-emerald-500/30 hover:text-emerald-400 px-3 py-2 rounded-lg transition-colors min-h-[44px]"
@@ -48,17 +47,16 @@ export function Contact() {
             {copied ? (
               <>
                 <Check size={13} className="text-emerald-400" />
-                Copiado
+                {profile.contact.copiedLabel}
               </>
             ) : (
               <>
                 <Copy size={13} />
-                Copiar
+                {profile.contact.emailLabel}
               </>
             )}
           </button>
         </div>
-        {/* Accessible copy announcement */}
         <span aria-live="polite" className="sr-only">
           {copied ? 'Email copiado al portapapeles' : ''}
         </span>
@@ -66,7 +64,7 @@ export function Contact() {
         {/* Social links */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://linkedin.com/in/jonathanleivag"
+            href={profile.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/10 text-zinc-300 hover:border-emerald-500/30 hover:text-emerald-400 px-6 py-3 rounded-lg transition-colors min-h-[44px] w-full sm:w-auto justify-center"
@@ -76,7 +74,7 @@ export function Contact() {
             <ExternalLink size={12} className="text-zinc-600" />
           </a>
           <a
-            href="https://github.com/jonathanleivag"
+            href={profile.social.github}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/10 text-zinc-300 hover:border-emerald-500/30 hover:text-emerald-400 px-6 py-3 rounded-lg transition-colors min-h-[44px] w-full sm:w-auto justify-center"
@@ -86,7 +84,7 @@ export function Contact() {
             <ExternalLink size={12} className="text-zinc-600" />
           </a>
           <a
-            href="/cv.pdf"
+            href={profile.social.cv}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3 rounded-lg transition-colors min-h-[44px] w-full sm:w-auto justify-center"
