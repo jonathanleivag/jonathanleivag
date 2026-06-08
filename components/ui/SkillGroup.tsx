@@ -1,4 +1,4 @@
-import type { SkillCategory } from '@/lib/types'
+import type { SkillCategory } from '@/content/skills'
 
 interface SkillGroupProps {
   category: SkillCategory
@@ -7,9 +7,14 @@ interface SkillGroupProps {
 export function SkillGroup({ category }: SkillGroupProps) {
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">
-        {category.name}
-      </h3>
+      <div>
+        <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">
+          {category.title}
+        </h3>
+        {category.description && (
+          <p className="mt-1 text-xs text-zinc-500 leading-relaxed">{category.description}</p>
+        )}
+      </div>
       <div className="flex flex-wrap gap-2">
         {category.skills.map((skill) => (
           <span
