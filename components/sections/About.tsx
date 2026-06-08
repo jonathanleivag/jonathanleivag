@@ -11,7 +11,7 @@ export function About() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label={profile.about.title}
-          title="Construyo productos, no solo código"
+          title={profile.about.sectionTitle}
           subtitle={profile.about.summary}
         />
 

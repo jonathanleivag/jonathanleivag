@@ -22,6 +22,7 @@ export const profile = {
     title: 'Sobre mí',
     summary:
       'Soy desarrollador Full Stack Senior con experiencia construyendo aplicaciones web, APIs, integraciones y plataformas digitales desde la definición técnica hasta el despliegue. Me enfoco en crear soluciones claras, sostenibles y alineadas con objetivos de producto y negocio.',
+    sectionTitle: 'Construyo productos, no solo código',
     body: [
       'Trabajo bien en contextos donde hay que transformar problemas ambiguos en sistemas funcionales. Me involucro desde el entendimiento del usuario y las restricciones del negocio hasta la arquitectura, implementación, performance y mejora continua.',
       'Mi fortaleza está en conectar visión técnica con ejecución práctica: elegir buenas abstracciones, reducir complejidad innecesaria, documentar decisiones importantes y construir software que otros equipos puedan mantener y escalar.',
