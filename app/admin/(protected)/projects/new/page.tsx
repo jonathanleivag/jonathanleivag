@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { ImageUploadField } from '@/components/admin/ImageUploadField'
 
 interface ImageData {
@@ -117,9 +118,9 @@ export default function NewProjectPage() {
           <button type="submit" disabled={isPending} className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-60 text-black font-semibold text-sm rounded-lg transition-colors">
             {isPending ? 'Creando...' : 'Crear proyecto'}
           </button>
-          <a href="/admin/projects" className="px-5 py-2.5 border border-white/10 text-zinc-400 hover:text-zinc-100 text-sm rounded-lg transition-colors">
+          <Link href="/admin/projects" className="px-5 py-2.5 border border-white/10 text-zinc-400 hover:text-zinc-100 text-sm rounded-lg transition-colors">
             Cancelar
-          </a>
+          </Link>
         </div>
       </form>
     </div>
