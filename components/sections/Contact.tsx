@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Check, Copy, ExternalLink } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
@@ -24,11 +24,22 @@ function GithubIcon({ size = 16 }: { size?: number }) {
 
 export function Contact() {
   const [copied, setCopied] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [])
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(EMAIL)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+      setCopied(true)
+      timerRef.current = setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // clipboard unavailable (HTTP, denied permission) — fail silently
+    }
   }
 
   return (
@@ -62,6 +73,10 @@ export function Contact() {
             )}
           </button>
         </div>
+        {/* Accessible copy announcement */}
+        <span aria-live="polite" className="sr-only">
+          {copied ? 'Email copiado al portapapeles' : ''}
+        </span>
 
         {/* Social links */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -1,5 +1,18 @@
+import type { Metadata } from 'next'
+
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const title = slug
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')
+  return {
+    title: `${title} — Jonathan Leiva`,
+  }
 }
 
 export default async function CaseStudyPage({ params }: Props) {
