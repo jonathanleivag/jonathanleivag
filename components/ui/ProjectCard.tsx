@@ -1,5 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
-import type { Project } from '@/lib/types'
+import type { Project } from '@/content/projects'
 
 interface ProjectCardProps {
   project: Project
@@ -19,7 +19,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <p className="text-zinc-400 text-sm leading-relaxed mb-5 flex-1">{project.problem}</p>
+      <p className="text-zinc-400 text-sm leading-relaxed mb-5 flex-1">{project.summary}</p>
 
       <div className="flex flex-wrap gap-2 mb-5">
         {project.stack.map((tech) => (
