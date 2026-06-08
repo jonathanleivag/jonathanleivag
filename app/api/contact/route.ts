@@ -48,6 +48,24 @@ export async function POST(request: Request) {
       )
     }
 
+    // Confirmation email to the sender
+    await resend.emails.send({
+      from: process.env.CONTACT_FROM_EMAIL ?? 'Portfolio <onboarding@resend.dev>',
+      to: email,
+      subject: `Re: ${subject}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #10b981;">Hola ${name}, recibí tu mensaje</h2>
+          <p>Gracias por escribirme. Te responderé a la brevedad.</p>
+          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
+          <p style="color: #6b7280; font-size: 14px;"><strong>Tu mensaje:</strong></p>
+          <p style="color: #6b7280; font-size: 14px; white-space: pre-wrap;">${message.replace(/\n/g, '<br />')}</p>
+          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
+          <p style="color: #9ca3af; font-size: 12px;">Jonathan Leiva · jonathanleivag.cl</p>
+        </div>
+      `,
+    })
+
     return NextResponse.json({ ok: true, message: 'Mensaje enviado correctamente' })
   } catch {
     return NextResponse.json(
