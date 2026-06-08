@@ -55,7 +55,7 @@ export function ContactForm() {
   const labelClass = 'block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2'
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       {/* Honeypot anti-spam — hidden from real users */}
       <input
         name="company"
