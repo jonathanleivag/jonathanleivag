@@ -5,13 +5,18 @@ import { CaseStudies } from '@/components/sections/CaseStudies'
 import { Skills } from '@/components/sections/Skills'
 import { Contact } from '@/components/sections/Contact'
 
-export default function Home() {
+interface Props {
+  params: Promise<{ locale: string }>
+}
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params
   return (
     <main>
       <Hero />
       <About />
-      <Projects />
-      <CaseStudies />
+      <Projects locale={locale} />
+      <CaseStudies locale={locale} />
       <Skills />
       <Contact />
     </main>
