@@ -14,7 +14,7 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'vue-2-to-vue-3-migration',
+    slug: 'vue-framework-migration',
     title: 'Caso de estudio: modernización frontend de Vue 2 a Vue 3',
     intro:
       'Una migración frontend enfocada en modernizar la base tecnológica sin perder mantenibilidad, consistencia visual ni capacidad de evolución del producto.',
@@ -44,7 +44,7 @@ export const caseStudies: CaseStudy[] = [
     source: 'LinkedIn Profile PDF - MOVATEC SPA',
   },
   {
-    slug: 'reusable-responsive-interfaces',
+    slug: 'responsive-vue-interfaces',
     title: 'Caso de estudio: interfaces responsivas y componentes reutilizables',
     intro:
       'Un enfoque de desarrollo frontend orientado a crear interfaces modernas, responsivas y preparadas para crecer con el producto.',
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
     source: 'LinkedIn Profile PDF - MOVATEC SPA',
   },
   {
-    slug: 'full-stack-javascript-freelance',
+    slug: 'full-stack-javascript-solutions',
     title: 'Caso de estudio: desarrollo full stack JavaScript freelance',
     intro:
       'Experiencia construyendo soluciones digitales con tecnologías JavaScript, desde creación de sitios web hasta integración entre frontend, backend y datos.',
