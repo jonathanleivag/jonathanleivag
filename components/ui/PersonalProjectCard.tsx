@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { PersonalProject } from '@/content/personal-projects'
-import { BrowserFrame } from '@/components/ui/BrowserFrame'
+
 
 interface Props {
   project: PersonalProject
@@ -16,16 +16,16 @@ export function PersonalProjectCard({ project, locale, viewLabel }: Props) {
       className="group flex flex-col border border-white/5 bg-zinc-900/40 rounded-xl overflow-hidden hover:-translate-y-0.5 hover:border-emerald-500/20 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
       aria-label={`${viewLabel}: ${project.title}`}
     >
-      <BrowserFrame url={project.domain}>
+      <div className="relative aspect-video w-full overflow-hidden bg-zinc-800 rounded-t-xl">
         <Image
           src={project.image.src}
           alt={project.image.alt}
           width={project.image.width}
           height={project.image.height}
-          className="object-cover w-full group-hover:scale-105 transition-transform duration-300"
+          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
-      </BrowserFrame>
+      </div>
 
       <div className="flex flex-col flex-1 p-5 space-y-3">
         <div>
