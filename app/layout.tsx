@@ -16,8 +16,28 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: profile.metaTitle,
+  metadataBase: new URL('https://jonathanleivag.cl'),
+  title: {
+    default: profile.metaTitle,
+    template: `%s | ${profile.name}`,
+  },
   description: profile.metaDescription,
+  openGraph: {
+    type: 'website',
+    locale: 'es_CL',
+    url: 'https://jonathanleivag.cl',
+    siteName: profile.name,
+    title: profile.metaTitle,
+    description: profile.metaDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: profile.metaTitle,
+    description: profile.metaDescription,
+  },
+  alternates: {
+    canonical: 'https://jonathanleivag.cl',
+  },
 }
 
 export default function RootLayout({
