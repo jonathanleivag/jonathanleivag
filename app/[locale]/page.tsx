@@ -5,7 +5,7 @@ import { CaseStudies } from '@/components/sections/CaseStudies'
 import { Skills } from '@/components/sections/Skills'
 import { Contact } from '@/components/sections/Contact'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       <Hero />
