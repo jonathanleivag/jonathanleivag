@@ -7,17 +7,39 @@ export const profile = {
   metaTitle: 'Jonathan Leiva Gómez | Desarrollador Full Stack Senior',
   metaDescription:
     'Portafolio de Jonathan Leiva Gómez, Desarrollador Full Stack Senior con experiencia en JavaScript, Vue.js, React, React Native, Express.js, GraphQL, Apollo y migraciones frontend con TypeScript.',
+  availability: 'Disponible para nuevos proyectos',
+  social: {
+    github: 'https://github.com/jonathanleivag',
+    linkedin: 'https://www.linkedin.com/in/jonathanleivag',
+    email: 'email@jonathanleivag.cl',
+    cv: '/cv.pdf',
+  },
   hero: {
     headline: 'Desarrollo productos web con foco en escalabilidad, rendimiento y mantenibilidad.',
     subtitle:
       'Soy Desarrollador Full Stack Senior especializado en JavaScript, Vue.js, React, React Native, Express.js y GraphQL. Trabajo en interfaces modernas, componentes reutilizables, migraciones frontend y soluciones digitales orientadas a resultados.',
-    primaryCta: 'Ver experiencia',
+    primaryCta: 'Ver proyectos',
     secondaryCta: 'Contactar',
   },
   about: {
     title: 'Sobre mí',
+    sectionTitle: 'Desarrollo interfaces y soluciones orientadas a resultados',
     summary:
       'Soy desarrollador Full Stack Senior con experiencia construyendo soluciones digitales, interfaces responsivas y aplicaciones web con tecnologías JavaScript. Mi trabajo combina frontend moderno, backend con Express.js, GraphQL/Apollo y una mirada práctica para resolver desafíos técnicos con foco en resultados.',
+    highlights: [
+      {
+        title: 'Frontend moderno',
+        description: 'Vue.js, React, TypeScript y migraciones de framework con foco en escalabilidad.',
+      },
+      {
+        title: 'Full Stack JavaScript',
+        description: 'Frontend, backend con Express.js, GraphQL/Apollo y mobile con React Native.',
+      },
+      {
+        title: 'Arquitectura de componentes',
+        description: 'Componentes reutilizables, CSS modular y buenas prácticas para bases mantenibles.',
+      },
+    ],
     body: [
       'He trabajado con JavaScript, Vue.js, Express.js, Apollo Server/Client, GraphQL, React.js y React Native, participando en desarrollo web, creación de sitios y soluciones full stack para distintos contextos profesionales.',
       'Actualmente mi foco está en desarrollo frontend con Vue.js, Vuetify y migraciones de framework, liderando procesos de actualización desde Vue 2 hacia Vue 3 e incorporando TypeScript para mejorar escalabilidad, tipado estricto y mantenibilidad del código.',
@@ -94,5 +116,22 @@ export const profile = {
     secondaryCta: 'Ver LinkedIn',
     emailLabel: 'Enviar email',
     copiedLabel: 'Email copiado',
+  },
+  sections: {
+    projects: {
+      label: 'Proyectos',
+      title: 'Proyectos destacados',
+      subtitle: 'Trabajo real con tecnologías JavaScript, Vue.js, React y Node.js.',
+    },
+    caseStudies: {
+      label: 'Casos de estudio',
+      title: 'Decisiones técnicas en contexto',
+      subtitle: 'Problemas reales, decisiones concretas y resultados medibles.',
+    },
+    skills: {
+      label: 'Stack técnico',
+      title: 'Tecnologías que domino',
+      subtitle: 'El ecosistema JavaScript y las herramientas con las que construyo soluciones.',
+    },
   },
 } as const;

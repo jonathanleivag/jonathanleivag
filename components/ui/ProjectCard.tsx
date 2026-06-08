@@ -34,7 +34,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="border-t border-white/5 pt-4 flex items-center justify-between">
         <p className="text-xs text-emerald-400 font-medium leading-snug max-w-[70%]">
-          {project.impact}
+          {project.value}
         </p>
         <a
           href={`/projects/${project.slug}`}
