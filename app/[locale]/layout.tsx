@@ -6,6 +6,7 @@ import { routing } from '@/i18n/routing'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { profile } from '@/content/profile'
+import { JsonLd } from '@/components/JsonLd'
 
 interface Props {
   children: React.ReactNode
@@ -100,6 +101,22 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Navbar />
       {children}
       <Footer />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: profile.name,
+          jobTitle: profile.role,
+          url: 'https://jonathanleivag.cl',
+          email: profile.social.email,
+          image: 'https://jonathanleivag.cl/opengraph-image',
+          sameAs: [
+            profile.social.github,
+            profile.social.linkedin,
+          ],
+          knowsAbout: ['Vue.js', 'React', 'TypeScript', 'Node.js', 'GraphQL', 'Express.js', 'JavaScript'],
+        }}
+      />
     </NextIntlClientProvider>
   )
 }
