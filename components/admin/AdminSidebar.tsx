@@ -6,6 +6,7 @@ const NAV = [
   { label: 'Perfil', href: '/admin/profile' },
   { label: 'Proyectos', href: '/admin/projects' },
   { label: 'Skills', href: '/admin/skills' },
+  { label: 'CV', href: '/admin/cv' },
 ]
 
 export function AdminSidebar() {
