@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { getLocale } from 'next-intl/server'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -9,9 +10,15 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://jonathanleivag.cl'),
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale()
+
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}>
+    <html
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-zinc-100">
         {children}
       </body>
