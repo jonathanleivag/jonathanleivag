@@ -1,0 +1,92 @@
+<h2>¿Qué va en la columna derecha del Hero en desktop?</h2>
+<p class="subtitle">El Hero tiene dos columnas en desktop: texto a la izquierda, algo visual a la derecha. ¿Qué comunica mejor tu seniority?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0a0a0a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;min-height:160px;border:1px solid #1a1a1a;">
+        <div style="display:flex;gap:6px;margin-bottom:10px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;"></div>
+        </div>
+        <div style="color:#6b7280;font-size:11px;margin-bottom:8px;">~/projects/portfolio</div>
+        <div style="color:#10b981;font-size:12px;line-height:1.8;">
+          <span style="color:#6b7280;">$</span> whoami<br/>
+          <span style="color:#f9fafb;">jonathan.leiva</span><br/>
+          <span style="color:#6b7280;">$</span> skills --list<br/>
+          <span style="color:#10b981;">→</span> <span style="color:#f9fafb;">Next.js · Node.js · TypeScript</span><br/>
+          <span style="color:#10b981;">→</span> <span style="color:#f9fafb;">PostgreSQL · MongoDB · Redis</span><br/>
+          <span style="color:#10b981;">→</span> <span style="color:#f9fafb;">Docker · AWS · CI/CD</span><br/>
+          <span style="color:#6b7280;">$</span> <span style="color:#f9fafb;animation:blink 1s step-end infinite;">▋</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Terminal / CLI</h3>
+      <p>Bloque estilo terminal con comandos y stack. Comunica mentalidad técnica directamente. Distintivo, developer-first.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0a0a0a;border-radius:8px;padding:16px;font-family:system-ui;min-height:160px;border:1px solid #1a1a1a;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:#111;border:1px solid #1f1f1f;border-radius:6px;padding:12px;text-align:center;">
+            <div style="color:#10b981;font-size:24px;font-weight:700;">7+</div>
+            <div style="color:#6b7280;font-size:10px;margin-top:2px;">años exp.</div>
+          </div>
+          <div style="background:#111;border:1px solid #1f1f1f;border-radius:6px;padding:12px;text-align:center;">
+            <div style="color:#10b981;font-size:24px;font-weight:700;">30+</div>
+            <div style="color:#6b7280;font-size:10px;margin-top:2px;">proyectos</div>
+          </div>
+          <div style="background:#111;border:1px solid #1f1f1f;border-radius:6px;padding:12px;text-align:center;">
+            <div style="color:#10b981;font-size:24px;font-weight:700;">Full</div>
+            <div style="color:#6b7280;font-size:10px;margin-top:2px;">Stack</div>
+          </div>
+          <div style="background:#111;border:1px solid #1f1f1f;border-radius:6px;padding:12px;text-align:center;">
+            <div style="color:#10b981;font-size:24px;font-weight:700;">E2E</div>
+            <div style="color:#6b7280;font-size:10px;margin-top:2px;">delivery</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:#111;border:1px solid #065f46;color:#34d399;padding:3px 8px;border-radius:4px;font-size:10px;">React</span>
+          <span style="background:#111;border:1px solid #065f46;color:#34d399;padding:3px 8px;border-radius:4px;font-size:10px;">Next.js</span>
+          <span style="background:#111;border:1px solid #065f46;color:#34d399;padding:3px 8px;border-radius:4px;font-size:10px;">NestJS</span>
+          <span style="background:#111;border:1px solid #065f46;color:#34d399;padding:3px 8px;border-radius:4px;font-size:10px;">TypeScript</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Stats + Stack</h3>
+      <p>Grid de métricas (años, proyectos, stack) con badges de tecnologías. Rápido de leer, impacto inmediato, orientado a negocio.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0a0a0a;border-radius:8px;padding:16px;font-family:system-ui;min-height:160px;border:1px solid #1a1a1a;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="background:#111;border-left:3px solid #10b981;padding:10px 12px;border-radius:0 6px 6px 0;">
+            <div style="color:#10b981;font-size:10px;font-weight:600;letter-spacing:1px;margin-bottom:2px;">ARQUITECTURA</div>
+            <div style="color:#d1d5db;font-size:11px;">Diseño end-to-end: API → DB → Deploy</div>
+          </div>
+          <div style="background:#111;border-left:3px solid #10b981;padding:10px 12px;border-radius:0 6px 6px 0;">
+            <div style="color:#10b981;font-size:10px;font-weight:600;letter-spacing:1px;margin-bottom:2px;">PRODUCTO</div>
+            <div style="color:#d1d5db;font-size:11px;">De problema de negocio a solución técnica</div>
+          </div>
+          <div style="background:#111;border-left:3px solid #10b981;padding:10px 12px;border-radius:0 6px 6px 0;">
+            <div style="color:#10b981;font-size:10px;font-weight:600;letter-spacing:1px;margin-bottom:2px;">EJECUCIÓN</div>
+            <div style="color:#d1d5db;font-size:11px;">Entrega continua, código mantenible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Propuesta de valor</h3>
+      <p>Cards con los 3 pilares de tu perfil: Arquitectura, Producto, Ejecución. Habla directamente a CTOs y founders.</p>
+    </div>
+  </div>
+
+</div>
