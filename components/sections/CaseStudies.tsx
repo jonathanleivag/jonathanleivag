@@ -1,27 +1,26 @@
-import { caseStudies } from '@/lib/data'
+import { caseStudies } from '@/content/case-studies'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { profile } from '@/content/profile'
 
 export function CaseStudies() {
   return (
     <section id="case-studies" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950/50">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          label="Casos de estudio"
-          title="Decisiones técnicas en contexto"
-          subtitle="No solo qué se construyó, sino por qué y cómo. Problemas reales, trade-offs reales."
+          label={profile.sections.caseStudies.label}
+          title={profile.sections.caseStudies.title}
+          subtitle={profile.sections.caseStudies.subtitle}
         />
 
         <div className="grid lg:grid-cols-2 gap-8">
           {caseStudies.map((cs) => (
             <article
-              key={cs.id}
+              key={cs.slug}
               className="border border-white/5 bg-zinc-900/40 rounded-xl p-7 space-y-6 hover:border-emerald-500/20 transition-colors"
             >
               <div>
-                <span className="text-xs font-medium text-emerald-400 uppercase tracking-wider">
-                  {cs.category}
-                </span>
-                <h3 className="mt-2 text-xl font-semibold text-zinc-100">{cs.title}</h3>
+                <h3 className="text-xl font-semibold text-zinc-100">{cs.title}</h3>
+                <p className="mt-1 text-sm text-zinc-400 leading-relaxed">{cs.intro}</p>
               </div>
 
               <div className="space-y-5">
@@ -37,8 +36,8 @@ export function CaseStudies() {
                     Decisiones técnicas
                   </p>
                   <ul className="space-y-2">
-                    {cs.decisions.map((d, i) => (
-                      <li key={i} className="flex gap-2 text-sm text-zinc-400 leading-relaxed">
+                    {cs.technicalDecisions.map((d) => (
+                      <li key={d} className="flex gap-2 text-sm text-zinc-400 leading-relaxed">
                         <span className="text-emerald-500 mt-0.5 shrink-0">→</span>
                         {d}
                       </li>
