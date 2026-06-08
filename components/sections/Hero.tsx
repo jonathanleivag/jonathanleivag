@@ -1,6 +1,7 @@
 import { ArrowRight, Mail } from 'lucide-react'
 import { Terminal } from '@/components/ui/Terminal'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/icons'
+import { profile } from '@/content/profile'
 
 export function Hero() {
   return (
@@ -13,15 +14,13 @@ export function Hero() {
         <div className="space-y-8">
           <div className="space-y-4">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-emerald-400">
-              Disponible para nuevos proyectos
+              {profile.availability}
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-zinc-100">
-              Full Stack<br />
-              <span className="text-emerald-400">Senior Engineer</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-emerald-400">
+              {profile.role}
             </h1>
             <p className="text-zinc-400 text-lg leading-relaxed max-w-lg">
-              Diseño y construyo productos digitales escalables. Foco en arquitectura,
-              experiencia de usuario y entrega end-to-end.
+              {profile.hero.subtitle}
             </p>
           </div>
 
@@ -31,21 +30,21 @@ export function Hero() {
               href="#projects"
               className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3 rounded-lg transition-colors min-h-[44px]"
             >
-              Ver proyectos
+              {profile.hero.primaryCta}
               <ArrowRight size={16} />
             </a>
             <a
               href="#contact"
               className="flex items-center justify-center gap-2 border border-white/10 text-zinc-300 hover:border-emerald-500/30 hover:text-emerald-400 px-6 py-3 rounded-lg transition-colors min-h-[44px]"
             >
-              Contactar
+              {profile.hero.secondaryCta}
             </a>
           </div>
 
           {/* Quick links */}
           <div className="flex items-center gap-5">
             <a
-              href="https://github.com/jonathanleivag"
+              href={profile.social.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -54,7 +53,7 @@ export function Hero() {
               <GithubIcon size={20} />
             </a>
             <a
-              href="https://linkedin.com/in/jonathanleivag"
+              href={profile.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -63,7 +62,7 @@ export function Hero() {
               <LinkedinIcon size={20} />
             </a>
             <a
-              href="mailto:jonathan.leiva@movatec.cl"
+              href={`mailto:${profile.social.email}`}
               aria-label="Email"
               className="text-zinc-500 hover:text-emerald-400 transition-colors"
             >
