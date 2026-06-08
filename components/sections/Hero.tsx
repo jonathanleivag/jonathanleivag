@@ -31,14 +31,14 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="#projects"
-              className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3 rounded-lg transition-colors min-h-[44px]"
+              className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 py-3 rounded-lg transition-colors min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
             >
               {profile.hero.primaryCta}
               <ArrowRight size={16} />
             </a>
             <a
               href="#contact"
-              className="flex items-center justify-center gap-2 border border-white/10 text-zinc-300 hover:border-emerald-500/30 hover:text-emerald-400 px-6 py-3 rounded-lg transition-colors min-h-[44px]"
+              className="flex items-center justify-center gap-2 border border-white/10 text-zinc-300 hover:border-emerald-500/30 hover:text-emerald-400 px-6 py-3 rounded-lg transition-colors min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
             >
               {profile.hero.secondaryCta}
             </a>
@@ -51,7 +51,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-zinc-500 hover:text-emerald-400 transition-colors"
+              className="text-zinc-500 hover:text-emerald-400 transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
             >
               <GithubIcon size={20} />
             </a>
@@ -60,14 +60,14 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-zinc-500 hover:text-emerald-400 transition-colors"
+              className="text-zinc-500 hover:text-emerald-400 transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
             >
               <LinkedinIcon size={20} />
             </a>
             <a
               href={`mailto:${profile.social.email}`}
               aria-label="Email"
-              className="text-zinc-500 hover:text-emerald-400 transition-colors"
+              className="text-zinc-500 hover:text-emerald-400 transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
             >
               <Mail size={20} />
             </a>

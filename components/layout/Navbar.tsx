@@ -52,7 +52,7 @@ export function Navbar() {
       )}
     >
       <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors">
+        <a href="#hero" className="text-sm font-semibold text-zinc-100 tracking-wide hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
           {profile.name}
         </a>
 
@@ -62,7 +62,7 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-zinc-400 hover:text-emerald-400 transition-colors"
+                className="text-sm text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
               >
                 {link.label}
               </a>
@@ -75,7 +75,7 @@ export function Navbar() {
           href={profile.social.cv}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors"
+          className="hidden lg:flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
         >
           <FileText size={14} />
           CV
@@ -83,7 +83,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2"
+          className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
@@ -101,7 +101,7 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-2xl font-medium text-zinc-300 hover:text-emerald-400 transition-colors block"
+                  className="text-2xl font-medium text-zinc-300 hover:text-emerald-400 transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
