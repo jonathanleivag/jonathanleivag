@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FileText, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { profile } from '@/content/profile'
@@ -17,6 +17,8 @@ const NAV_LINKS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const firstDrawerLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -39,6 +41,14 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = ''
       if (mainEl) mainEl.removeAttribute('inert')
+    }
+  }, [open])
+
+  useEffect(() => {
+    if (open) {
+      firstDrawerLinkRef.current?.focus()
+    } else {
+      toggleRef.current?.focus()
     }
   }, [open])
 
@@ -83,6 +93,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
+          ref={toggleRef}
           className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
@@ -97,9 +108,10 @@ export function Navbar() {
       {open && (
         <div id="mobile-nav" className="lg:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-md z-40 flex flex-col p-8">
           <ul className="flex flex-col gap-8 mt-4">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link, index) => (
               <li key={link.href}>
                 <a
+                  ref={index === 0 ? firstDrawerLinkRef : undefined}
                   href={link.href}
                   className="text-2xl font-medium text-zinc-300 hover:text-emerald-400 transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black"
                   onClick={() => setOpen(false)}
