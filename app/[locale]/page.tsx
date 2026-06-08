@@ -2,6 +2,7 @@ import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Projects } from '@/components/sections/Projects'
 import { CaseStudies } from '@/components/sections/CaseStudies'
+import { PersonalProjects } from '@/components/sections/PersonalProjects'
 import { Skills } from '@/components/sections/Skills'
 import { Contact } from '@/components/sections/Contact'
 
@@ -17,6 +18,7 @@ export default async function HomePage({ params }: Props) {
       <About />
       <Projects locale={locale} />
       <CaseStudies locale={locale} />
+      <PersonalProjects locale={locale} />
       <Skills />
       <Contact />
     </main>
