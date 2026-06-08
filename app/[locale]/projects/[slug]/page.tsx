@@ -6,6 +6,7 @@ import { getTranslations } from 'next-intl/server'
 import { caseStudies } from '@/content/case-studies'
 import { personalProjects } from '@/content/personal-projects'
 import { profile } from '@/content/profile'
+import { BrowserFrame } from '@/components/ui/BrowserFrame'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -149,16 +150,16 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="rounded-xl overflow-hidden border border-white/5 aspect-video w-full bg-zinc-800">
+        <BrowserFrame url={project.domain}>
           <Image
             src={project.image.src}
             alt={project.image.alt}
             width={project.image.width}
             height={project.image.height}
-            className="object-cover w-full h-full"
+            className="object-cover w-full"
             priority
           />
-        </div>
+        </BrowserFrame>
 
         <p className="text-zinc-300 text-lg leading-relaxed">{project.summary}</p>
 
