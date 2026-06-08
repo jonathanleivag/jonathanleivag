@@ -19,7 +19,7 @@ export async function CaseStudies({ locale }: Props) {
             return (
             <article
               key={cs.slug}
-              className={`border border-white/5 bg-zinc-900/40 rounded-xl p-7 space-y-6 hover:border-emerald-500/20 transition-colors${isLastOdd ? ' lg:col-span-2 lg:max-w-[calc(50%-1rem)] lg:mx-auto w-full' : ''}`}
+              className={`border border-white/5 bg-zinc-900/40 rounded-xl p-7 space-y-6 hover:border-emerald-500/20 transition-colors${isLastOdd ? ' lg:col-span-2' : ''}`}
             >
               <div>
                 <h3 className="text-xl font-semibold text-zinc-100">{cs.title}</h3>
