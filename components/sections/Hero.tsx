@@ -77,7 +77,7 @@ export function Hero() {
         {/* Right column — Terminal with 3D tilt */}
         <div className="w-full max-w-lg mx-auto lg:mx-0 [perspective:1200px]">
           <div
-            className="[transform:rotateY(-12deg)_rotateX(5deg)] [filter:drop-shadow(0_25px_40px_rgba(0,0,0,0.55))] motion-safe:transition-transform motion-safe:duration-500 motion-safe:hover:[transform:rotateY(-5deg)_rotateX(2deg)]"
+            className="[transform:rotateY(-12deg)_rotateX(5deg)] [filter:drop-shadow(0_25px_40px_rgba(0,0,0,0.55))]"
           >
             <Terminal />
           </div>
