@@ -12,7 +12,7 @@ export const profile = {
   social: {
     github: 'https://github.com/jonathanleivag',
     linkedin: 'https://www.linkedin.com/in/jonathanleivag',
-    email: 'email@jonathanleivag.cl',
+    email: 'contacto@jonathanleivag.cl',
     cv: '/cv.pdf',
   },
   hero: {

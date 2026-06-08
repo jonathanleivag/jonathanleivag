@@ -88,5 +88,19 @@
     "liveStatus": "Live",
     "inProgressStatus": "En progreso",
     "archivedStatus": "Archivado"
+  },
+  "contactForm": {
+    "name": "Nombre",
+    "email": "Email",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "tu@email.com",
+    "subjectPlaceholder": "¿En qué puedo ayudarte?",
+    "messagePlaceholder": "Cuéntame sobre tu proyecto o consulta...",
+    "send": "Enviar mensaje",
+    "sending": "Enviando...",
+    "success": "Mensaje enviado. Te responderé pronto.",
+    "error": "No se pudo enviar. Intenta de nuevo o escríbeme por LinkedIn."
   }
 }

@@ -99,7 +99,7 @@ Creación de sitios web y soluciones digitales con JavaScript, Vue.js, React, Re
 ## Contacto
 
 - **LinkedIn:** [linkedin.com/in/jonathanleivag](https://www.linkedin.com/in/jonathanleivag)
-- **Email:** [email@jonathanleivag.cl](mailto:email@jonathanleivag.cl)
+- **Email:** [contacto@jonathanleivag.cl](mailto:contacto@jonathanleivag.cl)
 - **GitHub:** [github.com/jonathanleivag](https://github.com/jonathanleivag)
 
 ---
