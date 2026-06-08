@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { profile } from '@/content/profile'
 import { assets } from '@/content/assets'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 
 export function Navbar() {
   const t = useTranslations('nav')
@@ -71,10 +72,13 @@ export function Navbar() {
             ))}
           </ul>
 
-          <a href={profile.social.cv} target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
-            <FileText size={14} />
-            {t('cv')}
-          </a>
+          <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
+            <a href={profile.social.cv} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
+              <FileText size={14} />
+              {t('cv')}
+            </a>
+          </div>
 
           <button ref={toggleRef} className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black" onClick={() => setOpen((v) => !v)} aria-label={open ? ta('menuClose') : ta('menuOpen')} aria-expanded={open} aria-controls="mobile-nav">
             {open ? <X size={20} /> : <Menu size={20} />}
@@ -93,6 +97,9 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+          <div className="mt-8">
+            <LanguageSwitcher />
+          </div>
           <a href={profile.social.cv} target="_blank" rel="noopener noreferrer" className="mt-auto flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-5 py-3 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors self-start">
             <FileText size={14} />
             {t('cv')}
