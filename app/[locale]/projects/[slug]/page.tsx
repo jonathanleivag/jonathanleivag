@@ -49,7 +49,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: `${project.title} — ${profile.name}`,
         description: project.summary,
-        images: [{ url: project.image.src, width: project.image.width, height: project.image.height }],
+        images: [
+          {
+            url: project.image.src,
+            width: project.image.width,
+            height: project.image.height,
+            alt: project.image.alt,
+          },
+        ],
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${project.title} — ${profile.name}`,
+        description: project.summary,
+        images: [project.image.src],
       },
       alternates: {
         canonical: `https://jonathanleivag.cl/${locale}/projects/${slug}`,
