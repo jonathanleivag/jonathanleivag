@@ -74,7 +74,7 @@ export function Navbar() {
               priority
               className="rounded-sm"
             />
-            <span className="text-sm font-semibold text-zinc-100 tracking-wide">{profile.name}</span>
+            <span className="text-sm font-semibold text-zinc-100 tracking-wide">{profile.handle}</span>
           </a>
 
           <ul className="hidden lg:flex items-center gap-8">
