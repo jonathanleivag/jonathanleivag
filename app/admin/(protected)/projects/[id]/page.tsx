@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { connectToDatabase } from '@/lib/mongodb'
 import { Project } from '@/models/Project'
 import { updateProject, deleteProject } from '../actions'
+import { DeleteProjectButton } from '@/components/admin/DeleteProjectButton'
 
 interface Props { params: Promise<{ id: string }> }
 
@@ -56,12 +57,7 @@ export default async function EditProjectPage({ params }: Props) {
       </form>
 
       <div className="border-t border-white/5 pt-6">
-        <form action={deleteProject.bind(null, id)}>
-          <button type="submit" className="text-sm text-red-400 hover:text-red-300 transition-colors"
-            onClick={(e) => { if (!confirm('¿Eliminar este proyecto?')) e.preventDefault() }}>
-            Eliminar proyecto
-          </button>
-        </form>
+        <DeleteProjectButton action={deleteProject.bind(null, id)} />
       </div>
     </div>
   )
