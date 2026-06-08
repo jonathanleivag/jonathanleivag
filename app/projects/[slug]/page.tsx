@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { profile } from '@/content/profile'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
   return {
-    title: `${title} — Jonathan Leiva`,
+    title: `${title} — ${profile.name}`,
   }
 }
 

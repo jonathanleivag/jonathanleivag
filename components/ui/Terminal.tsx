@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { profile } from '@/content/profile'
 
 interface TerminalLine {
   prefix: string
@@ -8,11 +9,13 @@ interface TerminalLine {
   isOutput?: boolean
 }
 
+const username = profile.social.email.split('@')[0]
+
 const LINES: TerminalLine[] = [
   { prefix: '$', text: 'whoami' },
-  { prefix: ' ', text: 'jonathan.leiva', isOutput: true },
+  { prefix: ' ', text: username, isOutput: true },
   { prefix: '$', text: 'cat role.txt' },
-  { prefix: ' ', text: 'Full Stack Senior Engineer', isOutput: true },
+  { prefix: ' ', text: profile.role, isOutput: true },
   { prefix: '$', text: 'skills --list' },
   { prefix: '→', text: 'React · Next.js · TypeScript', isOutput: true },
   { prefix: '→', text: 'Node.js · NestJS · PostgreSQL', isOutput: true },
