@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center pt-16 pb-20 px-4 sm:px-6 lg:px-8"
+      className="scroll-mt-20 min-h-screen flex items-center pt-16 pb-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left column */}

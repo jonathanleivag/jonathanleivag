@@ -4,7 +4,7 @@ import { profile } from '@/content/profile'
 
 export function CaseStudies() {
   return (
-    <section id="case-studies" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950/50">
+    <section id="case-studies" className="scroll-mt-20 py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950/50">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label={profile.sections.caseStudies.label}
