@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { profile } from '@/content/profile'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -15,9 +16,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Jonathan Leiva — Full Stack Senior Engineer',
-  description:
-    'Diseño y desarrollo productos digitales escalables con foco en arquitectura, producto y ejecución end-to-end.',
+  title: profile.metaTitle,
+  description: profile.metaDescription,
 }
 
 export default function RootLayout({
