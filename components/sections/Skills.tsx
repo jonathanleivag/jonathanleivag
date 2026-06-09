@@ -1,10 +1,15 @@
 import { getTranslations } from 'next-intl/server'
-import { skills } from '@/content/skills'
+import { getPublicSkillCategories } from '@/lib/data/skills'
 import { SkillGroup } from '@/components/ui/SkillGroup'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
-export async function Skills() {
+interface Props {
+  locale: string
+}
+
+export async function Skills({ locale }: Props) {
   const t = await getTranslations('skills')
+  const skills = await getPublicSkillCategories(locale as 'es' | 'en')
 
   return (
     <section id="skills" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 scroll-mt-20">
