@@ -2,6 +2,7 @@ export const revalidate = 86400
 
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
+import { Experience } from '@/components/sections/Experience'
 import { Projects } from '@/components/sections/Projects'
 import { CaseStudies } from '@/components/sections/CaseStudies'
 import { PersonalProjects } from '@/components/sections/PersonalProjects'
@@ -18,6 +19,7 @@ export default async function HomePage({ params }: Props) {
     <main>
       <Hero locale={locale} />
       <About locale={locale} />
+      <Experience locale={locale} />
       <Projects locale={locale} />
       <CaseStudies locale={locale} />
       <PersonalProjects locale={locale} />
