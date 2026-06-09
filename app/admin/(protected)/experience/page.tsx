@@ -36,7 +36,7 @@ export default async function AdminExperiencePage() {
                 <div className="flex items-center gap-2">
                   <div className={`w-2 h-2 rounded-full shrink-0 ${e.isPublished ? 'bg-emerald-400' : 'bg-zinc-600'}`} />
                   <p className="text-sm font-medium text-zinc-100">{role?.es}</p>
-                  {e.isCurrent && <span className="text-xs text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded">Actual</span>}
+                  {Boolean(e.isCurrent) && <span className="text-xs text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded">Actual</span>}
                 </div>
                 <p className="text-xs text-zinc-500 ml-4">{e.company as string} · {e.period as string}</p>
               </div>
