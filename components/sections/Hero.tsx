@@ -11,6 +11,7 @@ interface Props {
 export async function Hero({ locale }: Props) {
   const t = await getTranslations('hero')
   const ta = await getTranslations('a11y')
+  // Note: availability, role, headline, subtitle come from MongoDB profile
   const profile = await getPublicProfile(locale as 'es' | 'en')
 
   return (
@@ -18,12 +19,12 @@ export async function Hero({ locale }: Props) {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="space-y-8">
           <div className="space-y-4">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-emerald-400">{t('eyebrow')}</span>
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-emerald-400">{profile.availability}</span>
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-zinc-500">{profile.role}</span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-zinc-100">
-              <span className="text-emerald-400">{t('headline')}</span>
+              <span className="text-emerald-400">{profile.hero.headline}</span>
             </h1>
-            <p className="text-zinc-400 text-lg leading-relaxed max-w-lg">{t('subtitle')}</p>
+            <p className="text-zinc-400 text-lg leading-relaxed max-w-lg">{profile.hero.subtitle}</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
