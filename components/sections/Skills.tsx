@@ -25,7 +25,7 @@ export async function Skills({ locale }: Props) {
                   <div className="mb-4">
                     <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">{cat.title}</h3>
                     {cat.description && (
-                      <p className="mt-1 text-xs text-zinc-400 leading-relaxed">{cat.description}</p>
+                      <p className="mt-1 text-sm text-zinc-300 leading-relaxed">{cat.description}</p>
                     )}
                   </div>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
