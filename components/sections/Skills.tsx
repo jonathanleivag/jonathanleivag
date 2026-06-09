@@ -30,7 +30,7 @@ export async function Skills({ locale }: Props) {
                   </div>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     {cat.skills.map((skill) => (
-                      <div key={skill} className="flex items-center gap-2 text-sm text-zinc-400">
+                      <div key={skill} className="flex items-center gap-2 text-base text-zinc-300">
                         <span className="w-1 h-1 rounded-full bg-emerald-500 shrink-0" />
                         {skill}
                       </div>
