@@ -41,10 +41,4 @@ export const skills: SkillCategory[] = [
       'Enfoque proactivo para resolver desafíos técnicos, buscar soluciones digitales y trabajar orientado a resultados.',
     skills: ['Desarrollo Web', 'Creación de sitios web', 'Solución de problemas', 'Orientación a resultados', 'Proactividad', 'Scrum Foundation', 'Scrum Developer'],
   },
-  {
-    title: 'Formación',
-    description:
-      'Base académica en computación, informática y programación computacional.',
-    skills: ['Ingeniería en Computación e Informática', 'Desarrollo de aplicaciones web', 'Técnico en Programación Computacional', 'Programación informática'],
-  },
 ];
