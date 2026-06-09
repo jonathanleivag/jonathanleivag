@@ -6,6 +6,7 @@ import { connectToDatabase } from '@/lib/mongodb'
 import { Project } from '@/models/Project'
 import { z } from 'zod'
 import { auth } from '@/auth'
+import { headers } from 'next/headers'
 
 const projectSchema = z.object({
   slug: z.string().min(1),
@@ -62,6 +63,7 @@ export async function createProject(formData: FormData) {
 
   revalidatePath('/admin/projects')
   revalidatePath('/')
+  await triggerRevalidation([parsed.slug])
   redirect('/admin/projects')
 }
 
@@ -86,6 +88,7 @@ export async function updateProject(id: string, formData: FormData) {
 
   revalidatePath('/admin/projects')
   revalidatePath('/')
+  await triggerRevalidation()
   redirect('/admin/projects')
 }
 
@@ -99,4 +102,29 @@ export async function deleteProject(id: string) {
   revalidatePath('/admin/projects')
   revalidatePath('/')
   redirect('/admin/projects')
+}
+
+async function triggerRevalidation(slugs?: string[]) {
+  try {
+    const secret = process.env.REVALIDATE_SECRET
+    if (!secret) return
+
+    const paths = [
+      '/',
+      '/es',
+      '/en',
+      ...(slugs ? slugs.flatMap((s) => [`/es/projects/${s}`, `/en/projects/${s}`]) : []),
+    ]
+
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/revalidate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-revalidate-secret': secret,
+      },
+      body: JSON.stringify({ paths }),
+    })
+  } catch {
+    // Non-critical: revalidation will happen automatically on next ISR cycle
+  }
 }
