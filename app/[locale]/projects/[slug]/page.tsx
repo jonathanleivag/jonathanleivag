@@ -5,9 +5,9 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { caseStudies } from '@/content/case-studies'
-import { personalProjects } from '@/content/personal-projects'
-import { profile } from '@/content/profile'
+import { getPublicCaseStudyBySlug, getPublicCaseStudySlugs } from '@/lib/data/case-studies'
+import { getPublicPersonalProjects, getAllProjectSlugs } from '@/lib/data/projects'
+import { getPublicProfile } from '@/lib/data/profile'
 import { BrowserFrame } from '@/components/ui/BrowserFrame'
 
 interface Props {
@@ -16,19 +16,25 @@ interface Props {
 
 export async function generateStaticParams() {
   const locales = ['es', 'en']
-  const caseStudyParams = locales.flatMap((locale) =>
-    caseStudies.map((cs) => ({ locale, slug: cs.slug }))
-  )
-  const personalParams = locales.flatMap((locale) =>
-    personalProjects.map((p) => ({ locale, slug: p.slug }))
-  )
-  return [...caseStudyParams, ...personalParams]
+  const [csSlugs, projectSlugs] = await Promise.all([
+    getPublicCaseStudySlugs(),
+    getAllProjectSlugs(),
+  ])
+  return locales.flatMap((locale) => [
+    ...csSlugs.map((slug) => ({ locale, slug })),
+    ...projectSlugs.map((slug) => ({ locale, slug })),
+  ])
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params
 
-  const cs = caseStudies.find((c) => c.slug === slug)
+  const [profile, cs, personalProjects] = await Promise.all([
+    getPublicProfile(locale as 'es' | 'en'),
+    getPublicCaseStudyBySlug(locale as 'es' | 'en', slug),
+    getPublicPersonalProjects(locale as 'es' | 'en'),
+  ])
+
   if (cs) {
     return {
       title: `${cs.title} — ${profile.name}`,
@@ -51,21 +57,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: `${project.title} — ${profile.name}`,
         description: project.summary,
-        images: [
+        images: project.image ? [
           {
             url: project.image.src,
             width: project.image.width,
             height: project.image.height,
             alt: project.image.alt,
           },
-        ],
+        ] : [],
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
         title: `${project.title} — ${profile.name}`,
         description: project.summary,
-        images: [project.image.src],
+        images: project.image ? [project.image.src] : [],
       },
       alternates: {
         canonical: `https://jonathanleivag.cl/${locale}/projects/${slug}`,
@@ -83,8 +89,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectPage({ params }: Props) {
   const { slug, locale } = await params
 
+  const [cs, personalProjects] = await Promise.all([
+    getPublicCaseStudyBySlug(locale as 'es' | 'en', slug),
+    getPublicPersonalProjects(locale as 'es' | 'en'),
+  ])
+
   // Try case study first
-  const cs = caseStudies.find((c) => c.slug === slug)
   if (cs) {
     const t = await getTranslations({ locale, namespace: 'caseStudies' })
     return (
@@ -166,16 +176,18 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </div>
 
-        <BrowserFrame url={project.domain}>
-          <Image
-            src={project.image.src}
-            alt={project.image.alt}
-            width={project.image.width}
-            height={project.image.height}
-            className="object-cover w-full"
-            priority
-          />
-        </BrowserFrame>
+        {project.image && (
+          <BrowserFrame url={project.domain}>
+            <Image
+              src={project.image.src}
+              alt={project.image.alt}
+              width={project.image.width}
+              height={project.image.height}
+              className="object-cover w-full"
+              priority
+            />
+          </BrowserFrame>
+        )}
 
         <p className="text-zinc-300 text-lg leading-relaxed">{project.summary}</p>
 

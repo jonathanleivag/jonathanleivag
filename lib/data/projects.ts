@@ -54,11 +54,11 @@ function toPublicProject(doc: MongoProject, locale: Locale) {
       width: (image.width as number) || 1200,
       height: (image.height as number) || 800,
     } : undefined,
-    features: [],
-    technicalHighlights: [],
-    learning: '',
-    objective: '',
-    highlights: [],
+    features: (doc.features as Array<{ es: string; en: string }>)?.map((f) => gl(f)) ?? [],
+    technicalHighlights: (doc.technicalHighlights as Array<{ es: string; en: string }>)?.map((h) => gl(h)) ?? [],
+    learning: gl(doc.learning) || '',
+    objective: gl(doc.objective) || '',
+    highlights: (doc.features as Array<{ es: string; en: string }>)?.map((f) => gl(f)) ?? [],
   }
 }
 
