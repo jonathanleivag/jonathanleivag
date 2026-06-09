@@ -168,6 +168,90 @@ async function seed() {
   }
   console.log(`✓ ${caseStudies.length} case studies seeded`)
 
+  // Experiences
+  const ExperienceModel = mongoose.models.Experience || mongoose.model('Experience', new mongoose.Schema({
+    company: String,
+    role: Object,
+    location: String,
+    period: String,
+    isCurrent: Boolean,
+    highlights: [Object],
+    stack: [String],
+    order: Number,
+    isPublished: Boolean,
+  }, { timestamps: true }))
+
+  const experiences = [
+    {
+      company: 'MOVATEC SPA',
+      role: { es: 'Desarrollador Full Stack Senior', en: 'Senior Full Stack Developer' },
+      period: 'julio de 2025 - Presente',
+      location: 'Paine, Región Metropolitana de Santiago, Chile',
+      isCurrent: true,
+      highlights: [
+        { es: 'Desarrollo frontend con Vue.js 2 y Vuetify.', en: 'Frontend development with Vue.js 2 and Vuetify.' },
+        { es: 'Liderazgo en migraciones desde Vue 2 hacia Vue 3.', en: 'Led migrations from Vue 2 to Vue 3.' },
+        { es: 'Incorporación de TypeScript para mejorar escalabilidad y tipado del código.', en: 'Introduced TypeScript to improve scalability and type safety.' },
+        { es: 'Uso de CSS modular para optimizar diseño y mantenibilidad.', en: 'Used modular CSS to optimize design and maintainability.' },
+        { es: 'Implementación de componentes reutilizables y buenas prácticas de arquitectura frontend.', en: 'Implemented reusable components and frontend architecture best practices.' },
+      ],
+      stack: ['Vue.js 2', 'Vue.js 3', 'Vuetify', 'TypeScript', 'JavaScript', 'CSS modular'],
+      order: 0,
+      isPublished: true,
+    },
+    {
+      company: 'ValpoSystems',
+      role: { es: 'Analista de programación', en: 'Programming Analyst' },
+      period: 'junio de 2024 - marzo de 2025',
+      location: 'Gran Santiago, Región Metropolitana de Santiago, Chile',
+      isCurrent: false,
+      highlights: [
+        { es: 'Participación en análisis y desarrollo de soluciones de programación.', en: 'Participated in analysis and development of programming solutions.' },
+        { es: 'Trabajo en contexto profesional de desarrollo de software.', en: 'Worked in a professional software development context.' },
+      ],
+      stack: ['JavaScript', 'Software Development'],
+      order: 1,
+      isPublished: true,
+    },
+    {
+      company: 'Gatblac',
+      role: { es: 'Software Developer', en: 'Software Developer' },
+      period: 'mayo de 2022 - junio de 2024',
+      location: 'Santa Beatriz 111, Of. 1002, Providencia',
+      isCurrent: false,
+      highlights: [
+        { es: 'Desarrollo de software en entorno profesional.', en: 'Software development in a professional environment.' },
+        { es: 'Aplicación de conocimientos full stack con tecnologías JavaScript.', en: 'Applied full stack knowledge with JavaScript technologies.' },
+      ],
+      stack: ['JavaScript', 'Full Stack Development'],
+      order: 2,
+      isPublished: true,
+    },
+    {
+      company: 'Profesional independiente',
+      role: { es: 'Full stack developer JavaScript Freelance', en: 'JavaScript Full Stack Freelance Developer' },
+      period: 'octubre de 2020 - mayo de 2022',
+      location: '',
+      isCurrent: false,
+      highlights: [
+        { es: 'Desarrollo full stack JavaScript para proyectos freelance.', en: 'Full stack JavaScript development for freelance projects.' },
+        { es: 'Creación de sitios web y soluciones digitales para distintos requerimientos.', en: 'Built websites and digital solutions for diverse requirements.' },
+      ],
+      stack: ['JavaScript', 'Vue.js', 'React.js', 'React Native', 'Express.js', 'GraphQL', 'Apollo'],
+      order: 3,
+      isPublished: true,
+    },
+  ]
+
+  for (const exp of experiences) {
+    await ExperienceModel.findOneAndUpdate(
+      { company: exp.company },
+      exp,
+      { upsert: true, new: true }
+    )
+  }
+  console.log(`✓ ${experiences.length} experiences seeded`)
+
   await mongoose.disconnect()
   console.log('\nSeed complete ✓')
 }
