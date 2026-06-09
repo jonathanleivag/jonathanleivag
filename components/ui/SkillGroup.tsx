@@ -2,7 +2,7 @@ import type { SkillCategory } from '@/content/skills'
 import { SKILL_URLS } from '@/lib/skill-urls'
 
 interface SkillGroupProps {
-  category: SkillCategory
+  category: SkillCategory & { skillUrls?: Record<string, string> }
 }
 
 export function SkillGroup({ category }: SkillGroupProps) {
@@ -18,7 +18,8 @@ export function SkillGroup({ category }: SkillGroupProps) {
       </div>
       <div className="flex flex-wrap gap-2">
         {category.skills.map((skill) => {
-          const url = SKILL_URLS[skill]
+          // MongoDB URLs take priority over static fallback
+          const url = category.skillUrls?.[skill] || SKILL_URLS[skill]
           const baseClass = 'text-sm bg-zinc-900 border border-white/5 text-zinc-300 px-3 py-1.5 rounded-lg transition-colors'
           if (url) {
             return (

@@ -6,6 +6,7 @@ const skillCategorySchema = new Schema(
     title: { type: localizedStringSchema, required: true },
     description: localizedStringSchema,
     skills: [{ type: String }],
+    skillUrls: { type: Map, of: String, default: {} },
     order: { type: Number, default: 0 },
     isPublished: { type: Boolean, default: true },
   },

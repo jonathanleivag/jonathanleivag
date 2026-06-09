@@ -7,6 +7,7 @@ interface SkillCategory {
   title: { es: string; en: string }
   description?: { es: string; en: string }
   skills: string[]
+  skillUrls?: Record<string, string>
   order: number
   isPublished: boolean
 }
@@ -118,7 +119,9 @@ function SkillEditor({ cat, onSave, onCancel, isPending }: {
   const [descEs, setDescEs] = useState(cat.description?.es ?? '')
   const [descEn, setDescEn] = useState(cat.description?.en ?? '')
   const [skills, setSkills] = useState<string[]>(cat.skills)
+  const [skillUrls, setSkillUrls] = useState<Record<string, string>>(cat.skillUrls ?? {})
   const [newSkill, setNewSkill] = useState('')
+  const [editingUrlFor, setEditingUrlFor] = useState<string | null>(null)
 
   const addSkill = () => {
     const s = newSkill.trim()
@@ -128,7 +131,16 @@ function SkillEditor({ cat, onSave, onCancel, isPending }: {
     }
   }
 
-  const removeSkill = (skill: string) => setSkills(skills.filter((s) => s !== skill))
+  const removeSkill = (skill: string) => {
+    setSkills(skills.filter((s) => s !== skill))
+    const updated = { ...skillUrls }
+    delete updated[skill]
+    setSkillUrls(updated)
+  }
+
+  const setSkillUrl = (skill: string, url: string) => {
+    setSkillUrls((prev) => url ? { ...prev, [skill]: url } : Object.fromEntries(Object.entries(prev).filter(([k]) => k !== skill)))
+  }
 
   const inp = 'w-full bg-zinc-800 border border-white/10 text-zinc-100 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400'
   const lbl = 'block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1'
@@ -144,12 +156,32 @@ function SkillEditor({ cat, onSave, onCancel, isPending }: {
 
       <div className="space-y-2">
         <label className={lbl}>Skills</label>
-        <div className="flex flex-wrap gap-2">
+        <div className="space-y-1.5">
           {skills.map((s) => (
-            <span key={s} className="flex items-center gap-1 text-xs bg-zinc-800 border border-white/5 text-zinc-300 px-2 py-1 rounded">
-              {s}
-              <button type="button" onClick={() => removeSkill(s)} className="text-zinc-600 hover:text-red-400 ml-1">×</button>
-            </span>
+            <div key={s} className="flex items-center gap-2">
+              <span className="flex items-center gap-1 text-xs bg-zinc-800 border border-white/5 text-zinc-300 px-2 py-1 rounded shrink-0">
+                {s}
+                <button type="button" onClick={() => removeSkill(s)} className="text-zinc-600 hover:text-red-400 ml-1">×</button>
+              </span>
+              {editingUrlFor === s ? (
+                <input
+                  autoFocus
+                  defaultValue={skillUrls[s] ?? ''}
+                  onBlur={(e) => { setSkillUrl(s, e.target.value.trim()); setEditingUrlFor(null) }}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { setSkillUrl(s, (e.target as HTMLInputElement).value.trim()); setEditingUrlFor(null) } }}
+                  placeholder="https://docs.ejemplo.com"
+                  className="flex-1 bg-zinc-800 border border-emerald-500/30 text-zinc-100 rounded px-2 py-1 text-xs focus:outline-none"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setEditingUrlFor(s)}
+                  className={`text-xs truncate max-w-[200px] ${skillUrls[s] ? 'text-emerald-400 hover:underline' : 'text-zinc-600 hover:text-zinc-400'}`}
+                >
+                  {skillUrls[s] ? skillUrls[s] : '+ URL'}
+                </button>
+              )}
+            </div>
           ))}
         </div>
         <div className="flex gap-2">
@@ -170,7 +202,7 @@ function SkillEditor({ cat, onSave, onCancel, isPending }: {
         <button
           type="button"
           disabled={isPending}
-          onClick={() => onSave({ title: { es: titleEs, en: titleEn }, description: { es: descEs, en: descEn }, skills })}
+          onClick={() => onSave({ title: { es: titleEs, en: titleEn }, description: { es: descEs, en: descEn }, skills, skillUrls })}
           className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-black font-semibold text-sm rounded-lg transition-colors"
         >
           {isPending ? 'Guardando...' : 'Guardar'}
