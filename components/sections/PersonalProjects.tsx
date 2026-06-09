@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { getPublicPersonalProjects } from '@/lib/data/projects'
 import { PersonalProjectCard } from '@/components/ui/PersonalProjectCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import type { PersonalProject } from '@/content/personal-projects'
 
 interface Props {
   locale: string
@@ -9,7 +10,7 @@ interface Props {
 
 export async function PersonalProjects({ locale }: Props) {
   const t = await getTranslations('personalProjects')
-  const personalProjects = await getPublicPersonalProjects(locale as 'es' | 'en')
+  const personalProjects = (await getPublicPersonalProjects(locale as 'es' | 'en')) as PersonalProject[]
 
   return (
     <section id="personal-projects" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 scroll-mt-20">
