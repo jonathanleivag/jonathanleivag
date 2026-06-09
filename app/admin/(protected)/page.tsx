@@ -3,6 +3,22 @@ import { Project } from '@/models/Project'
 import { SkillCategory } from '@/models/SkillCategory'
 import Link from 'next/link'
 
+async function revalidateSite() {
+  'use server'
+  const { auth } = await import('@/auth')
+  const session = await auth()
+  if (!session?.user) throw new Error('Unauthorized')
+
+  await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/revalidate`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-revalidate-secret': process.env.REVALIDATE_SECRET ?? '',
+    },
+    body: JSON.stringify({ paths: ['/', '/es', '/en'] }),
+  })
+}
+
 export default async function AdminDashboard() {
   await connectToDatabase()
 
@@ -52,6 +68,15 @@ export default async function AdminDashboard() {
             {l.label}
           </Link>
         ))}
+      </div>
+
+      <div className="border-t border-white/5 pt-6">
+        <p className="text-xs text-zinc-500 mb-3">El sitio se actualiza automáticamente cada 24 horas. Puedes forzar una actualización ahora:</p>
+        <form action={revalidateSite}>
+          <button type="submit" className="px-4 py-2 border border-white/10 text-zinc-400 hover:text-zinc-100 hover:border-emerald-500/30 text-sm rounded-lg transition-colors">
+            ↺ Actualizar sitio ahora
+          </button>
+        </form>
       </div>
     </div>
   )
