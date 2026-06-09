@@ -17,7 +17,7 @@ export function SectionHeader({ label, title, subtitle, className }: SectionHead
       )}
       <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 leading-tight">{title}</h2>
       {subtitle && (
-        <p className="mt-3 text-zinc-400 text-base sm:text-lg max-w-2xl">{subtitle}</p>
+        <p className="mt-3 text-zinc-300 text-base sm:text-lg max-w-2xl">{subtitle}</p>
       )}
     </div>
   )
