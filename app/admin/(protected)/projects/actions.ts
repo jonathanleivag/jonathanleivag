@@ -6,7 +6,6 @@ import { connectToDatabase } from '@/lib/mongodb'
 import { Project } from '@/models/Project'
 import { z } from 'zod'
 import { auth } from '@/auth'
-import { headers } from 'next/headers'
 
 const projectSchema = z.object({
   slug: z.string().min(1),
