@@ -89,6 +89,12 @@
     "inProgressStatus": "En progreso",
     "archivedStatus": "Archivado"
   },
+  "experience": {
+    "label": "Experiencia",
+    "title": "Experiencia laboral",
+    "subtitle": "Trayectoria construyendo productos web, interfaces modernas y soluciones full stack.",
+    "current": "Actual"
+  },
   "contactForm": {
     "name": "Nombre",
     "email": "Email",

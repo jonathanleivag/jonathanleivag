@@ -89,6 +89,12 @@
     "inProgressStatus": "In progress",
     "archivedStatus": "Archived"
   },
+  "experience": {
+    "label": "Experience",
+    "title": "Work experience",
+    "subtitle": "A track record building web products, modern interfaces, and full stack solutions.",
+    "current": "Current"
+  },
   "contactForm": {
     "name": "Name",
     "email": "Email",
