@@ -63,7 +63,7 @@ export async function createProject(formData: FormData) {
   revalidatePath('/admin/projects')
   revalidatePath('/')
   await triggerRevalidation([parsed.slug])
-  redirect('/admin/projects')
+  redirect('/admin/projects?toast=created')
 }
 
 export async function updateProject(id: string, formData: FormData) {
@@ -88,7 +88,7 @@ export async function updateProject(id: string, formData: FormData) {
   revalidatePath('/admin/projects')
   revalidatePath('/')
   await triggerRevalidation()
-  redirect('/admin/projects')
+  redirect('/admin/projects?toast=saved')
 }
 
 export async function deleteProject(id: string) {
@@ -100,7 +100,7 @@ export async function deleteProject(id: string) {
 
   revalidatePath('/admin/projects')
   revalidatePath('/')
-  redirect('/admin/projects')
+  redirect('/admin/projects?toast=deleted')
 }
 
 async function triggerRevalidation(slugs?: string[]) {

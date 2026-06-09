@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { AdminSidebar } from '@/components/admin/AdminSidebar'
+import { Toaster } from '@/components/admin/Toaster'
 
 export const metadata: Metadata = {
   robots: {
@@ -26,6 +28,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <main className="flex-1 p-8 overflow-auto">
         {children}
       </main>
+      <Suspense>
+        <Toaster />
+      </Suspense>
     </div>
   )
 }
