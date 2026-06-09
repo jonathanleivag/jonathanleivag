@@ -48,7 +48,7 @@ export async function Experience({ locale }: Props) {
                     <div className="text-right shrink-0">
                       <p className="text-sm text-zinc-400">{exp.period}</p>
                       {exp.location && (
-                        <p className="text-xs text-zinc-600 mt-0.5">{exp.location}</p>
+                        <p className="text-xs text-zinc-400 mt-0.5">{exp.location}</p>
                       )}
                     </div>
                   </div>

@@ -54,17 +54,17 @@ export function Terminal({ username = 'jonathan.leiva', role = 'Senior Full Stac
         <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
         <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
         <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
-        <span className="ml-2 text-xs text-zinc-500">~/portfolio</span>
+        <span className="ml-2 text-xs text-zinc-400">~/portfolio</span>
       </div>
       <div className="p-5 space-y-1 min-h-[220px] overflow-x-auto">
         {LINES.slice(0, visibleCount).map((line, i) => (
           <div key={i} className="flex gap-3">
-            <span className={line.isOutput ? 'text-emerald-400' : 'text-zinc-500'}>{line.prefix}</span>
+            <span className={line.isOutput ? 'text-emerald-400' : 'text-zinc-400'}>{line.prefix}</span>
             <span className={line.isOutput ? 'text-zinc-300' : 'text-zinc-100'}>{line.text}</span>
           </div>
         ))}
         <div className="flex gap-3">
-          <span className="text-zinc-500">$</span>
+          <span className="text-zinc-400">$</span>
           <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse motion-reduce:animate-none" />
         </div>
       </div>

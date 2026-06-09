@@ -41,7 +41,7 @@ export async function Footer({
           </a>
         </div>
 
-        <p className="text-xs text-zinc-600">© {new Date().getFullYear()} {handle}</p>
+        <p className="text-xs text-zinc-400">© {new Date().getFullYear()} {handle}</p>
       </div>
     </footer>
   )

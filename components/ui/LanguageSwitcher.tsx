@@ -31,7 +31,7 @@ export function LanguageSwitcher() {
           className={`text-xs font-semibold uppercase px-2 py-1 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black disabled:opacity-50 ${
             locale === lang
               ? 'text-emerald-400 bg-emerald-500/10'
-              : 'text-zinc-500 hover:text-zinc-300'
+              : 'text-zinc-400 hover:text-zinc-300'
           }`}
         >
           {lang}

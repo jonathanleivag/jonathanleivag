@@ -47,7 +47,7 @@ export function PersonalProjectCard({ project, locale, viewLabel }: Props) {
             </span>
           ))}
           {project.stack.length > 3 && (
-            <span className="text-xs text-zinc-500">+{project.stack.length - 3}</span>
+            <span className="text-xs text-zinc-400">+{project.stack.length - 3}</span>
           )}
         </div>
       </div>

@@ -28,11 +28,11 @@ export async function CaseStudies({ locale }: Props) {
               </div>
               <div className="space-y-5">
                 <div>
-                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">{t('context')}</p>
+                  <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t('context')}</p>
                   <p className="text-zinc-400 text-sm leading-relaxed">{cs.context}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">{t('technicalDecisions')}</p>
+                  <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t('technicalDecisions')}</p>
                   <ul className="space-y-2">
                     {cs.technicalDecisions.map((d) => (
                       <li key={d} className="flex gap-2 text-sm text-zinc-400 leading-relaxed">
@@ -43,7 +43,7 @@ export async function CaseStudies({ locale }: Props) {
                   </ul>
                 </div>
                 <div className="border-t border-white/5 pt-4">
-                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">{t('result')}</p>
+                  <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">{t('result')}</p>
                   <p className="text-emerald-400 text-sm font-medium">{cs.result}</p>
                 </div>
               </div>
@@ -55,7 +55,7 @@ export async function CaseStudies({ locale }: Props) {
               <div className="pt-2">
                 <a
                   href={`/${locale}/projects/${cs.slug}`}
-                  className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-emerald-400 transition-colors"
+                  className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors"
                   aria-label={`${t('viewFull')}: ${cs.title}`}
                 >
                   {t('viewFull')}
