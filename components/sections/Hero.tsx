@@ -46,7 +46,7 @@ export async function Hero({ locale }: Props) {
 
         <div className="w-full max-w-lg mx-auto lg:mx-0 [perspective:1200px]">
           <div className="[transform:rotateY(-12deg)_rotateX(5deg)] [filter:drop-shadow(0_25px_40px_rgba(0,0,0,0.55))]">
-            <Terminal />
+            <Terminal username={profile.social.email?.split('@')[0] ?? 'jonathan.leiva'} role={profile.role} />
           </div>
         </div>
       </div>
