@@ -1,3 +1,5 @@
+export const revalidate = 86400
+
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
