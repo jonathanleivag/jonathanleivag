@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'Node.js',
       'Chile',
     ],
-    authors: [{ name: dbProfile.name, url: 'https://jonathanleivag.cl' }],
+    authors: [{ name: dbProfile.name, url: 'https://www.jonathanleivag.cl' }],
     creator: dbProfile.name,
     robots: {
       index: true,
@@ -55,13 +55,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       type: 'website',
       locale: locale === 'en' ? 'en_US' : 'es_CL',
-      url: `https://jonathanleivag.cl/${locale}`,
+      url: `https://www.jonathanleivag.cl/${locale}`,
       siteName: dbProfile.name,
       title: t('title'),
       description: t('description'),
       images: [
         {
-          url: 'https://jonathanleivag.cl/opengraph-image',
+          url: 'https://www.jonathanleivag.cl/opengraph-image',
           width: 1200,
           height: 630,
           alt: `${dbProfile.name} — ${dbProfile.role}`,
@@ -73,14 +73,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: t('title'),
       description: t('description'),
       creator: '@jonathanleivag',
-      images: ['https://jonathanleivag.cl/opengraph-image'],
+      images: ['https://www.jonathanleivag.cl/opengraph-image'],
     },
     alternates: {
-      canonical: `https://jonathanleivag.cl/${locale}`,
+      canonical: `https://www.jonathanleivag.cl/${locale}`,
       languages: {
-        es: 'https://jonathanleivag.cl/es',
-        en: 'https://jonathanleivag.cl/en',
-        'x-default': 'https://jonathanleivag.cl/es',
+        es: 'https://www.jonathanleivag.cl/es',
+        en: 'https://www.jonathanleivag.cl/en',
+        'x-default': 'https://www.jonathanleivag.cl/es',
       },
     },
     icons: {
@@ -127,9 +127,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           '@type': 'Person',
           name: dbProfile.name,
           jobTitle: dbProfile.role,
-          url: 'https://jonathanleivag.cl',
+          url: 'https://www.jonathanleivag.cl',
           email: dbProfile.social.email,
-          image: 'https://jonathanleivag.cl/opengraph-image',
+          image: 'https://www.jonathanleivag.cl/opengraph-image',
           sameAs: [dbProfile.social.github, dbProfile.social.linkedin],
           knowsAbout: ['Vue.js', 'React', 'TypeScript', 'Node.js', 'GraphQL', 'Express.js', 'JavaScript'],
         }}

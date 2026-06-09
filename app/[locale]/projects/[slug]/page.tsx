@@ -40,10 +40,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${cs.title} — ${profile.name}`,
       description: cs.intro,
       alternates: {
-        canonical: `https://jonathanleivag.cl/${locale}/projects/${slug}`,
+        canonical: `https://www.jonathanleivag.cl/${locale}/projects/${slug}`,
         languages: {
-          es: `https://jonathanleivag.cl/es/projects/${slug}`,
-          en: `https://jonathanleivag.cl/en/projects/${slug}`,
+          es: `https://www.jonathanleivag.cl/es/projects/${slug}`,
+          en: `https://www.jonathanleivag.cl/en/projects/${slug}`,
         },
       },
     }
@@ -74,10 +74,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: project.image ? [project.image.src] : [],
       },
       alternates: {
-        canonical: `https://jonathanleivag.cl/${locale}/projects/${slug}`,
+        canonical: `https://www.jonathanleivag.cl/${locale}/projects/${slug}`,
         languages: {
-          es: `https://jonathanleivag.cl/es/projects/${slug}`,
-          en: `https://jonathanleivag.cl/en/projects/${slug}`,
+          es: `https://www.jonathanleivag.cl/es/projects/${slug}`,
+          en: `https://www.jonathanleivag.cl/en/projects/${slug}`,
         },
       },
     }

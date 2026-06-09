@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllProjectSlugs } from '@/lib/data/projects'
 
-const BASE_URL = 'https://jonathanleivag.cl'
+const BASE_URL = 'https://www.jonathanleivag.cl'
 const LOCALES = ['es', 'en'] as const
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

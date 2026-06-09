@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin', '/api'],
       },
     ],
-    sitemap: 'https://jonathanleivag.cl/sitemap.xml',
+    sitemap: 'https://www.jonathanleivag.cl/sitemap.xml',
   }
 }
