@@ -22,7 +22,7 @@ export default async function HomePage({ params }: Props) {
       <CaseStudies locale={locale} />
       <PersonalProjects locale={locale} />
       <Skills locale={locale} />
-      <Contact />
+      <Contact locale={locale} />
     </main>
   )
 }
