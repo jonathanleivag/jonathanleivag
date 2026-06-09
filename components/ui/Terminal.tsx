@@ -26,15 +26,16 @@ export function Terminal({ username = 'jonathan.leiva', role = 'Senior Full Stac
   ]
 
   const totalLines = LINES.length
-  const [visibleCount, setVisibleCount] = useState(0)
+  // Start with all lines visible for LCP — animate from scratch only after mount
+  const [visibleCount, setVisibleCount] = useState(totalLines)
   const prefersReduced = useRef(false)
 
   useEffect(() => {
     prefersReduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced.current) {
-      setVisibleCount(totalLines)
-      return
-    }
+    if (prefersReduced.current) return // keep all lines visible
+
+    // Reset and animate only after hydration — content is already painted
+    setVisibleCount(0)
     const interval = setInterval(() => {
       setVisibleCount((n) => {
         if (n >= totalLines) {
