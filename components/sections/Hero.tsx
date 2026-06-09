@@ -2,11 +2,16 @@ import { ArrowRight, Mail } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import { Terminal } from '@/components/ui/Terminal'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/icons'
-import { profile } from '@/content/profile'
+import { getPublicProfile } from '@/lib/data/profile'
 
-export async function Hero() {
+interface Props {
+  locale: string
+}
+
+export async function Hero({ locale }: Props) {
   const t = await getTranslations('hero')
   const ta = await getTranslations('a11y')
+  const profile = await getPublicProfile(locale as 'es' | 'en')
 
   return (
     <section id="hero" className="min-h-[auto] md:min-h-screen flex items-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 scroll-mt-20">
