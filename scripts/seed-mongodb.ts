@@ -3,6 +3,7 @@ import { profile } from '../content/profile'
 import { projects } from '../content/projects'
 import { personalProjects } from '../content/personal-projects'
 import { skills } from '../content/skills'
+import { caseStudies } from '../content/case-studies'
 
 // Inline models to avoid Next.js module resolution issues in scripts
 const localizedString = { es: { type: String, required: true }, en: { type: String, required: true } }
@@ -133,6 +134,39 @@ async function seed() {
     )
   }
   console.log(`✓ ${skills.length} skill categories seeded`)
+
+  // Case studies
+  const CaseStudyModel = mongoose.models.CaseStudy || mongoose.model('CaseStudy', new mongoose.Schema({
+    slug: { type: String, unique: true, index: true },
+    title: Object, intro: Object, context: Object, role: Object, challenge: Object,
+    approach: [Object], technicalDecisions: [Object], result: Object,
+    stack: [String], source: String, relatedProjectSlug: String,
+    isFeatured: Boolean, isPublished: Boolean, order: Number,
+  }, { timestamps: true }))
+
+  for (const [i, cs] of caseStudies.entries()) {
+    await CaseStudyModel.findOneAndUpdate(
+      { slug: cs.slug },
+      {
+        slug: cs.slug,
+        title: { es: cs.title, en: cs.title },
+        intro: { es: cs.intro, en: cs.intro },
+        context: { es: cs.context, en: cs.context },
+        role: { es: cs.role, en: cs.role },
+        challenge: { es: cs.challenge, en: cs.challenge },
+        approach: cs.approach.map((a: string) => ({ es: a, en: a })),
+        technicalDecisions: cs.technicalDecisions.map((d: string) => ({ es: d, en: d })),
+        result: { es: cs.result, en: cs.result },
+        stack: cs.stack,
+        source: cs.source ?? '',
+        isPublished: true,
+        isFeatured: false,
+        order: i,
+      },
+      { upsert: true, new: true }
+    )
+  }
+  console.log(`✓ ${caseStudies.length} case studies seeded`)
 
   await mongoose.disconnect()
   console.log('\nSeed complete ✓')
