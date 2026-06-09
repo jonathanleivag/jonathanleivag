@@ -16,12 +16,12 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params
   return (
     <main>
-      <Hero />
-      <About />
+      <Hero locale={locale} />
+      <About locale={locale} />
       <Projects locale={locale} />
       <CaseStudies locale={locale} />
       <PersonalProjects locale={locale} />
-      <Skills />
+      <Skills locale={locale} />
       <Contact />
     </main>
   )
