@@ -25,17 +25,19 @@ export function Terminal({ username = 'jonathan.leiva', role = 'Senior Full Stac
     { prefix: '→', text: 'React Native · Node.js · REST', isOutput: true },
   ]
 
+  const totalLines = LINES.length
   const [visibleCount, setVisibleCount] = useState(0)
+  const prefersReduced = useRef(false)
 
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) {
-      setVisibleCount(LINES.length)
+    prefersReduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced.current) {
+      setVisibleCount(totalLines)
       return
     }
     const interval = setInterval(() => {
       setVisibleCount((n) => {
-        if (n >= LINES.length) {
+        if (n >= totalLines) {
           clearInterval(interval)
           return n
         }
@@ -43,7 +45,7 @@ export function Terminal({ username = 'jonathan.leiva', role = 'Senior Full Stac
       })
     }, 220)
     return () => clearInterval(interval)
-  }, [])
+  }, [totalLines])
 
   return (
     <div className="rounded-xl border border-white/10 bg-black overflow-hidden font-mono text-sm">
