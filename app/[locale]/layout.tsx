@@ -7,7 +7,8 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { profile } from '@/content/profile'
+import { getPublicProfile } from '@/lib/data/profile'
+import { getPublicLogo } from '@/lib/data/assets'
 import { JsonLd } from '@/components/JsonLd'
 
 interface Props {
@@ -23,10 +24,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'meta' })
 
+  const dbProfile = await getPublicProfile(locale as 'es' | 'en')
+
   return {
     title: {
       default: t('title'),
-      template: `%s | ${profile.name}`,
+      template: `%s | ${dbProfile.name}`,
     },
     description: t('description'),
     keywords: [
@@ -42,8 +45,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'Node.js',
       'Chile',
     ],
-    authors: [{ name: profile.name, url: 'https://jonathanleivag.cl' }],
-    creator: profile.name,
+    authors: [{ name: dbProfile.name, url: 'https://jonathanleivag.cl' }],
+    creator: dbProfile.name,
     robots: {
       index: true,
       follow: true,
@@ -53,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: 'website',
       locale: locale === 'en' ? 'en_US' : 'es_CL',
       url: `https://jonathanleivag.cl/${locale}`,
-      siteName: profile.name,
+      siteName: dbProfile.name,
       title: t('title'),
       description: t('description'),
       images: [
@@ -61,7 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           url: 'https://jonathanleivag.cl/opengraph-image',
           width: 1200,
           height: 630,
-          alt: `${profile.name} — ${profile.role}`,
+          alt: `${dbProfile.name} — ${dbProfile.role}`,
         },
       ],
     },
@@ -96,26 +99,38 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound()
   }
 
-  const messages = await getMessages()
+  const [messages, dbProfile, logo] = await Promise.all([
+    getMessages(),
+    getPublicProfile(locale as 'es' | 'en'),
+    getPublicLogo(),
+  ])
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      <Navbar />
+      <Navbar
+        handle={dbProfile.handle}
+        cvUrl={dbProfile.social.cv}
+        logo={logo}
+      />
       {children}
-      <Footer />
+      <Footer
+        name={dbProfile.name}
+        role={dbProfile.role}
+        handle={dbProfile.handle}
+        github={dbProfile.social.github}
+        linkedin={dbProfile.social.linkedin}
+        email={dbProfile.social.email}
+      />
       <JsonLd
         data={{
           '@context': 'https://schema.org',
           '@type': 'Person',
-          name: profile.name,
-          jobTitle: profile.role,
+          name: dbProfile.name,
+          jobTitle: dbProfile.role,
           url: 'https://jonathanleivag.cl',
-          email: profile.social.email,
+          email: dbProfile.social.email,
           image: 'https://jonathanleivag.cl/opengraph-image',
-          sameAs: [
-            profile.social.github,
-            profile.social.linkedin,
-          ],
+          sameAs: [dbProfile.social.github, dbProfile.social.linkedin],
           knowsAbout: ['Vue.js', 'React', 'TypeScript', 'Node.js', 'GraphQL', 'Express.js', 'JavaScript'],
         }}
       />
