@@ -38,9 +38,9 @@ export async function Hero({ locale }: Props) {
           </div>
 
           <div className="flex items-center gap-5">
-            <a href={profile.social.github} target="_blank" rel="noopener noreferrer" aria-label={ta('github')} className="text-zinc-500 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded-full"><GithubIcon size={20} /></a>
-            <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={ta('linkedin')} className="text-zinc-500 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded-full"><LinkedinIcon size={20} /></a>
-            <a href={`mailto:${profile.social.email}`} aria-label={ta('email')} className="text-zinc-500 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded-full"><Mail size={20} /></a>
+            <a href={profile.social.github} target="_blank" rel="noopener noreferrer" aria-label={ta('github')} className="text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded-full"><GithubIcon size={20} /></a>
+            <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={ta('linkedin')} className="text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded-full"><LinkedinIcon size={20} /></a>
+            <a href={`mailto:${profile.social.email}`} aria-label={ta('email')} className="text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded-full"><Mail size={20} /></a>
           </div>
         </div>
 
