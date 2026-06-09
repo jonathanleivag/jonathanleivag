@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server'
-import { caseStudies } from '@/content/case-studies'
+import { getPublicCaseStudies } from '@/lib/data/case-studies'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 
 export async function CaseStudies({ locale }: Props) {
   const t = await getTranslations('caseStudies')
+  const caseStudies = await getPublicCaseStudies(locale as 'es' | 'en')
 
   return (
     <section id="case-studies" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950/50 scroll-mt-20">
