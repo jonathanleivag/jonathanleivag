@@ -42,7 +42,10 @@ export async function getPublicProfile(locale: Locale) {
       about: {
         title: staticProfile.about.title,
         sectionTitle: staticProfile.about.sectionTitle,
-        summary: gl(doc.summary) || staticProfile.about.summary,
+        // about.summary uses aboutSummary field (long text), falls back to first body paragraph
+        summary: gl(doc.aboutSummary as { es: string; en: string } | null)
+          || gl((doc.about as { body?: Array<{ es: string; en: string }> } | null)?.body?.[0])
+          || staticProfile.about.summary,
         highlights: (doc.about as { highlights?: Array<{ title: { es: string; en: string }; description: { es: string; en: string } }> } | null)?.highlights?.map((h) => ({
           title: getLocalizedField(h.title, locale),
           description: getLocalizedField(h.description, locale),
