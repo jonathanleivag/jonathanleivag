@@ -18,37 +18,11 @@ export async function Skills({ locale }: Props) {
         <div className="max-w-6xl mx-auto">
           <SectionHeader label={t('label')} title={t('title')} subtitle={t('subtitle')} />
           <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {skills.map((cat, index) => {
-              const isLast = index === skills.length - 1
-              const isFormacion = cat.title === 'Formación' || cat.title === 'Education'
-              if (isLast && isFormacion) {
-                return (
-                  <StaggerItem key={cat.title} className="sm:col-span-2 lg:col-span-3">
-                    <div className="border-t border-white/5 pt-8 mt-2">
-                      <div className="mb-4">
-                        <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">{cat.title}</h3>
-                        {cat.description && (
-                          <p className="mt-1 text-sm text-zinc-300 leading-relaxed">{cat.description}</p>
-                        )}
-                      </div>
-                      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                        {cat.skills.map((skill) => (
-                          <div key={skill} className="flex items-center gap-2 text-base text-zinc-300">
-                            <span className="w-1 h-1 rounded-full bg-emerald-500 shrink-0" />
-                            {skill}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </StaggerItem>
-                )
-              }
-              return (
-                <StaggerItem key={cat.title}>
-                  <SkillGroup category={cat} />
-                </StaggerItem>
-              )
-            })}
+            {skills.map((cat) => (
+              <StaggerItem key={cat.title}>
+                <SkillGroup category={cat} />
+              </StaggerItem>
+            ))}
           </StaggerList>
         </div>
       </ScrollReveal>
