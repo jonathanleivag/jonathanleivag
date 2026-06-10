@@ -98,22 +98,40 @@ function useAudio(enabled: boolean) {
   const ctxRef = useRef<AudioContext | null>(null);
   const bufferRef = useRef<AudioBuffer | null>(null);
   const readyRef = useRef(false);
+  const interactedRef = useRef(false);
 
+  // Load audio buffer once
   useEffect(() => {
     if (!enabled) return;
-    const init = async () => {
+    const loadBuffer = async (ctx: AudioContext) => {
       try {
-        ctxRef.current = new AudioContext();
         const res = await fetch("/sounds/sound.ogg");
         if (!res.ok) return;
-        bufferRef.current = await ctxRef.current.decodeAudioData(
-          await res.arrayBuffer(),
-        );
+        bufferRef.current = await ctx.decodeAudioData(await res.arrayBuffer());
         readyRef.current = true;
       } catch {}
     };
-    init();
+
+    // Init AudioContext on first user interaction to satisfy browser autoplay policy
+    const handleInteraction = () => {
+      if (interactedRef.current) return;
+      interactedRef.current = true;
+      ctxRef.current = new AudioContext();
+      loadBuffer(ctxRef.current);
+      // Remove listeners after first interaction
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("keydown", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+    };
+
+    window.addEventListener("click", handleInteraction, { once: true });
+    window.addEventListener("keydown", handleInteraction, { once: true });
+    window.addEventListener("touchstart", handleInteraction, { once: true });
+
     return () => {
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("keydown", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
       ctxRef.current?.close();
     };
   }, [enabled]);
