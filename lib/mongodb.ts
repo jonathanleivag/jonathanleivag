@@ -18,7 +18,7 @@ const cached: CachedConnection = globalForMongoose.mongoose ?? { conn: null, pro
 export async function connectToDatabase() {
   if (cached.conn) return cached.conn
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI!, { bufferCommands: false })
+    cached.promise = mongoose.connect(MONGODB_URI!)
   }
   cached.conn = await cached.promise
   globalForMongoose.mongoose = cached
