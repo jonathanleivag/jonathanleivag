@@ -220,7 +220,13 @@ function SkillEditor({ cat, onSave, onCancel, isPending }: {
         <button
           type="button"
           disabled={isPending}
-          onClick={() => onSave({ title: { es: titleEs, en: titleEn }, description: { es: descEs, en: descEn }, skills, skillUrls })}
+          onClick={() => {
+            // Include pending newSkill if user didn't press + or Enter
+            const finalSkills = newSkill.trim() && !skills.includes(newSkill.trim())
+              ? [...skills, newSkill.trim()]
+              : skills
+            onSave({ title: { es: titleEs, en: titleEn }, description: { es: descEs, en: descEn }, skills: finalSkills, skillUrls })
+          }}
           className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-black font-semibold text-sm rounded-lg transition-colors"
         >
           {isPending ? 'Guardando...' : 'Guardar'}
