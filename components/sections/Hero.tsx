@@ -19,8 +19,8 @@ export async function Hero({ locale }: Props) {
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="space-y-8">
           <div className="space-y-4">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-emerald-400">{profile.availability}</span>
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-zinc-400">{profile.role}</span>
+            <span className="block text-xs font-semibold tracking-[0.2em] uppercase text-emerald-400">{profile.availability}</span>
+            <span className="block text-xs font-semibold tracking-[0.2em] uppercase text-zinc-400">{profile.role}</span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-zinc-100">
               <span className="text-emerald-400">{t('headline')}</span>
             </h1>
