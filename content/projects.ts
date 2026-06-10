@@ -9,6 +9,9 @@ export type Project = {
   stack: string[];
   highlights: string[];
   source: string;
+  url?: string;
+  domain?: string;
+  image?: { src: string; alt: string };
 };
 
 export const projects: Project[] = [

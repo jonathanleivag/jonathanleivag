@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/content/projects'
+import { LinkPreview } from '@/components/ui/LinkPreview'
 
 interface ProjectCardProps {
   project: Project
@@ -14,6 +15,19 @@ export function ProjectCard({ project, locale, viewCaseLabel }: ProjectCardProps
         <div>
           <span className="text-xs font-medium text-emerald-400 uppercase tracking-wider">{project.category}</span>
           <h3 className="mt-1 text-lg font-semibold text-zinc-100 leading-snug">{project.title}</h3>
+          {project.url && project.domain && (
+            <LinkPreview
+              url={project.url}
+              imageSrc={project.image?.src}
+              imageAlt={project.image?.alt}
+              title={project.title}
+              description={project.summary}
+              className="text-xs text-zinc-400 hover:text-emerald-400 transition-colors mt-0.5 inline-flex items-center gap-1"
+            >
+              {project.domain}
+              <ArrowUpRight size={10} />
+            </LinkPreview>
+          )}
         </div>
       </div>
       <p className="text-zinc-400 text-sm leading-relaxed mb-5 flex-1">{project.summary}</p>
