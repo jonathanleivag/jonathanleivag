@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useState } from 'react'
 
 interface SkillCategory {
   _id: string
@@ -16,7 +16,7 @@ export default function AdminSkillsPage() {
   const [categories, setCategories] = useState<SkillCategory[]>([])
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState<string | null>(null)
-  const [isPending, startTransition] = useTransition()
+  const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -34,29 +34,29 @@ export default function AdminSkillsPage() {
   }, [])
 
   const save = async (cat: SkillCategory) => {
-    startTransition(async () => {
-      try {
-        const res = await fetch(`/api/admin/skills/${cat._id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(cat),
-        })
-        if (res.ok) {
-          // Update local state so changes are visible immediately
-          setCategories((prev) => prev.map((c) => c._id === cat._id ? { ...c, ...cat } : c))
-          setMessage('Guardado ✓')
-          setEditingId(null)
-          setTimeout(() => setMessage(''), 2000)
-        } else {
-          const err = await res.json().catch(() => ({}))
-          setMessage(`Error: ${err.error ?? res.status}`)
-          setTimeout(() => setMessage(''), 3000)
-        }
-      } catch {
-        setMessage('Error de conexión')
+    setSaving(true)
+    try {
+      const res = await fetch(`/api/admin/skills/${cat._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cat),
+      })
+      if (res.ok) {
+        setCategories((prev) => prev.map((c) => String(c._id) === String(cat._id) ? { ...c, ...cat } : c))
+        setMessage('Guardado ✓')
+        setEditingId(null)
+        setTimeout(() => setMessage(''), 2000)
+      } else {
+        const err = await res.json().catch(() => ({}))
+        setMessage(`Error: ${err.error ?? res.status}`)
         setTimeout(() => setMessage(''), 3000)
       }
-    })
+    } catch {
+      setMessage('Error de conexión')
+      setTimeout(() => setMessage(''), 3000)
+    } finally {
+      setSaving(false)
+    }
   }
 
   const toggle = async (id: string, current: boolean) => {
@@ -88,7 +88,7 @@ export default function AdminSkillsPage() {
                 cat={cat}
                 onSave={(updated) => save({ ...cat, ...updated })}
                 onCancel={() => setEditingId(null)}
-                isPending={isPending}
+                isPending={saving}
               />
             ) : (
               <div className="space-y-3">
