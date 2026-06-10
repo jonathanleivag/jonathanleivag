@@ -61,7 +61,6 @@ export async function Hero({ locale }: Props) {
               typingSpeed={40}
               delayBetweenCommands={600}
               initialDelay={400}
-              enableSound={true}
             />
           </div>
         </div>
