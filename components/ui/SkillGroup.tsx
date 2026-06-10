@@ -1,5 +1,6 @@
 import type { SkillCategory } from '@/content/skills'
 import { SKILL_URLS } from '@/lib/skill-urls'
+import { LinkPreview } from '@/components/ui/LinkPreview'
 
 interface SkillGroupProps {
   category: SkillCategory & { skillUrls?: Record<string, string> }
@@ -23,16 +24,15 @@ export function SkillGroup({ category }: SkillGroupProps) {
           const baseClass = 'text-sm bg-zinc-900 border border-white/5 text-zinc-300 px-3 py-1.5 rounded-lg transition-colors'
           if (url) {
             return (
-              <a
+              <LinkPreview
                 key={skill}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
+                url={url}
+                title={skill}
+                description={`Ver documentación oficial de ${skill}`}
                 className={`${baseClass} hover:border-emerald-500/30 hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400`}
-                title={`Ver documentación de ${skill}`}
               >
                 {skill}
-              </a>
+              </LinkPreview>
             )
           }
           return (
