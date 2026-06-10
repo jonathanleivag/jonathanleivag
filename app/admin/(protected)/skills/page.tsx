@@ -20,23 +20,41 @@ export default function AdminSkillsPage() {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    fetch('/api/admin/skills').then((r) => r.json()).then((data) => {
-      setCategories(data)
-      setLoading(false)
-    })
+    fetch('/api/admin/skills')
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCategories(data)
+        } else {
+          setMessage('Error al cargar skills')
+        }
+        setLoading(false)
+      })
+      .catch(() => { setMessage('Error de conexión'); setLoading(false) })
   }, [])
 
   const save = async (cat: SkillCategory) => {
     startTransition(async () => {
-      const res = await fetch(`/api/admin/skills/${cat._id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cat),
-      })
-      if (res.ok) {
-        setMessage('Guardado ✓')
-        setEditingId(null)
-        setTimeout(() => setMessage(''), 2000)
+      try {
+        const res = await fetch(`/api/admin/skills/${cat._id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(cat),
+        })
+        if (res.ok) {
+          // Update local state so changes are visible immediately
+          setCategories((prev) => prev.map((c) => c._id === cat._id ? { ...c, ...cat } : c))
+          setMessage('Guardado ✓')
+          setEditingId(null)
+          setTimeout(() => setMessage(''), 2000)
+        } else {
+          const err = await res.json().catch(() => ({}))
+          setMessage(`Error: ${err.error ?? res.status}`)
+          setTimeout(() => setMessage(''), 3000)
+        }
+      } catch {
+        setMessage('Error de conexión')
+        setTimeout(() => setMessage(''), 3000)
       }
     })
   }
