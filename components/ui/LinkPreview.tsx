@@ -85,7 +85,8 @@ export function LinkPreview({
                 transition={{ duration: 0.15, ease: 'easeOut' }}
                 style={{ translateX }}
                 className={cn(
-                  'w-64 rounded-xl border border-white/10 bg-zinc-950 shadow-2xl ring-1 ring-emerald-500/10 overflow-hidden',
+                  'rounded-xl border border-white/10 bg-zinc-950 shadow-2xl ring-1 ring-emerald-500/10 overflow-hidden',
+                  imageSrc ? 'w-64' : 'w-52',
                   'motion-reduce:transition-none'
                 )}
               >
