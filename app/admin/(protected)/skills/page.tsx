@@ -68,6 +68,32 @@ export default function AdminSkillsPage() {
     setCategories((prev) => prev.map((c) => c._id === id ? { ...c, isPublished: !current } : c))
   }
 
+  const create = async (data: Omit<SkillCategory, '_id'>) => {
+    setSaving(true)
+    try {
+      const res = await fetch('/api/admin/skills', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        const created = await res.json()
+        setCategories((prev) => [...prev, created])
+        setEditingId(null)
+        setMessage('Categoría creada ✓')
+        setTimeout(() => setMessage(''), 2000)
+      } else {
+        setMessage('Error al crear categoría')
+        setTimeout(() => setMessage(''), 3000)
+      }
+    } catch {
+      setMessage('Error de conexión')
+      setTimeout(() => setMessage(''), 3000)
+    } finally {
+      setSaving(false)
+    }
+  }
+
   if (loading) return <div className="text-zinc-500">Cargando...</div>
 
   return (
@@ -77,8 +103,37 @@ export default function AdminSkillsPage() {
           <h1 className="text-2xl font-bold text-zinc-100">Skills</h1>
           <p className="text-sm text-zinc-500 mt-1">{categories.length} categorías</p>
         </div>
-        {message && <span className="text-sm text-emerald-400">{message}</span>}
+        <div className="flex items-center gap-3">
+          {message && <span className="text-sm text-emerald-400">{message}</span>}
+          {!editingId && (
+            <button
+              onClick={() => setEditingId('new')}
+              className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-sm rounded-lg transition-colors"
+            >
+              + Nueva categoría
+            </button>
+          )}
+        </div>
       </div>
+
+      {editingId === 'new' && (
+        <div className="bg-zinc-900 border border-emerald-500/20 rounded-xl p-5">
+          <p className="text-sm font-semibold text-zinc-300 mb-4">Nueva categoría</p>
+          <SkillEditor
+            cat={{ _id: '', title: { es: '', en: '' }, description: { es: '', en: '' }, skills: [], skillUrls: {}, order: categories.length, isPublished: true }}
+            onSave={(updated) => create({
+              title: updated.title ?? { es: '', en: '' },
+              description: updated.description,
+              skills: updated.skills ?? [],
+              skillUrls: updated.skillUrls ?? {},
+              order: categories.length,
+              isPublished: true,
+            })}
+            onCancel={() => setEditingId(null)}
+            isPending={saving}
+          />
+        </div>
+      )}
 
       <div className="space-y-4">
         {categories.map((cat) => (
