@@ -20,7 +20,7 @@ export async function Skills({ locale }: Props) {
           <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {skills.map((cat, index) => {
               const isLast = index === skills.length - 1
-              const isFormacion = cat.title === 'Formación'
+              const isFormacion = cat.title === 'Formación' || cat.title === 'Education'
               if (isLast && isFormacion) {
                 return (
                   <StaggerItem key={cat.title} className="sm:col-span-2 lg:col-span-3">
