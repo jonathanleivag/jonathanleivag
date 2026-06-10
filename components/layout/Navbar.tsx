@@ -28,10 +28,10 @@ export function Navbar({
 
   const NAV_LINKS = [
     { label: t('home'), href: '#hero', id: 'hero' },
+    { label: t('about'), href: '#about', id: 'about' },
     { label: t('projects'), href: '#projects', id: 'projects' },
     { label: t('caseStudies'), href: '#case-studies', id: 'case-studies' },
     { label: t('skills'), href: '#skills', id: 'skills' },
-    { label: t('about'), href: '#about', id: 'about' },
     { label: t('contact'), href: '#contact', id: 'contact' },
   ]
 
