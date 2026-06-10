@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@/auth'
+import { assertAdmin } from '@/lib/auth/admin'
 import { connectToDatabase } from '@/lib/mongodb'
 import { SkillCategory } from '@/models/SkillCategory'
 
 export async function GET() {
-  const session = await auth()
-  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const admin = await assertAdmin()
+  if (!admin.ok) return admin.response
 
   await connectToDatabase()
   const categories = await SkillCategory.find().sort({ order: 1 }).lean()

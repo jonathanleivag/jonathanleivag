@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@/auth'
+import { assertAdmin } from '@/lib/auth/admin'
 import { connectToDatabase } from '@/lib/mongodb'
 import { Project } from '@/models/Project'
 import { revalidatePath } from 'next/cache'
 
 export async function POST(request: NextRequest) {
-  const session = await auth()
-  if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const admin = await assertAdmin()
+  if (!admin.ok) return admin.response
 
   const body = await request.json()
 

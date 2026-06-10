@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@/auth'
+import { assertAdmin } from '@/lib/auth/admin'
 import { cloudinary } from '@/lib/cloudinary'
 
 export async function POST(request: NextRequest) {
-  const session = await auth()
-  if (!session?.user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  const admin = await assertAdmin()
+  if (!admin.ok) return admin.response
 
   const { folder, resourceType } = await request.json()
 
