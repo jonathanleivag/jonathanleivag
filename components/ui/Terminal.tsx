@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface TerminalLine {
   prefix: string
@@ -26,46 +27,74 @@ export function Terminal({ username = 'jonathan.leiva', role = 'Senior Full Stac
   ]
 
   const totalLines = LINES.length
-  // Start with all lines visible for LCP — animate from scratch only after mount
   const [visibleCount, setVisibleCount] = useState(totalLines)
   const prefersReduced = useRef(false)
 
   useEffect(() => {
     prefersReduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced.current) return // keep all lines visible
+    if (prefersReduced.current) return
 
-    // Reset and animate only after hydration — content is already painted
     setVisibleCount(0)
     const interval = setInterval(() => {
       setVisibleCount((n) => {
-        if (n >= totalLines) {
-          clearInterval(interval)
-          return n
-        }
+        if (n >= totalLines) { clearInterval(interval); return n }
         return n + 1
       })
-    }, 220)
+    }, 200)
     return () => clearInterval(interval)
   }, [totalLines])
 
   return (
-    <div className="rounded-xl border border-white/10 bg-black overflow-hidden font-mono text-sm">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-zinc-900/60">
+    <div className="rounded-2xl overflow-hidden border border-zinc-700/50 bg-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_20px_80px_-20px_rgba(0,0,0,0.8)] font-mono text-sm">
+      {/* Title bar */}
+      <div className="flex items-center gap-2 px-4 py-3 bg-zinc-900 border-b border-zinc-800">
         <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
         <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
         <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
-        <span className="ml-2 text-xs text-zinc-400">~/portfolio</span>
+        <span className="ml-auto text-xs text-zinc-500 tracking-wide">~/portfolio</span>
       </div>
-      <div className="p-5 space-y-1 min-h-[220px] overflow-x-auto">
-        {LINES.slice(0, visibleCount).map((line, i) => (
-          <div key={i} className="flex gap-3">
-            <span className={line.isOutput ? 'text-emerald-400' : 'text-zinc-400'}>{line.prefix}</span>
-            <span className={line.isOutput ? 'text-zinc-300' : 'text-zinc-100'}>{line.text}</span>
-          </div>
-        ))}
-        <div className="flex gap-3">
-          <span className="text-zinc-400">$</span>
-          <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse motion-reduce:animate-none" />
+
+      {/* Body */}
+      <div className="p-5 min-h-[240px] overflow-x-auto space-y-0.5">
+        <AnimatePresence>
+          {LINES.slice(0, visibleCount).map((line, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -4 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              className="flex gap-3 leading-6"
+            >
+              <span className={
+                line.prefix === '→'
+                  ? 'text-emerald-400 shrink-0'
+                  : line.prefix === '$'
+                  ? 'text-zinc-500 shrink-0'
+                  : 'text-zinc-500 shrink-0'
+              }>
+                {line.prefix}
+              </span>
+              <span className={
+                line.isOutput
+                  ? line.prefix === '→'
+                    ? 'text-emerald-300'
+                    : 'text-zinc-200'
+                  : 'text-zinc-100'
+              }>
+                {line.text}
+              </span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {/* Cursor line */}
+        <div className="flex gap-3 leading-6 mt-1">
+          <span className="text-zinc-500">$</span>
+          <motion.span
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.8, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
+            className="inline-block w-[7px] h-[15px] bg-emerald-400 rounded-sm translate-y-0.5 motion-reduce:animate-none"
+          />
         </div>
       </div>
     </div>
