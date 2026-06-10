@@ -22,16 +22,17 @@ export function Navbar({
   const ta = useTranslations('a11y')
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
   const toggleRef = useRef<HTMLButtonElement>(null)
   const firstDrawerLinkRef = useRef<HTMLAnchorElement>(null)
 
   const NAV_LINKS = [
-    { label: t('home'), href: '#hero' },
-    { label: t('projects'), href: '#projects' },
-    { label: t('caseStudies'), href: '#case-studies' },
-    { label: t('skills'), href: '#skills' },
-    { label: t('about'), href: '#about' },
-    { label: t('contact'), href: '#contact' },
+    { label: t('home'), href: '#hero', id: 'hero' },
+    { label: t('projects'), href: '#projects', id: 'projects' },
+    { label: t('caseStudies'), href: '#case-studies', id: 'case-studies' },
+    { label: t('skills'), href: '#skills', id: 'skills' },
+    { label: t('about'), href: '#about', id: 'about' },
+    { label: t('contact'), href: '#contact', id: 'contact' },
   ]
 
   useEffect(() => {
@@ -39,6 +40,24 @@ export function Navbar({
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    const sectionIds = NAV_LINKS.map((l) => l.id)
+    const observers: IntersectionObserver[] = []
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      )
+      obs.observe(el)
+      observers.push(obs)
+    })
+
+    return () => observers.forEach((obs) => obs.disconnect())
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
@@ -71,13 +90,27 @@ export function Navbar({
           </a>
 
           <ul className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="text-sm text-zinc-400 hover:text-emerald-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = activeSection === link.id
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={cn(
+                      'text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black relative',
+                      isActive
+                        ? 'text-emerald-400 font-medium'
+                        : 'text-zinc-400 hover:text-emerald-400'
+                    )}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <span className="absolute -bottom-1 left-0 right-0 h-px bg-emerald-400 rounded-full" />
+                    )}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
           <div className="hidden lg:flex items-center gap-3">
@@ -97,13 +130,24 @@ export function Navbar({
       {open && (
         <div id="mobile-nav" className="lg:hidden fixed inset-0 top-16 bg-[#0a0a0a] z-[60] flex flex-col p-8">
           <ul className="flex flex-col gap-8 mt-4">
-            {NAV_LINKS.map((link, index) => (
-              <li key={link.href}>
-                <a ref={index === 0 ? firstDrawerLinkRef : undefined} href={link.href} className="text-2xl font-medium text-zinc-300 hover:text-emerald-400 transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black" onClick={() => setOpen(false)}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link, index) => {
+              const isActive = activeSection === link.id
+              return (
+                <li key={link.href}>
+                  <a
+                    ref={index === 0 ? firstDrawerLinkRef : undefined}
+                    href={link.href}
+                    className={cn(
+                      'text-2xl font-medium transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black',
+                      isActive ? 'text-emerald-400' : 'text-zinc-300 hover:text-emerald-400'
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
           <div className="mt-8">
             <LanguageSwitcher />
