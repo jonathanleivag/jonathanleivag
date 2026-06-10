@@ -122,16 +122,19 @@ function useAudio(enabled: boolean) {
       if (ctx.state === "suspended") ctx.resume();
     };
 
+    // All events that count as user gestures in Chrome for AudioContext
     window.addEventListener("click", resume, { once: true });
+    window.addEventListener("pointerdown", resume, { once: true });
     window.addEventListener("keydown", resume, { once: true });
     window.addEventListener("touchstart", resume, { once: true, passive: true });
-    window.addEventListener("scroll", resume, { once: true, passive: true });
+    window.addEventListener("touchend", resume, { once: true, passive: true });
 
     return () => {
       window.removeEventListener("click", resume);
+      window.removeEventListener("pointerdown", resume);
       window.removeEventListener("keydown", resume);
       window.removeEventListener("touchstart", resume);
-      window.removeEventListener("scroll", resume);
+      window.removeEventListener("touchend", resume);
       ctx.close();
     };
   }, [enabled]);
