@@ -89,14 +89,17 @@ function SyntaxHighlightedText({ text }: { text: string }) {
   );
 }
 
+type OutputItem = string | { content: string; highlight?: boolean }
+
 interface TerminalLine {
   type: "command" | "output";
   content: string;
+  highlight?: boolean;
 }
 
 export interface TerminalProps {
   commands: string[];
-  outputs?: Record<number, string[]>;
+  outputs?: Record<number, OutputItem[]>;
   username?: string;
   className?: string;
   typingSpeed?: number;
@@ -162,7 +165,13 @@ export function Terminal({
     if (phase !== "outputting") return;
     if (outputIdx >= 0 && outputIdx < currentOutputs.length) {
       const t = setTimeout(() => {
-        setLines((prev) => [...prev, { type: "output", content: currentOutputs[outputIdx] }]);
+        const item = currentOutputs[outputIdx]
+        const isObj = typeof item === 'object' && item !== null
+        setLines((prev) => [...prev, {
+          type: "output",
+          content: isObj ? (item as { content: string }).content : item as string,
+          highlight: isObj ? (item as { highlight?: boolean }).highlight : false,
+        }]);
         setOutputIdx((i) => i + 1);
       }, 150);
       return () => clearTimeout(t);
@@ -223,7 +232,7 @@ export function Terminal({
               {line.type === "command" ? (
                 <span>{prompt}<SyntaxHighlightedText text={line.content} /></span>
               ) : (
-                <span className="text-neutral-400">{line.content}</span>
+                <span className={line.highlight ? "text-emerald-300 font-semibold" : "text-neutral-400"}>{line.content}</span>
               )}
             </div>
           ))}

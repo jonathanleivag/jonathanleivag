@@ -50,7 +50,7 @@ export async function Hero({ locale }: Props) {
               username={profile.handle ?? 'jonathanleivag'}
               commands={['whoami', 'cat role.txt', 'skills --list']}
               outputs={{
-                0: [profile.handle ?? 'jonathanleivag'],
+                0: [{ content: 'Jonathan Leiva Gómez', highlight: true }],
                 1: [profile.role],
                 2: [
                   'Vue.js · React · TypeScript',
