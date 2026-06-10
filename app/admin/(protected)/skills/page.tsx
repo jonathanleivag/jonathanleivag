@@ -83,7 +83,7 @@ export default function AdminSkillsPage() {
       <div className="space-y-4">
         {categories.map((cat) => (
           <div key={cat._id} className="bg-zinc-900 border border-white/5 rounded-xl p-5">
-            {editingId === cat._id ? (
+            {editingId === String(cat._id) ? (
               <SkillEditor
                 cat={cat}
                 onSave={(updated) => save({ ...cat, ...updated })}
@@ -99,7 +99,7 @@ export default function AdminSkillsPage() {
                   </div>
                   <div className="flex gap-2">
                     <button
-                      onClick={() => setEditingId(cat._id)}
+                      onClick={() => setEditingId(String(cat._id))}
                       className="text-xs border border-white/10 text-zinc-400 hover:text-zinc-100 px-3 py-1.5 rounded-lg transition-colors"
                     >
                       Editar

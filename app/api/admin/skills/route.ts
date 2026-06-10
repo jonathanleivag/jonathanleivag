@@ -9,5 +9,10 @@ export async function GET() {
 
   await connectToDatabase()
   const categories = await SkillCategory.find().sort({ order: 1 }).lean()
-  return NextResponse.json(JSON.parse(JSON.stringify(categories)))
+  // Explicitly stringify _id to avoid ObjectId comparison issues on client
+  const safe = categories.map((c) => ({
+    ...JSON.parse(JSON.stringify(c)),
+    _id: c._id.toString(),
+  }))
+  return NextResponse.json(safe)
 }
