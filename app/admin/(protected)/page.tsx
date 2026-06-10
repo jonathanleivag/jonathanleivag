@@ -6,17 +6,13 @@ import Link from 'next/link'
 async function revalidateSite() {
   'use server'
   const { auth } = await import('@/auth')
+  const { revalidatePath } = await import('next/cache')
   const session = await auth()
   if (!session?.user) throw new Error('Unauthorized')
 
-  await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/revalidate`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-revalidate-secret': process.env.REVALIDATE_SECRET ?? '',
-    },
-    body: JSON.stringify({ paths: ['/', '/es', '/en'] }),
-  })
+  for (const path of ['/', '/es', '/en', '/es/projects', '/en/projects']) {
+    revalidatePath(path)
+  }
 }
 
 export default async function AdminDashboard() {

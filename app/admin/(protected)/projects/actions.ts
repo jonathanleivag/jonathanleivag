@@ -105,25 +105,12 @@ export async function deleteProject(id: string) {
 
 async function triggerRevalidation(slugs?: string[]) {
   try {
-    const secret = process.env.REVALIDATE_SECRET
-    if (!secret) return
-
     const paths = [
-      '/',
-      '/es',
-      '/en',
+      '/', '/es', '/en',
       ...(slugs ? slugs.flatMap((s) => [`/es/projects/${s}`, `/en/projects/${s}`]) : []),
     ]
-
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/api/revalidate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-revalidate-secret': secret,
-      },
-      body: JSON.stringify({ paths }),
-    })
+    paths.forEach((p) => revalidatePath(p))
   } catch {
-    // Non-critical: revalidation will happen automatically on next ISR cycle
+    // Non-critical
   }
 }
