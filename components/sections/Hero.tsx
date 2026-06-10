@@ -46,7 +46,23 @@ export async function Hero({ locale }: Props) {
 
         <div className="w-full max-w-lg mx-auto lg:mx-0 [perspective:1200px]">
           <div className="[transform:rotateY(-12deg)_rotateX(5deg)] [filter:drop-shadow(0_25px_40px_rgba(0,0,0,0.55))]">
-            <Terminal username={profile.social.email?.split('@')[0] ?? 'jonathan.leiva'} role={profile.role} />
+            <Terminal
+              username={profile.handle ?? 'jonathanleivag'}
+              commands={['whoami', 'cat role.txt', 'skills --list']}
+              outputs={{
+                0: [profile.handle ?? 'jonathanleivag'],
+                1: [profile.role],
+                2: [
+                  'Vue.js · React · TypeScript',
+                  'Express.js · GraphQL · Apollo',
+                  'React Native · Node.js · REST',
+                ],
+              }}
+              typingSpeed={40}
+              delayBetweenCommands={600}
+              initialDelay={400}
+              enableSound={false}
+            />
           </div>
         </div>
       </div>
