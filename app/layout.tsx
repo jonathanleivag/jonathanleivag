@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Archivo, JetBrains_Mono } from 'next/font/google'
 import { getLocale } from 'next-intl/server'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
+const jetbrainsMono = JetBrains_Mono({ variable: '--font-jetbrains-mono', subsets: ['latin'], weight: ['400', '500', '700'] })
+const archivo = Archivo({ variable: '--font-archivo', subsets: ['latin'], weight: ['400', '500', '700', '900'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.jonathanleivag.cl'),
@@ -17,11 +17,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${jetbrainsMono.variable} ${archivo.variable} dark h-full antialiased`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-zinc-100">
+      <body className="min-h-full flex flex-col bg-[#151a19] text-[#e8e6dd]">
         {children}
         <SpeedInsights />
       </body>
