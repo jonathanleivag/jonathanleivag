@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description: cs.intro,
       openGraph: defaultOpenGraph(locale, title, cs.intro, `/projects/${slug}`, profile.name),
-      twitter: defaultTwitter(title, cs.intro),
+      twitter: defaultTwitter(locale, title, cs.intro),
       alternates: pageAlternates(locale, `/projects/${slug}`),
     }
   }
@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ] : defaultOpenGraph(locale, title, project.summary, `/projects/${slug}`, profile.name).images,
       },
       twitter: {
-        ...defaultTwitter(title, project.summary),
-        images: project.image ? [project.image.src] : defaultTwitter(title, project.summary).images,
+        ...defaultTwitter(locale, title, project.summary),
+        images: project.image ? [project.image.src] : defaultTwitter(locale, title, project.summary).images,
       },
       alternates: pageAlternates(locale, `/projects/${slug}`),
     }

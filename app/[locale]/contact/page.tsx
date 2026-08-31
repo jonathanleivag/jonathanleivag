@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: pageAlternates(locale, '/contact'),
     openGraph: defaultOpenGraph(locale, title, description, '/contact', profile.name),
-    twitter: defaultTwitter(title, description),
+    twitter: defaultTwitter(locale, title, description),
   }
 }
 

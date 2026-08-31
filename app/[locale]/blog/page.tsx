@@ -26,7 +26,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     description,
     alternates: pageAlternates(locale, '/blog'),
     openGraph: defaultOpenGraph(locale, title, description, '/blog'),
-    twitter: defaultTwitter(title, description),
+    twitter: defaultTwitter(locale, title, description),
     ...(category ? { robots: { index: false, follow: true } } : {}),
   }
 }

@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? [{ url: post.image.src, width: post.image.width, height: post.image.height, alt: post.image.alt }]
     : undefined
 
-  const twitter = defaultTwitter(post.title, post.excerpt)
+  const twitter = defaultTwitter(locale, post.title, post.excerpt)
 
   return {
     title: post.title,
