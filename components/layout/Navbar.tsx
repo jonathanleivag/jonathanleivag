@@ -22,6 +22,7 @@ export function Navbar({
   const ta = useTranslations('a11y')
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [prevPathname, setPrevPathname] = useState(pathname)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const firstDrawerLinkRef = useRef<HTMLAnchorElement>(null)
 
@@ -55,7 +56,10 @@ export function Navbar({
     else { toggleRef.current?.focus() }
   }, [open])
 
-  useEffect(() => { setOpen(false) }, [pathname])
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
+    setOpen(false)
+  }
 
   return (
     <>
