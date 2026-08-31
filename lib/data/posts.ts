@@ -57,7 +57,6 @@ export async function getPublicPosts(locale: Locale): Promise<PublicPost[]> {
   try {
     await connectToDatabase()
     const docs = await Post.find({ isPublished: true }).sort({ publishedAt: -1 }).lean()
-    if (!docs.length) return staticToPublic()
     return docs.map((d) => toPublicPost(d as MongoPost, locale))
   } catch {
     return staticToPublic()
@@ -68,9 +67,7 @@ export async function getPublicPostBySlug(locale: Locale, slug: string): Promise
   try {
     await connectToDatabase()
     const doc = await Post.findOne({ slug, isPublished: true }).lean()
-    if (!doc) {
-      return staticToPublic().find((p) => p.slug === slug) ?? null
-    }
+    if (!doc) return null
     return toPublicPost(doc as MongoPost, locale)
   } catch {
     return staticToPublic().find((p) => p.slug === slug) ?? null

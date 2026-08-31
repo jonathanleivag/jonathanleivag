@@ -12,7 +12,7 @@ export function CaseRow({ index, title, category, intro, href }: Props) {
   return (
     <Link
       href={href}
-      className="grid grid-cols-[60px_1fr_320px_28px] items-start gap-6 py-6 px-2 border-t border-[var(--dc-border)] cursor-pointer hover:bg-[var(--dc-surface)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd]"
+      className="grid grid-cols-[40px_1fr_28px] sm:grid-cols-[60px_minmax(0,1fr)_320px_28px] items-start gap-6 py-6 px-2 border-t border-[var(--dc-border)] cursor-pointer hover:bg-[var(--dc-surface)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd]"
     >
       <span className="font-heading text-3xl font-black leading-none text-transparent" style={{ WebkitTextStroke: '1px rgba(232,230,221,.32)' }}>
         {String(index).padStart(2, '0')}

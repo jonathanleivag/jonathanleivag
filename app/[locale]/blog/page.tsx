@@ -92,7 +92,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
 
 function PostRowWithCategory({ date, category, minutes, title, href }: { date: string; category: string; minutes: string; title: string; href: string }) {
   return (
-    <Link href={href} className="grid grid-cols-[110px_80px_1fr_50px_28px] sm:grid-cols-[140px_96px_1fr_60px_28px] items-center gap-5 py-5 px-2 border-t border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
+    <Link href={href} className="grid grid-cols-[90px_minmax(0,1fr)_28px] sm:grid-cols-[140px_96px_minmax(0,1fr)_60px_28px] items-center gap-5 py-5 px-2 border-t border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
       <span className="text-[11px] tracking-[0.08em] text-[var(--dc-muted)]">{date}</span>
       <span className="text-[10px] tracking-[0.12em] text-[var(--dc-muted)] uppercase hidden sm:block">{category}</span>
       <span className="font-heading text-lg font-bold tracking-tight">{title}</span>
