@@ -1,6 +1,7 @@
 export const revalidate = 86400
 
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { getPublicProfile } from '@/lib/data/profile'
 import { getPublicExperiences } from '@/lib/data/experience'
@@ -44,7 +45,11 @@ export default async function AboutPage({ params }: Props) {
           ))}
         </div>
         <div className="flex flex-col gap-5">
-          <div className="h-[280px] border border-[var(--dc-border-strong)]" />
+          <div className="relative h-[280px] border border-[var(--dc-border-strong)] overflow-hidden">
+            {profile.portrait && (
+              <Image src={profile.portrait.src} alt={profile.portrait.alt} fill sizes="(min-width: 1024px) 380px, 100vw" className="object-cover" priority />
+            )}
+          </div>
           <div className="flex flex-col gap-3 p-5 border border-[var(--dc-border-strong)] text-xs tracking-[0.04em] text-[#c9cec9]">
             <span className="text-[10px] tracking-[0.16em] uppercase text-[var(--dc-muted)]">{t('dataLabel')}</span>
             <span>{profile.location}</span>

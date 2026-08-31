@@ -20,12 +20,15 @@ export function getLocalizedField(
 export async function getPublicProfile(locale: Locale) {
   try {
     const doc = await getProfile()
-    if (!doc) return staticProfile
+    if (!doc) return { ...staticProfile, portrait: undefined }
 
     const gl = (field: unknown) =>
       getLocalizedField(field as { es: string; en: string } | null, locale)
 
     const social = doc.social as { github?: string; linkedin?: string; email?: string; cv?: string } | null
+    const about = doc.about as { body?: Array<{ es: string; en: string }>; highlights?: Array<{ title: { es: string; en: string }; description: { es: string; en: string } }> } | null
+    const portrait = doc.portrait as { url?: string; alt?: string; width?: number; height?: number } | null
+    const body = about?.body?.map((p) => gl(p)).filter(Boolean) ?? []
 
     return {
       name: (doc.name as string) || staticProfile.name,
@@ -42,16 +45,19 @@ export async function getPublicProfile(locale: Locale) {
       about: {
         title: staticProfile.about.title,
         sectionTitle: staticProfile.about.sectionTitle,
-        // about.summary uses aboutSummary field (long text), falls back to first body paragraph
-        summary: gl(doc.aboutSummary as { es: string; en: string } | null)
-          || gl((doc.about as { body?: Array<{ es: string; en: string }> } | null)?.body?.[0])
-          || staticProfile.about.summary,
-        highlights: (doc.about as { highlights?: Array<{ title: { es: string; en: string }; description: { es: string; en: string } }> } | null)?.highlights?.map((h) => ({
+        summary: gl(doc.summary) || staticProfile.about.summary,
+        highlights: about?.highlights?.map((h) => ({
           title: getLocalizedField(h.title, locale),
           description: getLocalizedField(h.description, locale),
         })) || staticProfile.about.highlights,
-        body: staticProfile.about.body,
+        body: body.length ? body : staticProfile.about.body,
       },
+      portrait: portrait?.url ? {
+        src: portrait.url,
+        alt: portrait.alt || (doc.name as string) || '',
+        width: portrait.width || 1200,
+        height: portrait.height || 800,
+      } : undefined,
       social: {
         github: social?.github || staticProfile.social.github,
         linkedin: social?.linkedin || staticProfile.social.linkedin,
@@ -64,6 +70,6 @@ export async function getPublicProfile(locale: Locale) {
       metaDescription: staticProfile.metaDescription,
     }
   } catch {
-    return staticProfile
+    return { ...staticProfile, portrait: undefined }
   }
 }
