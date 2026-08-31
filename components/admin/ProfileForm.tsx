@@ -1,8 +1,16 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 import { CheckCircle, XCircle } from 'lucide-react'
 import { updateProfileAction } from '@/app/admin/(protected)/profile/actions'
+import { ImageUploadField } from '@/components/admin/ImageUploadField'
+
+interface PortraitImage {
+  url: string
+  publicId: string
+  width: number
+  height: number
+}
 
 interface ProfileData {
   name?: string
@@ -14,6 +22,9 @@ interface ProfileData {
   headlineEn?: string
   summaryEs?: string
   summaryEn?: string
+  aboutBodyEs?: string
+  aboutBodyEn?: string
+  portrait?: PortraitImage
   github?: string
   linkedin?: string
   email?: string
@@ -22,6 +33,7 @@ interface ProfileData {
 
 export function ProfileForm({ data }: { data: ProfileData }) {
   const [state, action, isPending] = useActionState(updateProfileAction, null)
+  const [portrait, setPortrait] = useState<PortraitImage | null>(data.portrait ?? null)
 
   const base = 'w-full bg-zinc-900 border border-white/10 text-zinc-100 placeholder-zinc-600 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400'
   const label = 'block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5'
@@ -51,6 +63,25 @@ export function ProfileForm({ data }: { data: ProfileData }) {
       <div className="grid sm:grid-cols-2 gap-4">
         <div><label className={label}>Resumen (ES)</label><textarea name="summaryEs" rows={3} defaultValue={data.summaryEs} className={`${base} resize-none`} /></div>
         <div><label className={label}>Resumen (EN)</label><textarea name="summaryEn" rows={3} defaultValue={data.summaryEn} className={`${base} resize-none`} /></div>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className={label}>Sobre mí — párrafos adicionales (ES)</label>
+          <textarea name="aboutBodyEs" rows={6} defaultValue={data.aboutBodyEs} placeholder={'Un párrafo por bloque, separados por una línea en blanco.'} className={`${base} resize-y`} />
+        </div>
+        <div>
+          <label className={label}>Sobre mí — párrafos adicionales (EN)</label>
+          <textarea name="aboutBodyEn" rows={6} defaultValue={data.aboutBodyEn} placeholder={'One paragraph per block, separated by a blank line.'} className={`${base} resize-y`} />
+        </div>
+      </div>
+      <div>
+        <label className={label}>Foto de perfil</label>
+        <input type="hidden" name="imageUrl" value={portrait?.url ?? ''} />
+        <input type="hidden" name="imagePublicId" value={portrait?.publicId ?? ''} />
+        <input type="hidden" name="imageWidth" value={portrait?.width ?? ''} />
+        <input type="hidden" name="imageHeight" value={portrait?.height ?? ''} />
+        <ImageUploadField onUpload={setPortrait} currentUrl={portrait?.url} folder="jonathanleivag/profile" />
+        {portrait && <p className="text-xs text-emerald-400 mt-1">Imagen lista ✓</p>}
       </div>
       <div className="grid sm:grid-cols-2 gap-4">
         <div><label className={label}>GitHub</label><input name="github" defaultValue={data.github} className={base} /></div>

@@ -1,6 +1,7 @@
 export const revalidate = 86400
 
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getPublicPosts } from '@/lib/data/posts'
@@ -64,13 +65,20 @@ export default async function BlogPage({ params, searchParams }: Props) {
         {filtered.map((post) => (
           <div key={post.slug}>
             {post.isFeatured && (
-              <Link href={`/blog/${post.slug}`} className="block py-11 border-b border-[var(--dc-border)]">
-                <span className="flex items-center gap-3.5 text-[10px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">
-                  <span className="px-2 py-1 bg-[#e8e6dd] text-[#111111] font-bold">{t('featuredBadge')}</span>
-                  <span>{formatDate(post.publishedAt, locale)} · {categoryLabel(post.category)} · {post.readingMinutes} {t('minutesSuffix')}</span>
-                </span>
-                <h2 className="mt-[18px] font-heading text-2xl sm:text-[38px] font-black leading-[1.06] tracking-[-0.03em]">{post.title}</h2>
-                <p className="mt-3 text-sm leading-[1.9] text-[#c9cec9] max-w-2xl">{post.excerpt}</p>
+              <Link href={`/blog/${post.slug}`} className="grid lg:grid-cols-[1fr_260px] items-center gap-8 py-11 border-b border-[var(--dc-border)]">
+                <div>
+                  <span className="flex items-center gap-3.5 text-[10px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">
+                    <span className="px-2 py-1 bg-[#e8e6dd] text-[#111111] font-bold">{t('featuredBadge')}</span>
+                    <span>{formatDate(post.publishedAt, locale)} · {categoryLabel(post.category)} · {post.readingMinutes} {t('minutesSuffix')}</span>
+                  </span>
+                  <h2 className="mt-[18px] font-heading text-2xl sm:text-[38px] font-black leading-[1.06] tracking-[-0.03em]">{post.title}</h2>
+                  <p className="mt-3 text-sm leading-[1.9] text-[#c9cec9] max-w-2xl">{post.excerpt}</p>
+                </div>
+                {post.image && (
+                  <div className="relative h-[160px] border border-[var(--dc-border-strong)] overflow-hidden hidden lg:block">
+                    <Image src={post.image.src} alt={post.image.alt} fill sizes="260px" className="object-cover" />
+                  </div>
+                )}
               </Link>
             )}
           </div>
@@ -83,6 +91,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
             minutes={`${post.readingMinutes} ${t('minutesSuffix')}`}
             title={post.title}
             href={`/blog/${post.slug}`}
+            image={post.image}
           />
         ))}
       </section>
@@ -90,9 +99,12 @@ export default async function BlogPage({ params, searchParams }: Props) {
   )
 }
 
-function PostRowWithCategory({ date, category, minutes, title, href }: { date: string; category: string; minutes: string; title: string; href: string }) {
+function PostRowWithCategory({ date, category, minutes, title, href, image }: { date: string; category: string; minutes: string; title: string; href: string; image?: { src: string; alt: string } }) {
   return (
-    <Link href={href} className="grid grid-cols-[90px_minmax(0,1fr)_28px] sm:grid-cols-[140px_96px_minmax(0,1fr)_60px_28px] items-center gap-5 py-5 px-2 border-t border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
+    <Link href={href} className="grid grid-cols-[40px_90px_minmax(0,1fr)_28px] sm:grid-cols-[48px_140px_96px_minmax(0,1fr)_60px_28px] items-center gap-5 py-5 px-2 border-t border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
+      <span className="relative w-10 h-10 border border-[var(--dc-border-strong)] overflow-hidden shrink-0">
+        {image && <Image src={image.src} alt={image.alt} fill sizes="40px" className="object-cover" />}
+      </span>
       <span className="text-[11px] tracking-[0.08em] text-[var(--dc-muted)]">{date}</span>
       <span className="text-[10px] tracking-[0.12em] text-[var(--dc-muted)] uppercase hidden sm:block">{category}</span>
       <span className="font-heading text-lg font-bold tracking-tight">{title}</span>

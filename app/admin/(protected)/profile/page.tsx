@@ -10,6 +10,8 @@ export default async function AdminProfilePage() {
   const headline = profile?.headline as { es?: string; en?: string } | null
   const summary = profile?.summary as { es?: string; en?: string } | null
   const social = profile?.social as { github?: string; linkedin?: string; email?: string; cv?: string } | null
+  const about = profile?.about as { body?: Array<{ es?: string; en?: string }> } | null
+  const portrait = profile?.portrait as { url?: string; publicId?: string; width?: number; height?: number } | null
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -29,6 +31,14 @@ export default async function AdminProfilePage() {
           headlineEn: headline?.en,
           summaryEs: summary?.es,
           summaryEn: summary?.en,
+          aboutBodyEs: about?.body?.map((p) => p.es ?? '').join('\n\n'),
+          aboutBodyEn: about?.body?.map((p) => p.en ?? '').join('\n\n'),
+          portrait: portrait?.url ? {
+            url: portrait.url,
+            publicId: portrait.publicId ?? '',
+            width: portrait.width ?? 1200,
+            height: portrait.height ?? 800,
+          } : undefined,
           github: social?.github,
           linkedin: social?.linkedin,
           email: social?.email,

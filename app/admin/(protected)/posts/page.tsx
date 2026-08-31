@@ -1,6 +1,15 @@
 'use client'
 
 import { useEffect, useState, useTransition } from 'react'
+import Image from 'next/image'
+import { ImageUploadField } from '@/components/admin/ImageUploadField'
+
+interface PostImage {
+  url: string
+  publicId: string
+  width: number
+  height: number
+}
 
 interface PostItem {
   _id: string
@@ -9,6 +18,7 @@ interface PostItem {
   excerpt: { es: string; en: string }
   content: { es: string; en: string }
   category: 'articulo' | 'til' | 'tutorial' | 'snippet' | 'caso'
+  image?: PostImage
   tags: string[]
   readingMinutes: number
   isFeatured: boolean
@@ -24,6 +34,7 @@ const emptyForm = (): Omit<PostItem, '_id'> => ({
   excerpt: { es: '', en: '' },
   content: { es: '', en: '' },
   category: 'articulo',
+  image: undefined,
   tags: [],
   readingMinutes: 5,
   isFeatured: false,
@@ -107,13 +118,18 @@ export default function AdminPostsPage() {
           {items.map((post) => (
             <div key={post._id} className="bg-zinc-900 border border-white/5 rounded-xl px-5 py-4">
               <div className="flex items-start justify-between gap-4">
-                <div className="space-y-0.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <div className={`w-2 h-2 rounded-full shrink-0 ${post.isPublished ? 'bg-emerald-400' : 'bg-zinc-600'}`} />
-                    <p className="text-sm font-medium text-zinc-100">{post.title.es}</p>
-                    {post.isFeatured && <span className="text-xs text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded">Destacado</span>}
+                <div className="flex items-start gap-3">
+                  {post.image?.url && (
+                    <Image src={post.image.url} alt="" width={48} height={48} className="w-12 h-12 rounded-lg object-cover shrink-0" />
+                  )}
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <div className={`w-2 h-2 rounded-full shrink-0 ${post.isPublished ? 'bg-emerald-400' : 'bg-zinc-600'}`} />
+                      <p className="text-sm font-medium text-zinc-100">{post.title.es}</p>
+                      {post.isFeatured && <span className="text-xs text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded">Destacado</span>}
+                    </div>
+                    <p className="text-xs text-zinc-500 ml-4">{post.category} · {post.slug} · {post.readingMinutes} min</p>
                   </div>
-                  <p className="text-xs text-zinc-500 ml-4">{post.category} · {post.slug} · {post.readingMinutes} min</p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <button onClick={() => toggle(post._id, post.isPublished)} className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${post.isPublished ? 'border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10' : 'border-white/10 text-zinc-500 hover:text-zinc-300'}`}>
@@ -149,6 +165,7 @@ function PostForm({ initial, onSave, onCancel, isPending }: {
   const [contentEs, setContentEs] = useState(initial.content.es)
   const [contentEn, setContentEn] = useState(initial.content.en)
   const [category, setCategory] = useState(initial.category)
+  const [image, setImage] = useState<PostImage | null>(initial.image ?? null)
   const [tagsRaw, setTagsRaw] = useState(initial.tags.join(', '))
   const [readingMinutes, setReadingMinutes] = useState(initial.readingMinutes)
   const [isFeatured, setIsFeatured] = useState(initial.isFeatured)
@@ -179,6 +196,11 @@ function PostForm({ initial, onSave, onCancel, isPending }: {
       <div><label className={lbl}>Resumen EN *</label><textarea value={excerptEn} onChange={(e) => setExcerptEn(e.target.value)} rows={2} className={`${inp} resize-none`} /></div>
       <div><label className={lbl}>Contenido ES * (líneas que empiezan con &quot;## &quot; son encabezados)</label><textarea value={contentEs} onChange={(e) => setContentEs(e.target.value)} rows={10} className={`${inp} resize-y font-mono`} /></div>
       <div><label className={lbl}>Contenido EN *</label><textarea value={contentEn} onChange={(e) => setContentEn(e.target.value)} rows={10} className={`${inp} resize-y font-mono`} /></div>
+      <div>
+        <label className={lbl}>Imagen de portada</label>
+        <ImageUploadField onUpload={setImage} currentUrl={image?.url} folder="jonathanleivag/posts" />
+        {image && <p className="text-xs text-emerald-400 mt-1">Imagen lista ✓</p>}
+      </div>
       <div className="grid sm:grid-cols-3 gap-4">
         <div><label className={lbl}>Tags (comas)</label><input value={tagsRaw} onChange={(e) => setTagsRaw(e.target.value)} placeholder="Vue 3, TypeScript" className={inp} /></div>
         <div><label className={lbl}>Minutos de lectura</label><input type="number" value={readingMinutes} onChange={(e) => setReadingMinutes(Number(e.target.value))} className={inp} /></div>
@@ -205,6 +227,7 @@ function PostForm({ initial, onSave, onCancel, isPending }: {
             excerpt: { es: excerptEs, en: excerptEn || excerptEs },
             content: { es: contentEs, en: contentEn || contentEs },
             category,
+            image: image ?? undefined,
             tags: tagsRaw.split(',').map((s) => s.trim()).filter(Boolean),
             readingMinutes,
             isFeatured,
