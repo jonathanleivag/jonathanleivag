@@ -122,6 +122,7 @@ export default async function HomePage({ params }: Props) {
               minutesLabel={`${post.readingMinutes} ${tBlog('minutesSuffix')}`}
               title={post.title}
               href={`/blog/${post.slug}`}
+              image={post.image}
             />
           ))}
         </section>

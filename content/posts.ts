@@ -8,7 +8,7 @@ export type Post = {
   readingMinutes: number
   isFeatured: boolean
   publishedAt: string
-  image?: { src: string; alt: string }
+  image?: { src: string; alt: string; width: number; height: number }
 }
 
 export const posts: Post[] = [

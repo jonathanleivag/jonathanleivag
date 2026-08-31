@@ -8,6 +8,7 @@ import { getTranslations } from 'next-intl/server'
 import { getPublicCaseStudyBySlug, getPublicCaseStudySlugs } from '@/lib/data/case-studies'
 import { getPublicPersonalProjects, getAllProjectSlugs } from '@/lib/data/projects'
 import { getPublicProfile } from '@/lib/data/profile'
+import { defaultOpenGraph, defaultTwitter, pageAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -35,27 +36,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ])
 
   if (cs) {
+    const title = `${cs.title} — ${profile.name}`
     return {
-      title: `${cs.title} — ${profile.name}`,
+      title,
       description: cs.intro,
-      alternates: {
-        canonical: `https://www.jonathanleivag.cl/${locale}/projects/${slug}`,
-        languages: {
-          es: `https://www.jonathanleivag.cl/es/projects/${slug}`,
-          en: `https://www.jonathanleivag.cl/en/projects/${slug}`,
-        },
-      },
+      openGraph: defaultOpenGraph(locale, title, cs.intro, `/projects/${slug}`, profile.name),
+      twitter: defaultTwitter(locale, title, cs.intro),
+      alternates: pageAlternates(locale, `/projects/${slug}`),
     }
   }
 
   const project = personalProjects.find((p) => p.slug === slug)
   if (project) {
+    const title = `${project.title} — ${profile.name}`
     return {
-      title: `${project.title} — ${profile.name}`,
+      title,
       description: project.summary,
       openGraph: {
-        title: `${project.title} — ${profile.name}`,
-        description: project.summary,
+        ...defaultOpenGraph(locale, title, project.summary, `/projects/${slug}`, profile.name),
         images: project.image ? [
           {
             url: project.image.src,
@@ -63,22 +61,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             height: project.image.height,
             alt: project.image.alt,
           },
-        ] : [],
-        type: 'website',
+        ] : defaultOpenGraph(locale, title, project.summary, `/projects/${slug}`, profile.name).images,
       },
       twitter: {
-        card: 'summary_large_image',
-        title: `${project.title} — ${profile.name}`,
-        description: project.summary,
-        images: project.image ? [project.image.src] : [],
+        ...defaultTwitter(locale, title, project.summary),
+        images: project.image ? [project.image.src] : defaultTwitter(locale, title, project.summary).images,
       },
-      alternates: {
-        canonical: `https://www.jonathanleivag.cl/${locale}/projects/${slug}`,
-        languages: {
-          es: `https://www.jonathanleivag.cl/es/projects/${slug}`,
-          en: `https://www.jonathanleivag.cl/en/projects/${slug}`,
-        },
-      },
+      alternates: pageAlternates(locale, `/projects/${slug}`),
     }
   }
 

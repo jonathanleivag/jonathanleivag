@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getPublicPosts } from '@/lib/data/posts'
+import { defaultOpenGraph, defaultTwitter, pageAlternates } from '@/lib/seo'
 
 const CATEGORIES = ['articulo', 'til', 'tutorial', 'snippet', 'caso'] as const
 
@@ -13,10 +14,21 @@ interface Props {
   searchParams: Promise<{ category?: string }>
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { locale } = await params
+  const { category } = await searchParams
   const t = await getTranslations({ locale, namespace: 'blogPage' })
-  return { title: t('heading'), description: t('subtitle') }
+  const title = t('heading')
+  const description = t('subtitle')
+
+  return {
+    title,
+    description,
+    alternates: pageAlternates(locale, '/blog'),
+    openGraph: defaultOpenGraph(locale, title, description, '/blog'),
+    twitter: defaultTwitter(locale, title, description),
+    ...(category ? { robots: { index: false, follow: true } } : {}),
+  }
 }
 
 function formatDate(iso: string, locale: string) {
@@ -95,6 +107,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
             minutes={`${post.readingMinutes} ${t('minutesSuffix')}`}
             title={post.title}
             href={`/blog/${post.slug}`}
+            image={post.image}
           />
         ))}
       </section>
@@ -102,9 +115,12 @@ export default async function BlogPage({ params, searchParams }: Props) {
   )
 }
 
-function PostRowWithCategory({ date, category, minutes, title, href }: { date: string; category: string; minutes: string; title: string; href: string }) {
+function PostRowWithCategory({ date, category, minutes, title, href, image }: { date: string; category: string; minutes: string; title: string; href: string; image?: { src: string; alt: string } }) {
   return (
-    <Link href={href} className="grid grid-cols-[90px_minmax(0,1fr)_28px] sm:grid-cols-[140px_96px_minmax(0,1fr)_60px_28px] items-center gap-5 py-5 px-2 border-t border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
+    <Link href={href} className="grid grid-cols-[40px_90px_minmax(0,1fr)_28px] sm:grid-cols-[48px_140px_96px_minmax(0,1fr)_60px_28px] items-center gap-5 py-5 px-2 border-t border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
+      <span className="relative w-10 h-10 border border-[var(--dc-border-strong)] overflow-hidden shrink-0">
+        {image && <Image src={image.src} alt={image.alt} fill sizes="40px" className="object-cover" />}
+      </span>
       <span className="text-[11px] tracking-[0.08em] text-[var(--dc-muted)]">{date}</span>
       <span className="text-[10px] tracking-[0.12em] text-[var(--dc-muted)] uppercase hidden sm:block">{category}</span>
       <span className="font-heading text-lg font-bold tracking-tight">{title}</span>

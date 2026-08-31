@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next'
 
+import { BASE_URL } from '@/lib/seo'
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -9,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin', '/api'],
       },
     ],
-    sitemap: 'https://www.jonathanleivag.cl/sitemap.xml',
+    sitemap: `${BASE_URL}/sitemap.xml`,
   }
 }
