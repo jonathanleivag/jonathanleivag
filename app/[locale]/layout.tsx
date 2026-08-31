@@ -10,6 +10,7 @@ import { Footer } from '@/components/layout/Footer'
 import { getPublicProfile } from '@/lib/data/profile'
 import { getPublicLogo } from '@/lib/data/assets'
 import { JsonLd } from '@/components/JsonLd'
+import { BASE_URL, defaultOpenGraph, defaultTwitter, pageAlternates, SEO_KEYWORDS } from '@/lib/seo'
 
 interface Props {
   children: React.ReactNode
@@ -32,57 +33,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       template: `%s | ${dbProfile.name}`,
     },
     description: t('description'),
-    keywords: [
-      'Desarrollador Full Stack Senior',
-      'JavaScript',
-      'Vue.js',
-      'React',
-      'React Native',
-      'TypeScript',
-      'Express.js',
-      'GraphQL',
-      'Apollo',
-      'Node.js',
-      'Chile',
-    ],
-    authors: [{ name: dbProfile.name, url: 'https://www.jonathanleivag.cl' }],
+    keywords: SEO_KEYWORDS[locale as 'es' | 'en'],
+    authors: [{ name: dbProfile.name, url: BASE_URL }],
     creator: dbProfile.name,
     robots: {
       index: true,
       follow: true,
       googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
     },
-    openGraph: {
-      type: 'website',
-      locale: locale === 'en' ? 'en_US' : 'es_CL',
-      url: `https://www.jonathanleivag.cl/${locale}`,
-      siteName: dbProfile.name,
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: 'https://www.jonathanleivag.cl/opengraph-image',
-          width: 1200,
-          height: 630,
-          alt: `${dbProfile.name} — ${dbProfile.role}`,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      creator: '@jonathanleivag',
-      images: ['https://www.jonathanleivag.cl/opengraph-image'],
-    },
-    alternates: {
-      canonical: `https://www.jonathanleivag.cl/${locale}`,
-      languages: {
-        es: 'https://www.jonathanleivag.cl/es',
-        en: 'https://www.jonathanleivag.cl/en',
-        'x-default': 'https://www.jonathanleivag.cl/es',
-      },
-    },
+    openGraph: defaultOpenGraph(locale, t('title'), t('description'), '', dbProfile.name),
+    twitter: defaultTwitter(t('title'), t('description')),
+    alternates: pageAlternates(locale),
     icons: {
       icon: '/favicon.ico',
       shortcut: '/favicon.ico',
@@ -127,9 +88,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           '@type': 'Person',
           name: dbProfile.name,
           jobTitle: dbProfile.role,
-          url: 'https://www.jonathanleivag.cl',
+          url: BASE_URL,
           email: dbProfile.social.email,
-          image: 'https://www.jonathanleivag.cl/opengraph-image',
+          image: `${BASE_URL}/opengraph-image`,
           sameAs: [dbProfile.social.github, dbProfile.social.linkedin],
           knowsAbout: ['Vue.js', 'React', 'TypeScript', 'Node.js', 'GraphQL', 'Express.js', 'JavaScript'],
         }}

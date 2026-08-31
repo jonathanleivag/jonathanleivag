@@ -7,6 +7,7 @@ import { getPublicProfile } from '@/lib/data/profile'
 import { getPublicExperiences } from '@/lib/data/experience'
 import { getPublicSkillCategories } from '@/lib/data/skills'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
+import { defaultOpenGraph, defaultTwitter, pageAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -16,9 +17,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'aboutPage' })
   const profile = await getPublicProfile(locale as 'es' | 'en')
+  const title = `${t('heading')} — ${profile.name}`
+  const description = profile.about.summary
+
   return {
-    title: `${t('heading')} — ${profile.name}`,
-    description: profile.about.summary,
+    title,
+    description,
+    alternates: pageAlternates(locale, '/about'),
+    openGraph: defaultOpenGraph(locale, title, description, '/about', profile.name),
+    twitter: defaultTwitter(title, description),
   }
 }
 

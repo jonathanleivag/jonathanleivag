@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getPublicPosts } from '@/lib/data/posts'
+import { defaultOpenGraph, defaultTwitter, pageAlternates } from '@/lib/seo'
 
 const CATEGORIES = ['articulo', 'til', 'tutorial', 'snippet', 'caso'] as const
 
@@ -13,10 +14,21 @@ interface Props {
   searchParams: Promise<{ category?: string }>
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { locale } = await params
+  const { category } = await searchParams
   const t = await getTranslations({ locale, namespace: 'blogPage' })
-  return { title: t('heading'), description: t('subtitle') }
+  const title = t('heading')
+  const description = t('subtitle')
+
+  return {
+    title,
+    description,
+    alternates: pageAlternates(locale, '/blog'),
+    openGraph: defaultOpenGraph(locale, title, description, '/blog'),
+    twitter: defaultTwitter(title, description),
+    ...(category ? { robots: { index: false, follow: true } } : {}),
+  }
 }
 
 function formatDate(iso: string, locale: string) {

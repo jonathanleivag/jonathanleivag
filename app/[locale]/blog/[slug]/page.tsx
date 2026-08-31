@@ -6,7 +6,10 @@ import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getPublicPostBySlug, getPublicPostSlugs, getAdjacentPosts } from '@/lib/data/posts'
+import { getPublicProfile } from '@/lib/data/profile'
 import { parsePostContent } from '@/lib/posts/parseContent'
+import { JsonLd } from '@/components/JsonLd'
+import { defaultTwitter, pageAlternates, pageUrl } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -22,18 +25,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params
   const post = await getPublicPostBySlug(locale as 'es' | 'en', slug)
   if (!post) return {}
+
+  const ogImage = post.image
+    ? [{ url: post.image.src, width: post.image.width, height: post.image.height, alt: post.image.alt }]
+    : undefined
+
+  const twitter = defaultTwitter(post.title, post.excerpt)
+
   return {
     title: post.title,
     description: post.excerpt,
-    openGraph: post.image ? {
+    openGraph: {
+      type: 'article',
       title: post.title,
       description: post.excerpt,
-      images: [{ url: post.image.src, width: post.image.width, height: post.image.height, alt: post.image.alt }],
-    } : undefined,
-    alternates: {
-      canonical: `https://www.jonathanleivag.cl/${locale}/blog/${slug}`,
-      languages: { es: `https://www.jonathanleivag.cl/es/blog/${slug}`, en: `https://www.jonathanleivag.cl/en/blog/${slug}` },
+      url: pageUrl(locale, `/blog/${slug}`),
+      publishedTime: post.publishedAt,
+      images: ogImage,
     },
+    twitter: {
+      ...twitter,
+      images: post.image ? [post.image.src] : twitter.images,
+    },
+    alternates: pageAlternates(locale, `/blog/${slug}`),
   }
 }
 
@@ -48,9 +62,10 @@ export default async function PostPage({ params }: Props) {
   const post = await getPublicPostBySlug(l, slug)
   if (!post) notFound()
 
-  const [t, tBlog, { previous, next }] = await Promise.all([
+  const [t, tBlog, profile, { previous, next }] = await Promise.all([
     getTranslations({ locale, namespace: 'postPage' }),
     getTranslations({ locale, namespace: 'blogPage' }),
+    getPublicProfile(l),
     getAdjacentPosts(l, slug),
   ])
 
@@ -60,6 +75,19 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <main className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-11">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.publishedAt,
+          author: { '@type': 'Person', name: profile.name, url: pageUrl(locale) },
+          url: pageUrl(locale, `/blog/${slug}`),
+          ...(post.image ? { image: post.image.src } : {}),
+          keywords: post.tags.join(', '),
+        }}
+      />
       <Link href="/blog" className="inline-block text-[11px] tracking-[0.12em] uppercase text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors">
         {t('backToBlog')}
       </Link>

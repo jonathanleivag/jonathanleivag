@@ -7,8 +7,10 @@ import './globals.css'
 const jetbrainsMono = JetBrains_Mono({ variable: '--font-jetbrains-mono', subsets: ['latin'], weight: ['400', '500', '700'] })
 const archivo = Archivo({ variable: '--font-archivo', subsets: ['latin'], weight: ['400', '500', '700', '900'] })
 
+import { BASE_URL } from '@/lib/seo'
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.jonathanleivag.cl'),
+  metadataBase: new URL(BASE_URL),
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

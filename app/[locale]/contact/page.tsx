@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { getPublicProfile } from '@/lib/data/profile'
 import { ContactForm } from '@/components/ui/ContactForm'
+import { defaultOpenGraph, defaultTwitter, pageAlternates } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -13,9 +14,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'contactPage' })
   const profile = await getPublicProfile(locale as 'es' | 'en')
+  const title = `${t('heading')} — ${profile.name}`
+  const description = t('subtitle')
+
   return {
-    title: `${t('heading')} — ${profile.name}`,
-    description: t('subtitle'),
+    title,
+    description,
+    alternates: pageAlternates(locale, '/contact'),
+    openGraph: defaultOpenGraph(locale, title, description, '/contact', profile.name),
+    twitter: defaultTwitter(title, description),
   }
 }
 
