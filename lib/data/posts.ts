@@ -14,6 +14,7 @@ export type PublicPost = {
   readingMinutes: number
   isFeatured: boolean
   publishedAt: string
+  image?: { src: string; alt: string }
 }
 
 type MongoPost = Record<string, unknown>
@@ -23,6 +24,7 @@ function toPublicPost(doc: MongoPost, locale: Locale): PublicPost {
     getLocalizedField(field as { es: string; en: string } | null, locale)
 
   const publishedAt = doc.publishedAt as Date | string | undefined
+  const image = doc.image as { url?: string; alt?: string; src?: string } | null | undefined
   return {
     slug: doc.slug as string,
     title: gl(doc.title) || (doc.slug as string),
@@ -33,6 +35,10 @@ function toPublicPost(doc: MongoPost, locale: Locale): PublicPost {
     readingMinutes: (doc.readingMinutes as number) || 5,
     isFeatured: Boolean(doc.isFeatured),
     publishedAt: publishedAt ? new Date(publishedAt).toISOString() : new Date().toISOString(),
+    image: image?.url || image?.src ? {
+      src: (image.url || image.src) ?? '',
+      alt: image.alt || gl(doc.title) || '',
+    } : undefined,
   }
 }
 
@@ -50,6 +56,7 @@ function staticToPublic(): PublicPost[] {
     readingMinutes: p.readingMinutes,
     isFeatured: p.isFeatured,
     publishedAt: new Date(p.publishedAt).toISOString(),
+    image: p.image,
   }))
 }
 
