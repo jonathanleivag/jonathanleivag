@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllProjectSlugs } from '@/lib/data/projects'
-import { getPublicPostSlugs } from '@/lib/data/posts'
+import { getPublicPosts } from '@/lib/data/posts'
 
 const BASE_URL = 'https://www.jonathanleivag.cl'
 const LOCALES = ['es', 'en'] as const
@@ -13,12 +13,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // fallback to empty if DB unavailable
   }
 
-  let postSlugs: string[] = []
-  try {
-    postSlugs = await getPublicPostSlugs()
-  } catch {
-    // fallback to empty if DB unavailable
-  }
+  // Sourced per-locale from getPublicPosts (only genuinely published Mongo docs),
+  // not getPublicPostSlugs (which falls back to seed slugs even when the real
+  // collection is empty) — the sitemap must never advertise a URL that 404s.
+  const postSlugsByLocale = await Promise.all(
+    LOCALES.map(async (locale) => (await getPublicPosts(locale)).map((p) => p.slug))
+  )
 
   const homeUrls = LOCALES.map((locale) => ({
     url: `${BASE_URL}/${locale}`,
@@ -43,8 +43,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  const blogPostUrls = LOCALES.flatMap((locale) =>
-    postSlugs.map((slug) => ({
+  const blogPostUrls = LOCALES.flatMap((locale, i) =>
+    postSlugsByLocale[i].map((slug) => ({
       url: `${BASE_URL}/${locale}/blog/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
