@@ -16,7 +16,7 @@ interface Props {
 }
 
 function formatDate(iso: string, locale: string) {
-  return new Date(iso).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-CL', { year: 'numeric', month: 'short', day: '2-digit' }).toUpperCase()
+  return new Date(iso).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-CL', { year: 'numeric', month: 'short', day: '2-digit', timeZone: 'UTC' }).toUpperCase()
 }
 
 export default async function HomePage({ params }: Props) {
