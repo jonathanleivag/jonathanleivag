@@ -2,18 +2,26 @@
   "nav": {
     "home": "Inicio",
     "about": "Sobre mí",
-    "projects": "Proyectos",
-    "caseStudies": "Casos",
-    "skills": "Stack",
+    "blog": "Notas",
     "contact": "Contacto",
     "cv": "CV"
   },
   "hero": {
     "eyebrow": "Disponible para nuevos proyectos",
+    "terminalLine": "cat perfil.md",
     "headline": "Desarrollo productos web con foco en escalabilidad, rendimiento y mantenibilidad.",
     "subtitle": "Soy Desarrollador Full Stack Senior especializado en JavaScript, Vue.js, React, React Native, Express.js y GraphQL. Trabajo en interfaces modernas, componentes reutilizables, migraciones frontend y soluciones digitales orientadas a resultados.",
     "primaryCta": "Ver proyectos",
-    "secondaryCta": "Contactar"
+    "secondaryCta": "Contactar",
+    "availability": "Disponible para nuevos proyectos",
+    "stat1Value": "6",
+    "stat1Label": "Años en JavaScript",
+    "stat2Value": "2→3",
+    "stat2Label": "Migración Vue liderada",
+    "stat3Value": "4",
+    "stat3Label": "Equipos de producto",
+    "stat4Value": "TS",
+    "stat4Label": "Tipado en toda la base"
   },
   "about": {
     "label": "Sobre mí",
@@ -94,6 +102,56 @@
     "title": "Experiencia laboral",
     "subtitle": "Trayectoria construyendo productos web, interfaces modernas y soluciones full stack.",
     "current": "Actual"
+  },
+  "home": {
+    "caseStudiesLabel": "// Casos seleccionados",
+    "personalProjectsLabel": "// Proyectos personales",
+    "notesLabel": "Notas",
+    "seeAllNotes": "Ver todas →",
+    "ctaTitle": "¿Necesitas construir, modernizar o escalar tu producto?",
+    "ctaButton": "Hablemos →"
+  },
+  "blogPage": {
+    "eyebrow": "// Notas",
+    "heading": "Lo que aprendo, lo que rompo y lo que decido documentar.",
+    "subtitle": "Artículos técnicos, notas cortas, tutoriales y snippets sobre Vue, React, TypeScript, GraphQL y arquitectura frontend.",
+    "filterAll": "Todo",
+    "categoryArticulo": "Artículo",
+    "categoryTil": "TIL",
+    "categoryTutorial": "Tutorial",
+    "categorySnippet": "Snippet",
+    "categoryCaso": "Caso",
+    "featuredBadge": "Destacado",
+    "minutesSuffix": "MIN"
+  },
+  "postPage": {
+    "backToBlog": "← Volver a notas",
+    "tocLabel": "En esta nota",
+    "shareLabel": "Compartir",
+    "previous": "← Anterior",
+    "next": "Siguiente →"
+  },
+  "aboutPage": {
+    "eyebrow": "// Sobre mí",
+    "heading": "Desarrollo interfaces y soluciones orientadas a resultados.",
+    "dataLabel": "Datos",
+    "experienceLabel": "// Experiencia laboral",
+    "stackLabel": "// Stack técnico",
+    "currentBadge": "ACTUAL",
+    "languages": "Español nativo · inglés técnico"
+  },
+  "contactPage": {
+    "eyebrow": "// Contacto",
+    "heading": "¿Necesitas un desarrollador senior para construir, modernizar o escalar tu producto?",
+    "subtitle": "Puedo aportar en desarrollo full stack, migraciones frontend, arquitectura de componentes, Vue.js, React, TypeScript, Express.js, GraphQL y soluciones JavaScript orientadas a resultados.",
+    "directChannels": "Canales directos",
+    "emailChannel": "Email",
+    "linkedinChannel": "LinkedIn",
+    "githubChannel": "GitHub",
+    "cvChannel": "Currículum",
+    "downloadCv": "Descargar CV.PDF",
+    "responseTime": "Respondo en un plazo de 24 a 48 horas hábiles.",
+    "availability": "Disponible para nuevos proyectos"
   },
   "contactForm": {
     "name": "Nombre",

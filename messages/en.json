@@ -2,18 +2,26 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects",
-    "caseStudies": "Cases",
-    "skills": "Stack",
+    "blog": "Notes",
     "contact": "Contact",
     "cv": "Resume"
   },
   "hero": {
     "eyebrow": "Available for new projects",
+    "terminalLine": "cat profile.md",
     "headline": "I build web products focused on scalability, performance, and maintainability.",
     "subtitle": "I am a Senior Full Stack Developer specialized in JavaScript, Vue.js, React, React Native, Express.js, and GraphQL. I work on modern interfaces, reusable components, frontend migrations, and results-driven digital solutions.",
     "primaryCta": "View projects",
-    "secondaryCta": "Contact me"
+    "secondaryCta": "Contact me",
+    "availability": "Available for new projects",
+    "stat1Value": "6",
+    "stat1Label": "Years in JavaScript",
+    "stat2Value": "2→3",
+    "stat2Label": "Vue migration led",
+    "stat3Value": "4",
+    "stat3Label": "Product teams",
+    "stat4Value": "TS",
+    "stat4Label": "Typed across the codebase"
   },
   "about": {
     "label": "About me",
@@ -94,6 +102,56 @@
     "title": "Work experience",
     "subtitle": "A track record building web products, modern interfaces, and full stack solutions.",
     "current": "Current"
+  },
+  "home": {
+    "caseStudiesLabel": "// Selected cases",
+    "personalProjectsLabel": "// Personal projects",
+    "notesLabel": "Notes",
+    "seeAllNotes": "See all →",
+    "ctaTitle": "Need to build, modernize, or scale your product?",
+    "ctaButton": "Let's talk →"
+  },
+  "blogPage": {
+    "eyebrow": "// Notes",
+    "heading": "What I learn, what I break, and what I decide to document.",
+    "subtitle": "Technical articles, short notes, tutorials, and snippets about Vue, React, TypeScript, GraphQL, and frontend architecture.",
+    "filterAll": "All",
+    "categoryArticulo": "Article",
+    "categoryTil": "TIL",
+    "categoryTutorial": "Tutorial",
+    "categorySnippet": "Snippet",
+    "categoryCaso": "Case",
+    "featuredBadge": "Featured",
+    "minutesSuffix": "MIN"
+  },
+  "postPage": {
+    "backToBlog": "← Back to notes",
+    "tocLabel": "In this note",
+    "shareLabel": "Share",
+    "previous": "← Previous",
+    "next": "Next →"
+  },
+  "aboutPage": {
+    "eyebrow": "// About me",
+    "heading": "I build interfaces and results-driven solutions.",
+    "dataLabel": "Details",
+    "experienceLabel": "// Work experience",
+    "stackLabel": "// Tech stack",
+    "currentBadge": "CURRENT",
+    "languages": "Native Spanish · technical English"
+  },
+  "contactPage": {
+    "eyebrow": "// Contact",
+    "heading": "Need a senior developer to build, modernize, or scale your product?",
+    "subtitle": "I can contribute in full stack development, frontend migrations, component architecture, Vue.js, React, TypeScript, Express.js, GraphQL, and results-driven JavaScript solutions.",
+    "directChannels": "Direct channels",
+    "emailChannel": "Email",
+    "linkedinChannel": "LinkedIn",
+    "githubChannel": "GitHub",
+    "cvChannel": "Resume",
+    "downloadCv": "Download Resume.PDF",
+    "responseTime": "I respond within 24 to 48 business hours.",
+    "availability": "Available for new projects"
   },
   "contactForm": {
     "name": "Name",
