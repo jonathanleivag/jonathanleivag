@@ -2,9 +2,9 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { FileText, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { cn } from '@/lib/utils'
+import { Link, usePathname } from '@/i18n/navigation'
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 
 interface NavbarProps {
@@ -20,44 +20,19 @@ export function Navbar({
 }: NavbarProps) {
   const t = useTranslations('nav')
   const ta = useTranslations('a11y')
-  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
   const toggleRef = useRef<HTMLButtonElement>(null)
   const firstDrawerLinkRef = useRef<HTMLAnchorElement>(null)
 
   const NAV_LINKS = [
-    { label: t('home'), href: '#hero', id: 'hero' },
-    { label: t('about'), href: '#about', id: 'about' },
-    { label: t('projects'), href: '#projects', id: 'projects' },
-    { label: t('caseStudies'), href: '#case-studies', id: 'case-studies' },
-    { label: t('skills'), href: '#skills', id: 'skills' },
-    { label: t('contact'), href: '#contact', id: 'contact' },
+    { label: t('home'), href: '/' },
+    { label: t('about'), href: '/about' },
+    { label: t('blog'), href: '/blog' },
+    { label: t('contact'), href: '/contact' },
   ]
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    const sectionIds = NAV_LINKS.map((l) => l.id)
-    const observers: IntersectionObserver[] = []
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
-        { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-      )
-      obs.observe(el)
-      observers.push(obs)
-    })
-
-    return () => observers.forEach((obs) => obs.disconnect())
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
@@ -80,71 +55,61 @@ export function Navbar({
     else { toggleRef.current?.focus() }
   }, [open])
 
+  useEffect(() => { setOpen(false) }, [pathname])
+
   return (
     <>
-      <header className={cn('fixed top-0 z-50 w-full transition-all duration-300', scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent')}>
-        <nav aria-label="Navegación principal" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="#hero" className="flex items-center gap-2 hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black rounded">
+      <header className="sticky top-0 z-50 w-full bg-[rgba(21,26,25,.94)] backdrop-blur-md border-b border-[var(--dc-border)]">
+        <nav aria-label="Navegación principal" className="max-w-[1180px] mx-auto px-6 sm:px-10 h-[62px] grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd] rounded">
             {logo.src && <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} priority className="rounded-sm" />}
-            <span className="text-sm font-semibold text-zinc-100 tracking-wide">{handle}</span>
-          </a>
+            <span className="font-heading text-base font-black tracking-tight text-[#e8e6dd]">{handle}<span className="font-normal">.cl</span></span>
+          </Link>
 
-          <ul className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8 text-[11px] tracking-[0.12em] uppercase text-[var(--dc-muted)]">
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.id
+              const active = isActive(link.href)
               return (
-                <li key={link.href}>
-                  <a
+                <li key={link.href} className="flex flex-col items-center gap-1">
+                  <Link
                     href={link.href}
-                    className={cn(
-                      'text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black relative',
-                      isActive
-                        ? 'text-emerald-400 font-medium'
-                        : 'text-zinc-400 hover:text-emerald-400'
-                    )}
+                    className={`transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd] rounded ${active ? 'text-[#e8e6dd]' : 'hover:text-[#e8e6dd]'}`}
                   >
                     {link.label}
-                    {isActive && (
-                      <span className="absolute -bottom-1 left-0 right-0 h-px bg-emerald-400 rounded-full" />
-                    )}
-                  </a>
+                  </Link>
+                  {active && <span className="w-full h-[2px] bg-[#e8e6dd]" />}
                 </li>
               )
             })}
           </ul>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center justify-end gap-3.5 text-[11px] tracking-[0.1em]">
             <LanguageSwitcher />
-            <a href={cvUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-4 py-2 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black">
-              <FileText size={14} />
+            <a href={cvUrl} target="_blank" rel="noopener noreferrer" className="px-[11px] py-[5px] bg-[#e8e6dd] text-[#111111] font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd]">
               {t('cv')}
             </a>
           </div>
 
-          <button ref={toggleRef} className="lg:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black" onClick={() => setOpen((v) => !v)} aria-label={open ? ta('menuClose') : ta('menuOpen')} aria-expanded={open} aria-controls="mobile-nav">
+          <button ref={toggleRef} className="lg:hidden justify-self-end text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd]" onClick={() => setOpen((v) => !v)} aria-label={open ? ta('menuClose') : ta('menuOpen')} aria-expanded={open} aria-controls="mobile-nav">
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
       </header>
 
       {open && (
-        <div id="mobile-nav" className="lg:hidden fixed inset-0 top-16 bg-[#0a0a0a] z-[60] flex flex-col p-8">
+        <div id="mobile-nav" className="lg:hidden fixed inset-0 top-[62px] bg-[#151a19] z-[60] flex flex-col p-8">
           <ul className="flex flex-col gap-8 mt-4">
             {NAV_LINKS.map((link, index) => {
-              const isActive = activeSection === link.id
+              const active = isActive(link.href)
               return (
                 <li key={link.href}>
-                  <a
+                  <Link
                     ref={index === 0 ? firstDrawerLinkRef : undefined}
                     href={link.href}
-                    className={cn(
-                      'text-2xl font-medium transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-1 focus-visible:ring-offset-black',
-                      isActive ? 'text-emerald-400' : 'text-zinc-300 hover:text-emerald-400'
-                    )}
-                    onClick={() => setOpen(false)}
+                    className={`font-heading text-2xl font-black transition-colors block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd] ${active ? 'text-[#e8e6dd]' : 'text-[var(--dc-muted)] hover:text-[#e8e6dd]'}`}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               )
             })}
@@ -152,8 +117,7 @@ export function Navbar({
           <div className="mt-8">
             <LanguageSwitcher />
           </div>
-          <a href={cvUrl} target="_blank" rel="noopener noreferrer" className="mt-auto flex items-center gap-2 text-sm border border-[var(--accent-emerald-border)] text-emerald-400 px-5 py-3 rounded-lg hover:bg-[var(--accent-emerald-dim)] transition-colors self-start">
-            <FileText size={14} />
+          <a href={cvUrl} target="_blank" rel="noopener noreferrer" className="mt-auto flex items-center gap-2 text-sm px-5 py-3 bg-[#e8e6dd] text-[#111111] font-bold self-start">
             {t('cv')}
           </a>
         </div>
