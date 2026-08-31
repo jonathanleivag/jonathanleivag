@@ -5,6 +5,7 @@ const NAV = [
   { label: 'Dashboard', href: '/admin' },
   { label: 'Perfil', href: '/admin/profile' },
   { label: 'Proyectos', href: '/admin/projects' },
+  { label: 'Notas', href: '/admin/posts' },
   { label: 'Skills', href: '/admin/skills' },
   { label: 'Experiencia', href: '/admin/experience' },
   { label: 'CV', href: '/admin/cv' },
