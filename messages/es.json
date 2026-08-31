@@ -122,7 +122,8 @@
     "categorySnippet": "Snippet",
     "categoryCaso": "Caso",
     "featuredBadge": "Destacado",
-    "minutesSuffix": "MIN"
+    "minutesSuffix": "MIN",
+    "readArticle": "Leer nota"
   },
   "postPage": {
     "backToBlog": "← Volver a notas",

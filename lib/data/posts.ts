@@ -24,7 +24,7 @@ function toPublicPost(doc: MongoPost, locale: Locale): PublicPost {
     getLocalizedField(field as { es: string; en: string } | null, locale)
 
   const publishedAt = doc.publishedAt as Date | string | undefined
-  const image = doc.image as { url?: string; alt?: string; width?: number; height?: number } | null
+  const image = doc.image as { url?: string; alt?: string; src?: string; width?: number; height?: number } | null | undefined
   return {
     slug: doc.slug as string,
     title: gl(doc.title) || (doc.slug as string),
@@ -35,8 +35,8 @@ function toPublicPost(doc: MongoPost, locale: Locale): PublicPost {
     readingMinutes: (doc.readingMinutes as number) || 5,
     isFeatured: Boolean(doc.isFeatured),
     publishedAt: publishedAt ? new Date(publishedAt).toISOString() : new Date().toISOString(),
-    image: image?.url ? {
-      src: image.url,
+    image: image?.url || image?.src ? {
+      src: (image.url || image.src) ?? '',
       alt: image.alt || gl(doc.title) || '',
       width: image.width || 1200,
       height: image.height || 800,
@@ -58,6 +58,7 @@ function staticToPublic(): PublicPost[] {
     readingMinutes: p.readingMinutes,
     isFeatured: p.isFeatured,
     publishedAt: new Date(p.publishedAt).toISOString(),
+    image: p.image,
   }))
 }
 

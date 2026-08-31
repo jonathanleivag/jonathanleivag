@@ -65,7 +65,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
         {filtered.map((post) => (
           <div key={post.slug}>
             {post.isFeatured && (
-              <Link href={`/blog/${post.slug}`} className="grid lg:grid-cols-[1fr_260px] items-center gap-8 py-11 border-b border-[var(--dc-border)]">
+              <Link href={`/blog/${post.slug}`} className="group grid lg:grid-cols-[1fr_260px] items-center gap-8 -mx-2 px-2 py-11 border-b border-[var(--dc-border)] hover:bg-[var(--dc-surface)] transition-colors">
                 <div>
                   <span className="flex items-center gap-3.5 text-[10px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">
                     <span className="px-2 py-1 bg-[#e8e6dd] text-[#111111] font-bold">{t('featuredBadge')}</span>
@@ -73,10 +73,14 @@ export default async function BlogPage({ params, searchParams }: Props) {
                   </span>
                   <h2 className="mt-[18px] font-heading text-2xl sm:text-[38px] font-black leading-[1.06] tracking-[-0.03em]">{post.title}</h2>
                   <p className="mt-3 text-sm leading-[1.9] text-[#c9cec9] max-w-2xl">{post.excerpt}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase text-[#e8e6dd]">
+                    <span className="border-b border-[#e8e6dd] group-hover:border-transparent transition-colors">{t('readArticle')}</span>
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </span>
                 </div>
                 {post.image && (
                   <div className="relative h-[160px] border border-[var(--dc-border-strong)] overflow-hidden hidden lg:block">
-                    <Image src={post.image.src} alt={post.image.alt} fill sizes="260px" className="object-cover" />
+                    <Image src={post.image.src} alt={post.image.alt || post.title} fill sizes="260px" className="object-cover" />
                   </div>
                 )}
               </Link>
