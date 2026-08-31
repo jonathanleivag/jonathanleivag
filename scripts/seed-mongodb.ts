@@ -4,6 +4,7 @@ import { projects } from '../content/projects'
 import { personalProjects } from '../content/personal-projects'
 import { skills } from '../content/skills'
 import { caseStudies } from '../content/case-studies'
+import { posts } from '../content/posts'
 
 // Inline models to avoid Next.js module resolution issues in scripts
 const localizedString = { es: { type: String, required: true }, en: { type: String, required: true } }
@@ -144,6 +145,13 @@ async function seed() {
     isFeatured: Boolean, isPublished: Boolean, order: Number,
   }, { timestamps: true }))
 
+  const PostModel = mongoose.models.Post || mongoose.model('Post', new mongoose.Schema({
+    slug: { type: String, unique: true, index: true },
+    title: Object, excerpt: Object, content: Object,
+    category: String, tags: [String], readingMinutes: Number,
+    isFeatured: Boolean, isPublished: Boolean, publishedAt: Date, order: Number,
+  }, { timestamps: true }))
+
   for (const [i, cs] of caseStudies.entries()) {
     await CaseStudyModel.findOneAndUpdate(
       { slug: cs.slug },
@@ -251,6 +259,28 @@ async function seed() {
     )
   }
   console.log(`✓ ${experiences.length} experiences seeded`)
+
+  // Posts
+  for (const [i, p] of posts.entries()) {
+    await PostModel.findOneAndUpdate(
+      { slug: p.slug },
+      {
+        slug: p.slug,
+        title: { es: p.title, en: p.title },
+        excerpt: { es: p.excerpt, en: p.excerpt },
+        content: { es: p.content, en: p.content },
+        category: p.category,
+        tags: p.tags,
+        readingMinutes: p.readingMinutes,
+        isFeatured: p.isFeatured,
+        isPublished: true,
+        publishedAt: new Date(p.publishedAt),
+        order: i,
+      },
+      { upsert: true, new: true }
+    )
+  }
+  console.log(`✓ ${posts.length} posts seeded`)
 
   await mongoose.disconnect()
   console.log('\nSeed complete ✓')
