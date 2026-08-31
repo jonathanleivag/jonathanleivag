@@ -94,7 +94,7 @@ export function Navbar({
             </a>
           </div>
 
-          <button ref={toggleRef} className="lg:hidden justify-self-end text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd]" onClick={() => setOpen((v) => !v)} aria-label={open ? ta('menuClose') : ta('menuOpen')} aria-expanded={open} aria-controls="mobile-nav">
+          <button ref={toggleRef} className="lg:hidden col-start-3 justify-self-end text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd]" onClick={() => setOpen((v) => !v)} aria-label={open ? ta('menuClose') : ta('menuOpen')} aria-expanded={open} aria-controls="mobile-nav">
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>

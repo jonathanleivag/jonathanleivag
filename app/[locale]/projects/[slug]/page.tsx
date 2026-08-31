@@ -110,16 +110,12 @@ export default async function ProjectPage({ params }: Props) {
 
         <div className="h-[220px] sm:h-[320px] border border-[var(--dc-border-strong)]" />
 
-        <section className="grid grid-cols-2 sm:grid-cols-4 mt-px border-t border-b border-[var(--dc-border)]">
-          <div className="flex flex-col gap-2 py-[22px] pr-[22px] sm:border-r border-[var(--dc-border)]">
+        <section className="grid grid-cols-2 mt-px border-t border-b border-[var(--dc-border)]">
+          <div className="flex flex-col gap-2 py-[22px] pr-[22px] border-r border-[var(--dc-border)]">
             <span className="text-[10px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">{t('role')}</span>
             <span className="text-sm">{cs.role}</span>
           </div>
-          <div className="flex flex-col gap-2 py-[22px] px-[22px] sm:border-r border-[var(--dc-border)]">
-            <span className="text-[10px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">{t('context')}</span>
-            <span className="text-sm">{cs.source || '—'}</span>
-          </div>
-          <div className="flex flex-col gap-2 py-[22px] px-[22px] sm:border-r border-[var(--dc-border)] col-span-2 sm:col-span-1">
+          <div className="flex flex-col gap-2 py-[22px] pl-[22px]">
             <span className="text-[10px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">Stack</span>
             <span className="text-sm">{cs.stack.slice(0, 3).join(' · ')}</span>
           </div>

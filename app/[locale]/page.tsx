@@ -96,7 +96,7 @@ export default async function HomePage({ params }: Props) {
             {personalProjects.map((p) => (
               <Link key={p.slug} href={`/projects/${p.slug}`} className="flex flex-col gap-3 group">
                 <div className="relative h-[132px] border border-[var(--dc-border-strong)] overflow-hidden">
-                  {p.image && <Image src={p.image.src} alt={p.image.alt} fill className="object-cover" />}
+                  {p.image && <Image src={p.image.src} alt={p.image.alt} fill sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />}
                 </div>
                 <span className="font-heading text-base font-black tracking-tight text-[#e8e6dd] group-hover:opacity-80">{p.title}</span>
                 <span className="text-[10px] tracking-[0.1em] uppercase text-[var(--dc-muted)]">{p.stack.slice(0, 3).join(' · ')}</span>
