@@ -22,26 +22,27 @@ export async function Footer({
   const ta = await getTranslations('a11y')
 
   return (
-    <footer className="border-t border-white/5 bg-black/40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="text-center sm:text-left">
-          <p className="text-sm font-medium text-zinc-200">{name}</p>
-          <p className="text-xs text-zinc-400 mt-0.5">{role}</p>
+    <footer className="mt-20 border-t border-[var(--dc-border)]">
+      <div className="max-w-[1180px] mx-auto grid grid-cols-1 sm:grid-cols-[1fr_auto] items-end gap-10 px-10 py-10">
+        <div className="flex flex-col gap-2">
+          <span className="font-heading text-xl font-black tracking-tight text-[#e8e6dd]">{name}</span>
+          <span className="text-[11px] tracking-[0.1em] uppercase text-[var(--dc-muted)]">{role} · Chile</span>
         </div>
 
-        <div className="flex items-center gap-5">
-          <a href={github} target="_blank" rel="noopener noreferrer" aria-label={ta('github')} className="text-zinc-400 hover:text-emerald-400 transition-colors">
-            <GithubIcon size={18} />
-          </a>
-          <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label={ta('linkedin')} className="text-zinc-400 hover:text-emerald-400 transition-colors">
-            <LinkedinIcon size={18} />
-          </a>
-          <a href={`mailto:${email}`} aria-label={ta('email')} className="text-zinc-400 hover:text-emerald-400 transition-colors">
-            <Mail size={18} />
-          </a>
+        <div className="flex flex-col items-start sm:items-end gap-3 text-[11px] tracking-[0.1em] uppercase text-[var(--dc-muted)]">
+          <div className="flex items-center gap-5">
+            <a href={github} target="_blank" rel="noopener noreferrer" aria-label={ta('github')} className="flex items-center gap-2 hover:text-[#e8e6dd] transition-colors">
+              <GithubIcon size={16} /> {ta('github')}
+            </a>
+            <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label={ta('linkedin')} className="flex items-center gap-2 hover:text-[#e8e6dd] transition-colors">
+              <LinkedinIcon size={16} /> {ta('linkedin')}
+            </a>
+            <a href={`mailto:${email}`} aria-label={ta('email')} className="flex items-center gap-2 hover:text-[#e8e6dd] transition-colors">
+              <Mail size={16} /> {ta('email')}
+            </a>
+          </div>
+          <span>© {new Date().getFullYear()} {handle}</span>
         </div>
-
-        <p className="text-xs text-zinc-400">© {new Date().getFullYear()} {handle}</p>
       </div>
     </footer>
   )
