@@ -9,6 +9,12 @@ export const profile = {
   metaDescription:
     'Portafolio de Jonathan Leiva Gómez, Desarrollador Full Stack Senior con experiencia en JavaScript, Vue.js, React, React Native, Express.js, GraphQL, Apollo y migraciones frontend con TypeScript.',
   availability: 'Disponible para nuevos proyectos',
+  portrait: {
+    src: '/jonathan-leiva-retrato.jpg',
+    alt: 'Jonathan Leiva Gómez',
+    width: 864,
+    height: 1152,
+  },
   social: {
     github: 'https://github.com/jonathanleivag',
     linkedin: 'https://www.linkedin.com/in/jonathanleivag',

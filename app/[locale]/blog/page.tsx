@@ -55,7 +55,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
   const categoryLabel = (cat: string) => t(`category${cat[0].toUpperCase()}${cat.slice(1)}` as 'categoryArticulo')
 
   return (
-    <main className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-16">
+    <main className="site-container pt-16">
       <header className="pb-11">
         <span className="text-[11px] tracking-[0.16em] uppercase text-[var(--dc-muted)]">{t('eyebrow')}</span>
         <h1 className="mt-5 max-w-[820px] font-heading text-3xl sm:text-[60px] font-black leading-[1.02] tracking-[-0.035em]">{t('heading')}</h1>

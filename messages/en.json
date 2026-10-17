@@ -133,13 +133,14 @@
     "next": "Next →"
   },
   "aboutPage": {
-    "eyebrow": "// About me",
+    "eyebrow": "// Portfolio",
     "heading": "I build interfaces and results-driven solutions.",
     "dataLabel": "Details",
     "experienceLabel": "// Work experience",
     "stackLabel": "// Tech stack",
     "currentBadge": "CURRENT",
-    "languages": "Native Spanish · technical English"
+    "languages": "Native Spanish · technical English",
+    "heroStack": "Vue.js · TypeScript · GraphQL · React"
   },
   "contactPage": {
     "eyebrow": "// Contact",

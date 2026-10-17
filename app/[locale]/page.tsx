@@ -35,7 +35,7 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <main>
-      <header className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-20 pb-16">
+      <header className="site-container pt-20 pb-16">
         <div className="flex items-center gap-2.5 mb-9 text-[11px] tracking-[0.14em] uppercase text-[var(--dc-muted)]">
           <span className="text-[#e8e6dd]">$</span>
           <span>{tHero('terminalLine')}</span>
@@ -62,7 +62,7 @@ export default async function HomePage({ params }: Props) {
 
       <ScrollReveal>
         <section className="border-t border-b border-[var(--dc-border)]">
-          <div className="grid grid-cols-2 sm:grid-cols-4 max-w-[1180px] mx-auto px-6 sm:px-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 site-container">
             {[
               [tHero('stat1Value'), tHero('stat1Label')],
               [tHero('stat2Value'), tHero('stat2Label')],
@@ -79,7 +79,7 @@ export default async function HomePage({ params }: Props) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <section id="cases" className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-16">
+        <section id="cases" className="site-container pt-16">
           <div className="flex items-baseline justify-between mb-7">
             <h2 className="text-xs font-bold tracking-[0.2em] text-[var(--dc-muted)]">{tHome('caseStudiesLabel')}</h2>
           </div>
@@ -90,7 +90,7 @@ export default async function HomePage({ params }: Props) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <section className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-14">
+        <section className="site-container pt-14">
           <h2 className="text-xs font-bold tracking-[0.2em] text-[var(--dc-muted)] mb-6">{tHome('personalProjectsLabel')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {personalProjects.map((p) => (
@@ -107,7 +107,7 @@ export default async function HomePage({ params }: Props) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <section className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-16">
+        <section className="site-container pt-16">
           <div className="flex items-end justify-between mb-6">
             <h2 className="font-heading text-3xl sm:text-4xl font-black tracking-tight">{tHome('notesLabel')}</h2>
             <Link href="/blog" className="text-[11px] tracking-[0.12em] uppercase text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors">
@@ -130,7 +130,7 @@ export default async function HomePage({ params }: Props) {
 
       <ScrollReveal>
         <section className="mt-[70px] bg-[#e8e6dd] text-[#111111]">
-          <div className="grid lg:grid-cols-[1fr_auto] items-center gap-10 max-w-[1180px] mx-auto px-6 sm:px-10 py-12">
+          <div className="grid lg:grid-cols-[1fr_auto] items-center gap-10 site-container py-12">
             <h2 className="max-w-[660px] font-heading text-2xl sm:text-4xl font-black leading-tight tracking-tight">{tHome('ctaTitle')}</h2>
             <Link href="/contact" className="px-[26px] py-[18px] bg-[#111111] text-[#e8e6dd] text-xs font-bold tracking-[0.1em] self-start">
               {tHome('ctaButton')}

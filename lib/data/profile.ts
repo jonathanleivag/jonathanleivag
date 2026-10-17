@@ -20,7 +20,7 @@ export function getLocalizedField(
 export async function getPublicProfile(locale: Locale) {
   try {
     const doc = await getProfile()
-    if (!doc) return { ...staticProfile, portrait: undefined }
+    if (!doc) return staticProfile
 
     const gl = (field: unknown) =>
       getLocalizedField(field as { es: string; en: string } | null, locale)
@@ -57,7 +57,7 @@ export async function getPublicProfile(locale: Locale) {
         alt: portrait.alt || (doc.name as string) || '',
         width: portrait.width || 1200,
         height: portrait.height || 800,
-      } : undefined,
+      } : staticProfile.portrait,
       social: {
         github: social?.github || staticProfile.social.github,
         linkedin: social?.linkedin || staticProfile.social.linkedin,
@@ -70,6 +70,6 @@ export async function getPublicProfile(locale: Locale) {
       metaDescription: staticProfile.metaDescription,
     }
   } catch {
-    return { ...staticProfile, portrait: undefined }
+    return staticProfile
   }
 }

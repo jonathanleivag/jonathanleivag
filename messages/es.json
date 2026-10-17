@@ -133,13 +133,14 @@
     "next": "Siguiente →"
   },
   "aboutPage": {
-    "eyebrow": "// Sobre mí",
+    "eyebrow": "// Portafolio",
     "heading": "Desarrollo interfaces y soluciones orientadas a resultados.",
     "dataLabel": "Datos",
     "experienceLabel": "// Experiencia laboral",
     "stackLabel": "// Stack técnico",
     "currentBadge": "ACTUAL",
-    "languages": "Español nativo · inglés técnico"
+    "languages": "Español nativo · inglés técnico",
+    "heroStack": "Vue.js · TypeScript · GraphQL · React"
   },
   "contactPage": {
     "eyebrow": "// Contacto",

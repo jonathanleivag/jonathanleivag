@@ -86,7 +86,7 @@ export default async function ProjectPage({ params }: Props) {
   if (cs) {
     const t = await getTranslations({ locale, namespace: 'caseStudies' })
     return (
-      <main className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-11">
+      <main className="site-container pt-11">
         <Link href="/" className="inline-block text-[11px] tracking-[0.12em] uppercase text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors">
           ← {locale === 'en' ? 'Back to work' : 'Volver al trabajo'}
         </Link>
@@ -147,7 +147,7 @@ export default async function ProjectPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'personalProjects' })
 
   return (
-    <main className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-11 pb-20">
+    <main className="site-container pt-11 pb-20">
       <Link href="/" className="inline-block text-[11px] tracking-[0.12em] uppercase text-[var(--dc-muted)] hover:text-[#e8e6dd] transition-colors">
         {t('backToPortfolio')}
       </Link>

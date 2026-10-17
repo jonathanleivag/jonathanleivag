@@ -64,7 +64,7 @@ export function Navbar({
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-[rgba(21,26,25,.94)] backdrop-blur-md border-b border-[var(--dc-border)]">
-        <nav aria-label="Navegación principal" className="max-w-[1180px] mx-auto px-6 sm:px-10 h-[62px] grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+        <nav aria-label="Navegación principal" className="site-container h-[62px] grid grid-cols-[1fr_auto_1fr] items-center gap-6">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8e6dd] rounded">
             {logo.src && <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} priority className="rounded-sm" />}
             <span className="font-heading text-base font-black tracking-tight text-[#e8e6dd]">{handle}<span className="font-normal">.cl</span></span>

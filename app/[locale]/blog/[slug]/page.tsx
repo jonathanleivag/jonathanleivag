@@ -74,7 +74,7 @@ export default async function PostPage({ params }: Props) {
   const categoryLabel = tBlog(`category${post.category[0].toUpperCase()}${post.category.slice(1)}` as 'categoryArticulo')
 
   return (
-    <main className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-11">
+    <main className="site-container pt-11">
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -103,7 +103,7 @@ export default async function PostPage({ params }: Props) {
 
       {post.image && (
         <div className="relative h-[220px] sm:h-[360px] mt-10 border border-[var(--dc-border-strong)] overflow-hidden">
-          <Image src={post.image.src} alt={post.image.alt} fill sizes="(min-width: 1180px) 1180px, 100vw" className="object-cover" priority />
+          <Image src={post.image.src} alt={post.image.alt} fill sizes="(min-width: 1440px) 1440px, 100vw" className="object-cover" priority />
         </div>
       )}
 

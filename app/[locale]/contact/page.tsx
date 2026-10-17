@@ -34,7 +34,7 @@ export default async function ContactPage({ params }: Props) {
   ])
 
   return (
-    <main className="max-w-[1180px] mx-auto px-6 sm:px-10 pt-16 pb-20">
+    <main className="site-container pt-16 pb-20">
       <header className="pb-12">
         <span className="text-[11px] tracking-[0.16em] uppercase text-[var(--dc-muted)]">{t('eyebrow')}</span>
         <h1 className="mt-5 max-w-[900px] font-heading text-3xl sm:text-[58px] font-black leading-[1.03] tracking-[-0.035em]">{t('heading')}</h1>
