@@ -4,6 +4,7 @@ import { connectToDatabase } from '@/lib/mongodb'
 import { Project } from '@/models/Project'
 import { updateProject, deleteProject } from '../actions'
 import { DeleteProjectButton } from '@/components/admin/DeleteProjectButton'
+import { ProjectImageField } from '@/components/admin/ProjectImageField'
 
 interface Props { params: Promise<{ id: string }> }
 
@@ -14,6 +15,7 @@ export default async function EditProjectPage({ params }: Props) {
   if (!p) notFound()
 
   const updateWithId = updateProject.bind(null, id)
+  const image = p.image as { url?: string; publicId?: string; width?: number; height?: number } | undefined
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -41,6 +43,14 @@ export default async function EditProjectPage({ params }: Props) {
           <Field label="Dominio" name="domain" defaultValue={p.domain as string} />
           <Field label="Orden" name="order" type="number" defaultValue={String(p.order ?? 0)} />
         </div>
+        <ProjectImageField
+          initial={image?.url ? {
+            url: image.url,
+            publicId: image.publicId ?? '',
+            width: image.width ?? 1200,
+            height: image.height ?? 800,
+          } : undefined}
+        />
         <div className="flex gap-6">
           <Checkbox label="Publicado" name="isPublished" defaultChecked={p.isPublished as boolean} />
           <Checkbox label="Destacado" name="isFeatured" defaultChecked={p.isFeatured as boolean} />

@@ -72,7 +72,9 @@ export async function updateProject(id: string, formData: FormData) {
 
   await connectToDatabase()
 
-  await Project.findByIdAndUpdate(id, {
+  const imageUrl = String(formData.get('imageUrl') ?? '')
+
+  const doc = await Project.findByIdAndUpdate(id, {
     title: { es: formData.get('titleEs'), en: formData.get('titleEn') },
     type: formData.get('type'),
     category: formData.get('category') || undefined,
@@ -83,11 +85,18 @@ export async function updateProject(id: string, formData: FormData) {
     isFeatured: formData.get('isFeatured') === 'on',
     isPublished: formData.get('isPublished') === 'on',
     order: Number(formData.get('order') || 0),
-  })
+    // Dot paths keep any existing image.alt instead of replacing the whole subdocument
+    ...(imageUrl ? {
+      'image.url': imageUrl,
+      'image.publicId': String(formData.get('imagePublicId') ?? ''),
+      'image.width': Number(formData.get('imageWidth')) || 1200,
+      'image.height': Number(formData.get('imageHeight')) || 800,
+    } : {}),
+  }).lean()
 
   revalidatePath('/admin/projects')
   revalidatePath('/')
-  await triggerRevalidation()
+  await triggerRevalidation(doc?.slug ? [doc.slug as string] : undefined)
   redirect('/admin/projects?toast=saved')
 }
 
